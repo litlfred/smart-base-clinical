@@ -4,12 +4,8 @@ name: FHIR CI Build
 
 # Controls when the action will run. 
 on:
-  # Triggers the workflow on push or pull request events for any main branch
-  push:
-    branches-ignore:    
-      - 'gh-pages'
-  pull_request:
-
+  # By hand only (owner, 2026-10-10): the harnessed site replaces the
+  # IG Publisher gh-pages pipeline; this only triggers the HL7 auto-build.
   workflow_dispatch:
 
 jobs:
