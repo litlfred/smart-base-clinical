@@ -1,0 +1,1509 @@
+{
+  "$schema" : "ig-ast-dependencies/v1",
+  "authority" : "cache",
+  "edges" : 167,
+  "resolvedInIg" : 113,
+  "dependencies" : [{
+    "source" : "http://smart.who.int/base-clinical/ImplementationGuide/smart.who.int.base-clinical|1.0.1",
+    "kind" : "meta.profile",
+    "target" : "http://smart.who.int/base/StructureDefinition/SGImplementationGuide",
+    "targetVersion" : null,
+    "resolved" : null,
+    "path" : "ImplementationGuide.meta.profile",
+    "origin" : "ast-export"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/Library/WHOCommon|1.0.1",
+    "kind" : "relatedArtifact.depends-on",
+    "target" : "http://hl7.org/fhir/uv/cql/Library/FHIRCommon",
+    "targetVersion" : "2.0.0",
+    "resolved" : null,
+    "path" : "Library.relatedArtifact.resource",
+    "origin" : "ast-export"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/Library/WHOCommon|1.0.1",
+    "kind" : "relatedArtifact.depends-on",
+    "target" : "http://hl7.org/fhir/uv/cql/Library/FHIRHelpers",
+    "targetVersion" : "4.0.1",
+    "resolved" : null,
+    "path" : "Library.relatedArtifact.resource",
+    "origin" : "ast-export"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-allergyintolerance|1.0.1",
+    "kind" : "derives from",
+    "target" : "http://hl7.org/fhir/StructureDefinition/AllergyIntolerance",
+    "targetVersion" : "4.0.1",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-allergyintolerance|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-encounter",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-encounter|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-allergyintolerance|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-patient",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-patient|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-allergyintolerance|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitioner",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitioner|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-allergyintolerance|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitionerrole",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitionerrole|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-allergyintolerance|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-relatedperson",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-relatedperson|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-allergyintolerance|1.0.1",
+    "kind" : "uses",
+    "target" : "http://hl7.org/fhir/StructureDefinition/allergyintolerance-duration",
+    "targetVersion" : "5.3.0",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-allergyintolerance|1.0.1",
+    "kind" : "uses",
+    "target" : "http://hl7.org/fhir/StructureDefinition/allergyintolerance-reasonRefuted",
+    "targetVersion" : "5.3.0",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-allergyintolerance|1.0.1",
+    "kind" : "uses",
+    "target" : "http://hl7.org/fhir/StructureDefinition/allergyintolerance-resolutionAge",
+    "targetVersion" : "5.3.0",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-careplan|1.0.1",
+    "kind" : "derives from",
+    "target" : "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-careplan",
+    "targetVersion" : "2.0.0",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-careplan|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-allergyintolerance",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-allergyintolerance|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-careplan|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-careteam",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-careteam|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-careplan|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-condition",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-condition|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-careplan|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-encounter",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-encounter|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-careplan|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-episodeofcare",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-episodeofcare|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-careplan|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-immunization",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-immunization|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-careplan|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-immunizationnotdone",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-immunizationnotdone|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-careplan|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-medicationnotrequested",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-medicationnotrequested|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-careplan|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-medicationrequest",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-medicationrequest|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-careplan|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-observation",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-observation|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-careplan|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-observationnotdone",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-observationnotdone|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-careplan|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-patient",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-patient|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-careplan|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-procedure",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-procedure|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-careplan|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-procedurenotdone",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-procedurenotdone|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-careplan|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-servicenotrequested",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-servicenotrequested|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-careplan|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-servicerequest",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-servicerequest|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-careteam|1.0.1",
+    "kind" : "derives from",
+    "target" : "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-careteam",
+    "targetVersion" : "2.0.0",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-careteam|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-careteam",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-careteam|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-careteam|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-encounter",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-encounter|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-careteam|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-organization",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-organization|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-careteam|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-patient",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-patient|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-careteam|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitioner",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitioner|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-careteam|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitionerrole",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitionerrole|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-careteam|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-relatedperson",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-relatedperson|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-careteam|1.0.1",
+    "kind" : "uses",
+    "target" : "http://hl7.org/fhir/StructureDefinition/iso21090-preferred",
+    "targetVersion" : "5.3.0",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-condition|1.0.1",
+    "kind" : "derives from",
+    "target" : "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-condition",
+    "targetVersion" : "2.0.0",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-condition|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-clinicalimpression",
+    "targetVersion" : "2.0.0",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-condition|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-encounter",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-encounter|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-condition|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-observation",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-observation|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-condition|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-patient",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-patient|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-condition|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitioner",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitioner|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-condition|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitionerrole",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitionerrole|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-condition|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-relatedperson",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-relatedperson|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-encounter|1.0.1",
+    "kind" : "derives from",
+    "target" : "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-encounter",
+    "targetVersion" : "2.0.0",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-encounter|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-condition",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-condition|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-encounter|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-episodeofcare",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-episodeofcare|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-encounter|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-location",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-location|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-encounter|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-organization",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-organization|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-encounter|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-patient",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-patient|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-encounter|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitioner",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitioner|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-encounter|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitionerrole",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitionerrole|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-encounter|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-procedure",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-procedure|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-encounter|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-servicerequest",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-servicerequest|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-encounter|1.0.1",
+    "kind" : "uses",
+    "target" : "http://hl7.org/fhir/StructureDefinition/request-statusReason",
+    "targetVersion" : "5.3.0",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-episodeofcare|1.0.1",
+    "kind" : "binds to",
+    "target" : "http://hl7.org/fhir/ValueSet/diagnosis-role",
+    "targetVersion" : "4.0.1",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-episodeofcare|1.0.1",
+    "kind" : "derives from",
+    "target" : "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-case",
+    "targetVersion" : "2.0.0",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-episodeofcare|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-careteam",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-careteam|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-episodeofcare|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-condition",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-condition|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-episodeofcare|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-organization",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-organization|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-episodeofcare|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-patient",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-patient|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-episodeofcare|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitioner",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitioner|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-episodeofcare|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitionerrole",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitionerrole|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-group|1.0.1",
+    "kind" : "derives from",
+    "target" : "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-group",
+    "targetVersion" : "2.0.0",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-group|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-patient",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-patient|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-immunizationnotdone|1.0.1",
+    "kind" : "derives from",
+    "target" : "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-immunization",
+    "targetVersion" : "2.0.0",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-immunizationnotdone|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-encounter",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-encounter|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-immunizationnotdone|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-patient",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-patient|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-immunizationnotdone|1.0.1",
+    "kind" : "uses",
+    "target" : "http://hl7.org/fhir/StructureDefinition/cqf-notDoneValueSet",
+    "targetVersion" : "5.3.0",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-immunization|1.0.1",
+    "kind" : "derives from",
+    "target" : "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-immunization",
+    "targetVersion" : "2.0.0",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-immunization|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-encounter",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-encounter|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-immunization|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-location",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-location|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-immunization|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-observation",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-observation|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-immunization|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-patient",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-patient|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-location|1.0.1",
+    "kind" : "binds to",
+    "target" : "http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType",
+    "targetVersion" : "3.0.0",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-location|1.0.1",
+    "kind" : "derives from",
+    "target" : "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-location",
+    "targetVersion" : "2.0.0",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-location|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-location",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-location|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-location|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-organization",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-organization|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-location|1.0.1",
+    "kind" : "uses",
+    "target" : "http://hl7.org/fhir/StructureDefinition/iso21090-preferred",
+    "targetVersion" : "5.3.0",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-measurereport|1.0.1",
+    "kind" : "derives from",
+    "target" : "http://hl7.org/fhir/StructureDefinition/MeasureReport",
+    "targetVersion" : "4.0.1",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-measurereport|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-group",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-group|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-measurereport|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-organization",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-organization|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-measurereport|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-patient",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-patient|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-measurereport|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitioner",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitioner|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-measurereport|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitionerrole",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitionerrole|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-measurereport|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-relatedperson",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-relatedperson|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-measurereport|1.0.1",
+    "kind" : "uses",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-reportedLocation",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-reportedLocation|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-medicationnotrequested|1.0.1",
+    "kind" : "derives from",
+    "target" : "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-medicationrequest",
+    "targetVersion" : "2.0.0",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-medicationnotrequested|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-encounter",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-encounter|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-medicationnotrequested|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-patient",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-patient|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-medicationnotrequested|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitioner",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitioner|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-medicationnotrequested|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitionerrole",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitionerrole|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-medicationnotrequested|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-relatedperson",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-relatedperson|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-medicationnotrequested|1.0.1",
+    "kind" : "uses",
+    "target" : "http://hl7.org/fhir/StructureDefinition/cqf-notDoneValueSet",
+    "targetVersion" : "5.3.0",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-medicationrequest|1.0.1",
+    "kind" : "binds to",
+    "target" : "http://hl7.org/fhir/ValueSet/medicationrequest-category",
+    "targetVersion" : "4.0.1",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-medicationrequest|1.0.1",
+    "kind" : "derives from",
+    "target" : "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-medicationrequest",
+    "targetVersion" : "2.0.0",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-medicationrequest|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-encounter",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-encounter|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-medicationrequest|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-patient",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-patient|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-medicationrequest|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitioner",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitioner|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-medicationrequest|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitionerrole",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitionerrole|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-medicationrequest|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-relatedperson",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-relatedperson|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-observationnotdone|1.0.1",
+    "kind" : "derives from",
+    "target" : "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-observation",
+    "targetVersion" : "2.0.0",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-observationnotdone|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-encounter",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-encounter|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-observationnotdone|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-patient",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-patient|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-observationnotdone|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitioner",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitioner|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-observationnotdone|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitionerrole",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitionerrole|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-observationnotdone|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-relatedperson",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-relatedperson|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-observationnotdone|1.0.1",
+    "kind" : "uses",
+    "target" : "http://hl7.org/fhir/StructureDefinition/cqf-notDoneValueSet",
+    "targetVersion" : "5.3.0",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-observation|1.0.1",
+    "kind" : "derives from",
+    "target" : "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-observation",
+    "targetVersion" : "2.0.0",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-observation|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-questionnaireresponse",
+    "targetVersion" : "2.0.0",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-observation|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-encounter",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-encounter|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-observation|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-observation",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-observation|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-observation|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-patient",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-patient|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-observation|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitioner",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitioner|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-observation|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitionerrole",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitionerrole|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-observation|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-relatedperson",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-relatedperson|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-observation|1.0.1",
+    "kind" : "uses",
+    "target" : "http://hl7.org/fhir/StructureDefinition/observation-bodyPosition",
+    "targetVersion" : "5.3.0",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-organization|1.0.1",
+    "kind" : "derives from",
+    "target" : "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-organization",
+    "targetVersion" : "2.0.0",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-organization|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://hl7.org/fhir/StructureDefinition/Endpoint",
+    "targetVersion" : "4.0.1",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-organization|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-organization",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-organization|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-organization|1.0.1",
+    "kind" : "uses",
+    "target" : "http://hl7.org/fhir/StructureDefinition/iso21090-preferred",
+    "targetVersion" : "5.3.0",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-patient|1.0.1",
+    "kind" : "derives from",
+    "target" : "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-patient",
+    "targetVersion" : "2.0.0",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-patient|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-organization",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-organization|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-patient|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-patient",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-patient|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-patient|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitioner",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitioner|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-patient|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitionerrole",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitionerrole|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-patient|1.0.1",
+    "kind" : "uses",
+    "target" : "http://hl7.org/fhir/StructureDefinition/iso21090-preferred",
+    "targetVersion" : "5.3.0",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-patient|1.0.1",
+    "kind" : "uses",
+    "target" : "http://hl7.org/fhir/StructureDefinition/patient-birthTime",
+    "targetVersion" : "5.3.0",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitionerrole|1.0.1",
+    "kind" : "derives from",
+    "target" : "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-practitionerrole",
+    "targetVersion" : "2.0.0",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitionerrole|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-location",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-location|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitionerrole|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-organization",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-organization|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitionerrole|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitioner",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitioner|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitionerrole|1.0.1",
+    "kind" : "uses",
+    "target" : "http://hl7.org/fhir/StructureDefinition/iso21090-preferred",
+    "targetVersion" : "5.3.0",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitioner|1.0.1",
+    "kind" : "derives from",
+    "target" : "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-practitioner",
+    "targetVersion" : "2.0.0",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitioner|1.0.1",
+    "kind" : "uses",
+    "target" : "http://hl7.org/fhir/StructureDefinition/iso21090-preferred",
+    "targetVersion" : "5.3.0",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-procedurenotdone|1.0.1",
+    "kind" : "derives from",
+    "target" : "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-procedure",
+    "targetVersion" : "2.0.0",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-procedurenotdone|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-encounter",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-encounter|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-procedurenotdone|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-patient",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-patient|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-procedurenotdone|1.0.1",
+    "kind" : "uses",
+    "target" : "http://hl7.org/fhir/StructureDefinition/cqf-notDoneValueSet",
+    "targetVersion" : "5.3.0",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-procedure|1.0.1",
+    "kind" : "derives from",
+    "target" : "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-procedure",
+    "targetVersion" : "2.0.0",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-procedure|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-encounter",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-encounter|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-procedure|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-location",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-location|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-procedure|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-patient",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-patient|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-procedure|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitioner",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitioner|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-procedure|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitionerrole",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitionerrole|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-procedure|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-relatedperson",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-relatedperson|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-relatedperson|1.0.1",
+    "kind" : "binds to",
+    "target" : "http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype",
+    "targetVersion" : "4.0.1",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-relatedperson|1.0.1",
+    "kind" : "derives from",
+    "target" : "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-relatedperson",
+    "targetVersion" : "2.0.0",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-relatedperson|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-patient",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-patient|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-relatedperson|1.0.1",
+    "kind" : "uses",
+    "target" : "http://hl7.org/fhir/StructureDefinition/iso21090-preferred",
+    "targetVersion" : "5.3.0",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-reportedLocation|1.0.1",
+    "kind" : "derives from",
+    "target" : "http://hl7.org/fhir/StructureDefinition/Extension",
+    "targetVersion" : "4.0.1",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-reportedLocation|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://hl7.org/fhir/StructureDefinition/Location",
+    "targetVersion" : "4.0.1",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-servicenotrequested|1.0.1",
+    "kind" : "derives from",
+    "target" : "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-servicerequest",
+    "targetVersion" : "2.0.0",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-servicenotrequested|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-encounter",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-encounter|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-servicenotrequested|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-patient",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-patient|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-servicenotrequested|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitioner",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitioner|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-servicenotrequested|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitionerrole",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitionerrole|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-servicenotrequested|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-relatedperson",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-relatedperson|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-servicenotrequested|1.0.1",
+    "kind" : "uses",
+    "target" : "http://hl7.org/fhir/StructureDefinition/cqf-notDoneValueSet",
+    "targetVersion" : "5.3.0",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-servicerequest|1.0.1",
+    "kind" : "derives from",
+    "target" : "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-servicerequest",
+    "targetVersion" : "2.0.0",
+    "resolved" : null,
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-servicerequest|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-encounter",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-encounter|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-servicerequest|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-patient",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-patient|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-servicerequest|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitioner",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitioner|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-servicerequest|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitionerrole",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-practitionerrole|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  },
+  {
+    "source" : "http://smart.who.int/base-clinical/StructureDefinition/sg-servicerequest|1.0.1",
+    "kind" : "refers to",
+    "target" : "http://smart.who.int/base-clinical/StructureDefinition/sg-relatedperson",
+    "targetVersion" : "1.0.1",
+    "resolved" : "http://smart.who.int/base-clinical/StructureDefinition/sg-relatedperson|1.0.1",
+    "path" : null,
+    "origin" : "publisher"
+  }]
+}

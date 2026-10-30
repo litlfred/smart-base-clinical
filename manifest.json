@@ -1,0 +1,540 @@
+{
+  "$schema": "ig-ast/v1",
+  "authority": "cache",
+  "provisional": [
+    "indices",
+    "dependencies",
+    "versions"
+  ],
+  "provisionalUntil": "a full IG Publisher run",
+  "generatedAt": "2026-10-30T13:46:57.506062103Z",
+  "ig": {
+    "root": ".",
+    "version": "4.0.1"
+  },
+  "inputDigestMode": {
+    "mode": "git"
+  },
+  "inputs": {
+    "toolchain": "ig-publisher 3.0.0 / core 7.0.1",
+    "sourceRevision": "3c6fcc9b7a6bc5ecd777e7deb58f56df5da65c64",
+    "inputDigest": "376f4de40f80de989ec9a2fa3126a8c612a85d9b48b7c51355df890c0ee5a865"
+  },
+  "packages": [
+    {
+      "id": "hl7.fhir.r4.core",
+      "version": "4.0.1",
+      "canonical": "http://hl7.org/fhir",
+      "fhirVersion": "4.0.1",
+      "dependencies": []
+    },
+    {
+      "id": "hl7.fhir.uv.cpg",
+      "version": "2.0.0",
+      "canonical": "http://hl7.org/fhir/uv/cpg",
+      "fhirVersion": "4.0.1",
+      "dependencies": [
+        "hl7.fhir.r4.core#4.0.1",
+        "hl7.fhir.uv.extensions.r4#5.1.0",
+        "hl7.terminology.r4#6.1.0"
+      ]
+    },
+    {
+      "id": "hl7.fhir.uv.cql",
+      "version": "2.0.0",
+      "canonical": "http://hl7.org/fhir/uv/cql",
+      "fhirVersion": "4.0.1",
+      "dependencies": [
+        "hl7.fhir.r4.core#4.0.1",
+        "hl7.fhir.uv.extensions.r4#5.2.0",
+        "hl7.terminology.r4#6.5.0"
+      ]
+    },
+    {
+      "id": "hl7.fhir.uv.cqm",
+      "version": "2.0.0",
+      "canonical": "http://hl7.org/fhir/uv/cqm",
+      "fhirVersion": "4.0.1",
+      "dependencies": [
+        "hl7.fhir.r4.core#4.0.1",
+        "hl7.fhir.uv.cql#2.0.0",
+        "hl7.fhir.uv.crmi#2.0.0",
+        "hl7.fhir.uv.extensions.r4#5.3.0",
+        "hl7.terminology.r4#7.3.0"
+      ]
+    },
+    {
+      "id": "hl7.fhir.uv.crmi",
+      "version": "2.0.0",
+      "canonical": "http://hl7.org/fhir/uv/crmi",
+      "fhirVersion": "4.0.1",
+      "dependencies": [
+        "hl7.fhir.r4.core#4.0.1",
+        "hl7.fhir.uv.extensions.r4#5.3.0",
+        "hl7.terminology.r4#7.2.0"
+      ]
+    },
+    {
+      "id": "hl7.fhir.uv.extensions.r4",
+      "version": "5.1.0",
+      "canonical": "http://hl7.org/fhir/extensions",
+      "fhirVersion": "4.0.1",
+      "dependencies": [
+        "hl7.fhir.r4.core#4.0.1"
+      ]
+    },
+    {
+      "id": "hl7.fhir.uv.extensions.r4",
+      "version": "5.3.0",
+      "canonical": "http://hl7.org/fhir/extensions",
+      "fhirVersion": "4.0.1",
+      "dependencies": [
+        "hl7.fhir.r4.core#4.0.1",
+        "hl7.terminology.r4#7.1.0"
+      ]
+    },
+    {
+      "id": "hl7.fhir.uv.extensions.r4",
+      "version": "5.3.0-ballot-tc1",
+      "canonical": "http://hl7.org/fhir/extensions",
+      "fhirVersion": "4.0.1",
+      "dependencies": [
+        "hl7.fhir.r4.core#4.0.1",
+        "hl7.terminology.r4#6.5.0"
+      ]
+    },
+    {
+      "id": "hl7.fhir.uv.extensions.r5",
+      "version": "5.2.0",
+      "canonical": "http://hl7.org/fhir/extensions",
+      "fhirVersion": "5.0.0",
+      "dependencies": [
+        "hl7.fhir.r5.core#5.0.0"
+      ]
+    },
+    {
+      "id": "hl7.fhir.uv.extensions.r5",
+      "version": "5.3.0",
+      "canonical": "http://hl7.org/fhir/extensions",
+      "fhirVersion": "5.0.0",
+      "dependencies": [
+        "hl7.terminology.r5#7.1.0"
+      ]
+    },
+    {
+      "id": "hl7.fhir.uv.sdc",
+      "version": "4.0.0",
+      "canonical": "http://hl7.org/fhir/uv/sdc",
+      "fhirVersion": "4.0.1",
+      "dependencies": [
+        "hl7.fhir.r4.core#4.0.1",
+        "hl7.fhir.r4.examples#4.0.1",
+        "hl7.fhir.uv.extensions.r4#5.3.0-ballot-tc1",
+        "hl7.fhir.uv.tools.r4#1.1.2",
+        "hl7.fhir.uv.xver-r5.r4#0.1.0",
+        "hl7.terminology.r4#7.1.0"
+      ]
+    },
+    {
+      "id": "hl7.fhir.uv.tools.r4",
+      "version": "1.1.2",
+      "canonical": "http://hl7.org/fhir/tools",
+      "fhirVersion": "4.0.1",
+      "dependencies": [
+        "hl7.fhir.r4.core#4.0.1",
+        "hl7.fhir.uv.extensions.r4#5.2.0",
+        "hl7.terminology.r4#7.1.0"
+      ]
+    },
+    {
+      "id": "hl7.fhir.uv.tools.r4",
+      "version": "1.3.0",
+      "canonical": "http://hl7.org/fhir/tools",
+      "fhirVersion": "4.0.1",
+      "dependencies": [
+        "hl7.fhir.r4.core#4.0.1",
+        "hl7.fhir.uv.extensions.r4#5.3.0",
+        "hl7.terminology.r4#7.4.0"
+      ]
+    },
+    {
+      "id": "hl7.fhir.uv.xver-r5.r4",
+      "version": "0.1.0",
+      "canonical": "http://hl7.org/fhir/uv/xver",
+      "fhirVersion": "4.0.1",
+      "dependencies": [
+        "hl7.fhir.r4.core#4.0.1",
+        "hl7.fhir.uv.extensions.r4#5.2.0",
+        "hl7.terminology.r4#7.1.0"
+      ]
+    },
+    {
+      "id": "hl7.terminology",
+      "version": "7.3.0",
+      "canonical": "http://terminology.hl7.org",
+      "fhirVersion": "5.0.0",
+      "dependencies": [
+        "hl7.fhir.r5.core#5.0.0",
+        "hl7.fhir.uv.extensions.r5#5.3.0"
+      ]
+    },
+    {
+      "id": "hl7.terminology.r4",
+      "version": "6.1.0",
+      "canonical": "http://terminology.hl7.org",
+      "fhirVersion": "4.0.1",
+      "dependencies": [
+        "hl7.fhir.r4.core#4.0.1"
+      ]
+    },
+    {
+      "id": "hl7.terminology.r4",
+      "version": "6.5.0",
+      "canonical": "http://terminology.hl7.org",
+      "fhirVersion": "4.0.1",
+      "dependencies": [
+        "hl7.fhir.r4.core#4.0.1",
+        "hl7.fhir.uv.extensions.r4#5.2.0"
+      ]
+    },
+    {
+      "id": "hl7.terminology.r4",
+      "version": "7.1.0",
+      "canonical": "http://terminology.hl7.org",
+      "fhirVersion": "4.0.1",
+      "dependencies": [
+        "hl7.fhir.r4.core#4.0.1",
+        "hl7.fhir.uv.extensions.r4#5.2.0"
+      ]
+    },
+    {
+      "id": "hl7.terminology.r4",
+      "version": "7.2.0",
+      "canonical": "http://terminology.hl7.org",
+      "fhirVersion": "4.0.1",
+      "dependencies": [
+        "hl7.fhir.r4.core#4.0.1",
+        "hl7.fhir.uv.extensions.r4#5.3.0"
+      ]
+    },
+    {
+      "id": "hl7.terminology.r4",
+      "version": "7.3.0",
+      "canonical": "http://terminology.hl7.org",
+      "fhirVersion": "4.0.1",
+      "dependencies": [
+        "hl7.fhir.r4.core#4.0.1",
+        "hl7.fhir.uv.extensions.r4#5.3.0"
+      ]
+    },
+    {
+      "id": "hl7.terminology.r5",
+      "version": "7.1.0",
+      "canonical": "http://terminology.hl7.org",
+      "fhirVersion": "5.0.0",
+      "dependencies": [
+        "hl7.fhir.uv.extensions.r5#5.2.0"
+      ]
+    },
+    {
+      "id": "smart.who.int.base",
+      "version": "1.0.0",
+      "canonical": "http://smart.who.int/base",
+      "fhirVersion": "4.0.1",
+      "dependencies": [
+        "hl7.fhir.r4.core#4.0.1",
+        "hl7.fhir.uv.cpg#2.0.0",
+        "hl7.fhir.uv.cql#2.0.0",
+        "hl7.fhir.uv.crmi#2.0.0",
+        "hl7.fhir.uv.extensions.r4#5.3.0",
+        "hl7.fhir.uv.sdc#4.0.0",
+        "hl7.terminology#7.3.0"
+      ]
+    }
+  ],
+  "terminology": {
+    "server": {
+      "address": "https://tx.fhir.org/r4",
+      "version": "0.18.2"
+    },
+    "expansions": []
+  },
+  "toolchain": {
+    "publisher": "3.0.0",
+    "core": "7.0.1",
+    "sushi": "SUSHI v3.21.0 (implements FHIR Shorthand specification v3.0.0)",
+    "java": "17.0.21"
+  },
+  "resources": [
+    {
+      "key": "http://smart.who.int/base-clinical/ImplementationGuide/smart.who.int.base-clinical|1.0.1",
+      "canonical": "http://smart.who.int/base-clinical/ImplementationGuide/smart.who.int.base-clinical",
+      "version": "1.0.1",
+      "resourceType": "ImplementationGuide",
+      "id": "smart.who.int.base-clinical",
+      "name": "SMARTBaseClinical",
+      "file": "resources/ImplementationGuide/smart.who.int.base-clinical--e99412b2.json",
+      "source": "fsh-generated/resources/ImplementationGuide-smart.who.int.base-clinical.json"
+    },
+    {
+      "key": "http://smart.who.int/base-clinical/Library/WHOCommon|1.0.1",
+      "canonical": "http://smart.who.int/base-clinical/Library/WHOCommon",
+      "version": "1.0.1",
+      "resourceType": "Library",
+      "id": "WHOCommon",
+      "name": "WHOCommon",
+      "file": "resources/Library/WHOCommon--3946c982.json",
+      "source": "input/resources/Library-WHOCommon.json"
+    },
+    {
+      "key": "http://smart.who.int/base-clinical/StructureDefinition/sg-allergyintolerance|1.0.1",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-allergyintolerance",
+      "version": "1.0.1",
+      "resourceType": "StructureDefinition",
+      "id": "sg-allergyintolerance",
+      "name": "SGAllergyIntolerance",
+      "file": "resources/StructureDefinition/sg-allergyintolerance--55f44ac8.json",
+      "source": "input/profiles/structuredefinition-sg-allergyintolerance.json"
+    },
+    {
+      "key": "http://smart.who.int/base-clinical/StructureDefinition/sg-careplan|1.0.1",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-careplan",
+      "version": "1.0.1",
+      "resourceType": "StructureDefinition",
+      "id": "sg-careplan",
+      "name": "SGCarePlan",
+      "file": "resources/StructureDefinition/sg-careplan--0a0ceef2.json",
+      "source": "input/profiles/structuredefinition-sg-careplan.json"
+    },
+    {
+      "key": "http://smart.who.int/base-clinical/StructureDefinition/sg-careteam|1.0.1",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-careteam",
+      "version": "1.0.1",
+      "resourceType": "StructureDefinition",
+      "id": "sg-careteam",
+      "name": "SGCareTeam",
+      "file": "resources/StructureDefinition/sg-careteam--8f6a3cc0.json",
+      "source": "input/profiles/structuredefinition-sg-careteam.json"
+    },
+    {
+      "key": "http://smart.who.int/base-clinical/StructureDefinition/sg-condition|1.0.1",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-condition",
+      "version": "1.0.1",
+      "resourceType": "StructureDefinition",
+      "id": "sg-condition",
+      "name": "SGCondition",
+      "file": "resources/StructureDefinition/sg-condition--56e2f337.json",
+      "source": "input/profiles/structuredefinition-sg-condition.json"
+    },
+    {
+      "key": "http://smart.who.int/base-clinical/StructureDefinition/sg-encounter|1.0.1",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-encounter",
+      "version": "1.0.1",
+      "resourceType": "StructureDefinition",
+      "id": "sg-encounter",
+      "name": "SGEncounter",
+      "file": "resources/StructureDefinition/sg-encounter--a680638e.json",
+      "source": "input/profiles/structuredefinition-sg-encounter.json"
+    },
+    {
+      "key": "http://smart.who.int/base-clinical/StructureDefinition/sg-episodeofcare|1.0.1",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-episodeofcare",
+      "version": "1.0.1",
+      "resourceType": "StructureDefinition",
+      "id": "sg-episodeofcare",
+      "name": "SGEpisodeOfCare",
+      "file": "resources/StructureDefinition/sg-episodeofcare--7fbe981f.json",
+      "source": "input/profiles/structuredefinition-sg-episodeofcare.json"
+    },
+    {
+      "key": "http://smart.who.int/base-clinical/StructureDefinition/sg-group|1.0.1",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-group",
+      "version": "1.0.1",
+      "resourceType": "StructureDefinition",
+      "id": "sg-group",
+      "name": "SGGroup",
+      "file": "resources/StructureDefinition/sg-group--967b5dd4.json",
+      "source": "input/profiles/structuredefinition-sg-group.json"
+    },
+    {
+      "key": "http://smart.who.int/base-clinical/StructureDefinition/sg-immunizationnotdone|1.0.1",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-immunizationnotdone",
+      "version": "1.0.1",
+      "resourceType": "StructureDefinition",
+      "id": "sg-immunizationnotdone",
+      "name": "SGImmunizationNotDone",
+      "file": "resources/StructureDefinition/sg-immunizationnotdone--c1e1755c.json",
+      "source": "input/profiles/structuredefinition-sg-immunizationnotdone.json"
+    },
+    {
+      "key": "http://smart.who.int/base-clinical/StructureDefinition/sg-immunization|1.0.1",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-immunization",
+      "version": "1.0.1",
+      "resourceType": "StructureDefinition",
+      "id": "sg-immunization",
+      "name": "SGImmunization",
+      "file": "resources/StructureDefinition/sg-immunization--fedb32ac.json",
+      "source": "input/profiles/structuredefinition-sg-immunization.json"
+    },
+    {
+      "key": "http://smart.who.int/base-clinical/StructureDefinition/sg-location|1.0.1",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-location",
+      "version": "1.0.1",
+      "resourceType": "StructureDefinition",
+      "id": "sg-location",
+      "name": "SGLocation",
+      "file": "resources/StructureDefinition/sg-location--16a002fd.json",
+      "source": "input/profiles/structuredefinition-sg-location.json"
+    },
+    {
+      "key": "http://smart.who.int/base-clinical/StructureDefinition/sg-measurereport|1.0.1",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-measurereport",
+      "version": "1.0.1",
+      "resourceType": "StructureDefinition",
+      "id": "sg-measurereport",
+      "name": "SGMeasureReport",
+      "file": "resources/StructureDefinition/sg-measurereport--a0db0bc8.json",
+      "source": "input/profiles/structuredefinition-sg-measurereport.json"
+    },
+    {
+      "key": "http://smart.who.int/base-clinical/StructureDefinition/sg-medicationnotrequested|1.0.1",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-medicationnotrequested",
+      "version": "1.0.1",
+      "resourceType": "StructureDefinition",
+      "id": "sg-medicationnotrequested",
+      "name": "SGMedicationNotRequested",
+      "file": "resources/StructureDefinition/sg-medicationnotrequested--960ead97.json",
+      "source": "input/profiles/structuredefinition-sg-medicationnotrequested.json"
+    },
+    {
+      "key": "http://smart.who.int/base-clinical/StructureDefinition/sg-medicationrequest|1.0.1",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-medicationrequest",
+      "version": "1.0.1",
+      "resourceType": "StructureDefinition",
+      "id": "sg-medicationrequest",
+      "name": "SGMedicationRequest",
+      "file": "resources/StructureDefinition/sg-medicationrequest--6ff7ca1c.json",
+      "source": "input/profiles/structuredefinition-sg-medicationrequest.json"
+    },
+    {
+      "key": "http://smart.who.int/base-clinical/StructureDefinition/sg-observationnotdone|1.0.1",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-observationnotdone",
+      "version": "1.0.1",
+      "resourceType": "StructureDefinition",
+      "id": "sg-observationnotdone",
+      "name": "SGObservationNotDone",
+      "file": "resources/StructureDefinition/sg-observationnotdone--516230d6.json",
+      "source": "input/profiles/structuredefinition-sg-observationnotdone.json"
+    },
+    {
+      "key": "http://smart.who.int/base-clinical/StructureDefinition/sg-observation|1.0.1",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-observation",
+      "version": "1.0.1",
+      "resourceType": "StructureDefinition",
+      "id": "sg-observation",
+      "name": "SGObservation",
+      "file": "resources/StructureDefinition/sg-observation--1434db81.json",
+      "source": "input/profiles/structuredefinition-sg-observation.json"
+    },
+    {
+      "key": "http://smart.who.int/base-clinical/StructureDefinition/sg-organization|1.0.1",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-organization",
+      "version": "1.0.1",
+      "resourceType": "StructureDefinition",
+      "id": "sg-organization",
+      "name": "SGOrganization",
+      "file": "resources/StructureDefinition/sg-organization--4f0648d9.json",
+      "source": "input/profiles/structuredefinition-sg-organization.json"
+    },
+    {
+      "key": "http://smart.who.int/base-clinical/StructureDefinition/sg-patient|1.0.1",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-patient",
+      "version": "1.0.1",
+      "resourceType": "StructureDefinition",
+      "id": "sg-patient",
+      "name": "SGPatient",
+      "file": "resources/StructureDefinition/sg-patient--7f19243e.json",
+      "source": "input/profiles/structuredefinition-sg-patient.json"
+    },
+    {
+      "key": "http://smart.who.int/base-clinical/StructureDefinition/sg-practitionerrole|1.0.1",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-practitionerrole",
+      "version": "1.0.1",
+      "resourceType": "StructureDefinition",
+      "id": "sg-practitionerrole",
+      "name": "SGPractitionerRole",
+      "file": "resources/StructureDefinition/sg-practitionerrole--71259e85.json",
+      "source": "input/profiles/structuredefinition-sg-practitionerrole.json"
+    },
+    {
+      "key": "http://smart.who.int/base-clinical/StructureDefinition/sg-practitioner|1.0.1",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-practitioner",
+      "version": "1.0.1",
+      "resourceType": "StructureDefinition",
+      "id": "sg-practitioner",
+      "name": "SGPractitioner",
+      "file": "resources/StructureDefinition/sg-practitioner--abc9d447.json",
+      "source": "input/profiles/structuredefinition-sg-practitioner.json"
+    },
+    {
+      "key": "http://smart.who.int/base-clinical/StructureDefinition/sg-procedurenotdone|1.0.1",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-procedurenotdone",
+      "version": "1.0.1",
+      "resourceType": "StructureDefinition",
+      "id": "sg-procedurenotdone",
+      "name": "SGProcedureNotDone",
+      "file": "resources/StructureDefinition/sg-procedurenotdone--f6a83b4c.json",
+      "source": "input/profiles/structuredefinition-sg-procedurenotdone.json"
+    },
+    {
+      "key": "http://smart.who.int/base-clinical/StructureDefinition/sg-procedure|1.0.1",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-procedure",
+      "version": "1.0.1",
+      "resourceType": "StructureDefinition",
+      "id": "sg-procedure",
+      "name": "SGProcedure",
+      "file": "resources/StructureDefinition/sg-procedure--d6213493.json",
+      "source": "input/profiles/structuredefinition-sg-procedure.json"
+    },
+    {
+      "key": "http://smart.who.int/base-clinical/StructureDefinition/sg-relatedperson|1.0.1",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-relatedperson",
+      "version": "1.0.1",
+      "resourceType": "StructureDefinition",
+      "id": "sg-relatedperson",
+      "name": "SGRelatedPerson",
+      "file": "resources/StructureDefinition/sg-relatedperson--497d8281.json",
+      "source": "input/profiles/structuredefinition-sg-relatedperson.json"
+    },
+    {
+      "key": "http://smart.who.int/base-clinical/StructureDefinition/sg-reportedLocation|1.0.1",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-reportedLocation",
+      "version": "1.0.1",
+      "resourceType": "StructureDefinition",
+      "id": "sg-reportedLocation",
+      "name": "SGReportedLocation",
+      "file": "resources/StructureDefinition/sg-reportedLocation--431eaf03.json",
+      "source": "input/extensions/structuredefinition-sg-reportedLocation.json"
+    },
+    {
+      "key": "http://smart.who.int/base-clinical/StructureDefinition/sg-servicenotrequested|1.0.1",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-servicenotrequested",
+      "version": "1.0.1",
+      "resourceType": "StructureDefinition",
+      "id": "sg-servicenotrequested",
+      "name": "SGServiceNotRequested",
+      "file": "resources/StructureDefinition/sg-servicenotrequested--7fbc1847.json",
+      "source": "input/profiles/structuredefinition-sg-servicenotrequested.json"
+    },
+    {
+      "key": "http://smart.who.int/base-clinical/StructureDefinition/sg-servicerequest|1.0.1",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-servicerequest",
+      "version": "1.0.1",
+      "resourceType": "StructureDefinition",
+      "id": "sg-servicerequest",
+      "name": "SGServiceRequest",
+      "file": "resources/StructureDefinition/sg-servicerequest--93108c65.json",
+      "source": "input/profiles/structuredefinition-sg-servicerequest.json"
+    }
+  ]
+}
