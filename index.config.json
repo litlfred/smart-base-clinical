@@ -7,15 +7,7 @@
         "local": {
           "at": "."
         }
-      },
-      "site": {
-        "build": {
-          "pre": [
-            "ig-index:build"
-          ]
-        }
-      },
-      "_site_comment": "`ig-index:build` first: smart-base builds its fhir-artifact-index at publish (fhir-harness#124), and without it the ig-pages writer finds no index and the coverage gate refuses the publish (as smart-ra#101)."
+      }
     },
     {
       "name": "smart-base",
