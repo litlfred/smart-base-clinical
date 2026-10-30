@@ -9,7 +9,7 @@
     {
       "harness": "fhir-harness",
       "repository": "litlfred/fhir-harness",
-      "ref": "f51390f2c5d088b74d838928773b24cce2e37949"
+      "ref": "21a3efdd9ba3152bf5cb73059dab4d0538998d9c"
     },
     {
       "harness": "folio-assistant-core",
@@ -157,7 +157,7 @@
     {
       "instance": "fhir-harness",
       "repository": "litlfred/fhir-harness",
-      "sha": "f51390f2c5d088b74d838928773b24cce2e37949",
+      "sha": "21a3efdd9ba3152bf5cb73059dab4d0538998d9c",
       "upstreamRoot": "",
       "path": "fhir-harness",
       "via": "fhir-harness",
@@ -179,7 +179,7 @@
         "basis": "consent",
         "by": "litlfred",
         "on": "2026-10-30",
-        "ref": "f51390f2c5d088b74d838928773b24cce2e37949",
+        "ref": "21a3efdd9ba3152bf5cb73059dab4d0538998d9c",
         "approver": "unverified"
       }
     },
