@@ -140,7 +140,7 @@
       "source": {
         "remote": {
           "repository": "litlfred/cat-harness-tools",
-          "ref": "af45ee9e99d14a67c998c0d40fd1c01239dcd505",
+          "ref": "3d6171917b20c01191fd4dfcf0abbe316af68e5a",
           "overrides": {
             "cat-harness-tools": {
               "whole": true
@@ -153,8 +153,8 @@
             "consent": {
               "by": "litlfred",
               "on": "2026-10-30",
-              "ref": "af45ee9e99d14a67c998c0d40fd1c01239dcd505",
-              "evidence": "litlfred 2026-10-30 16:37Z 'merge window +3 hrs' (to ~19:38Z) and 'can we accelerate cat-harness re-pin round'; standing rule 'Merge all ready and then deal with aftermath'. Re-pin wave to main tip af45ee9."
+              "ref": "3d6171917b20c01191fd4dfcf0abbe316af68e5a",
+              "evidence": "litlfred 2026-10-30 16:37Z 'merge window +3 hrs' (to ~19:38Z) and 'can we accelerate cat-harness re-pin round'; standing rule 'Merge all ready and then deal with aftermath'. Re-pin wave to main tip af45ee9; then to 3d61719 for the state.jsonld link fix (c64f669), stopping before the #952 code move."
             }
           }
         }
