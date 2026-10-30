@@ -1,0 +1,316 @@
+{
+  "@context": {
+    "fhir": "http://hl7.org/fhir/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "schema": "https://schema.org/",
+    "prov": "http://www.w3.org/ns/prov#"
+  },
+  "$schema": "folio-ig-artifact-index-jsonld/v1",
+  "@id": "index.jsonld",
+  "@type": "fhir:ImplementationGuide",
+  "dcterms:identifier": "smart.who.int.base-clinical",
+  "schema:version": "1.0.1",
+  "schema:sameAs": {
+    "@id": "http://smart.who.int/base-clinical"
+  },
+  "dcterms:title": "SMART Base Clinical",
+  "schema:numberOfItems": 27,
+  "schema:hasPart": [
+    {
+      "@id": "Library-WHOCommon.jsonld",
+      "@type": "fhir:Library",
+      "dcterms:identifier": "Library/WHOCommon",
+      "dcterms:title": "WHO Common",
+      "dcterms:description": "Defines common logic and functions usable across all WHO SMART Guideline content",
+      "dcterms:type": "Other",
+      "schema:sameAs": {
+        "@id": "http://smart.who.int/base-clinical/Library/WHOCommon"
+      }
+    },
+    {
+      "@id": "StructureDefinition-sg-allergyintolerance.jsonld",
+      "@type": "fhir:StructureDefinition",
+      "dcterms:identifier": "StructureDefinition/sg-allergyintolerance",
+      "dcterms:title": "WHO SMART Guidelines AllergyIntolerance",
+      "dcterms:description": "The WHO SMART Guidelines AllergyIntolerance profile defines conformance requirements and exchange expectations for AllergyIntolerance resources in WHO Smart Guidelines content.",
+      "dcterms:type": "Structures: Resource Profiles",
+      "schema:sameAs": {
+        "@id": "http://smart.who.int/base-clinical/StructureDefinition/sg-allergyintolerance"
+      }
+    },
+    {
+      "@id": "StructureDefinition-sg-careplan.jsonld",
+      "@type": "fhir:StructureDefinition",
+      "dcterms:identifier": "StructureDefinition/sg-careplan",
+      "dcterms:title": "WHO SMART Guidelines CarePlan",
+      "dcterms:description": "The WHO SMART Guidelines CarePlan profile defines conformance requirements and exchange expectations for CarePlan resources in WHO Smart Guidelines content.",
+      "dcterms:type": "Structures: Resource Profiles",
+      "schema:sameAs": {
+        "@id": "http://smart.who.int/base-clinical/StructureDefinition/sg-careplan"
+      }
+    },
+    {
+      "@id": "StructureDefinition-sg-careteam.jsonld",
+      "@type": "fhir:StructureDefinition",
+      "dcterms:identifier": "StructureDefinition/sg-careteam",
+      "dcterms:title": "WHO SMART Guidelines CareTeam",
+      "dcterms:description": "The WHO SMART Guidelines CareTeam profile defines conformance requirements and exchange expectations for CareTeam resources in WHO Smart Guidelines content.",
+      "dcterms:type": "Structures: Resource Profiles",
+      "schema:sameAs": {
+        "@id": "http://smart.who.int/base-clinical/StructureDefinition/sg-careteam"
+      }
+    },
+    {
+      "@id": "StructureDefinition-sg-condition.jsonld",
+      "@type": "fhir:StructureDefinition",
+      "dcterms:identifier": "StructureDefinition/sg-condition",
+      "dcterms:title": "WHO SMART Guidelines Condition",
+      "dcterms:description": "The WHO SMART Guidelines Condition profile defines conformance requirements and exchange expectations for Condition resources in WHO Smart Guidelines content.",
+      "dcterms:type": "Structures: Resource Profiles",
+      "schema:sameAs": {
+        "@id": "http://smart.who.int/base-clinical/StructureDefinition/sg-condition"
+      }
+    },
+    {
+      "@id": "StructureDefinition-sg-encounter.jsonld",
+      "@type": "fhir:StructureDefinition",
+      "dcterms:identifier": "StructureDefinition/sg-encounter",
+      "dcterms:title": "WHO SMART Guidelines Encounter",
+      "dcterms:description": "The WHO SMART Guidelines Encounter profile defines conformance requirements and exchange expectations for Encounter resources in WHO Smart Guidelines content.",
+      "dcterms:type": "Structures: Resource Profiles",
+      "schema:sameAs": {
+        "@id": "http://smart.who.int/base-clinical/StructureDefinition/sg-encounter"
+      }
+    },
+    {
+      "@id": "StructureDefinition-sg-episodeofcare.jsonld",
+      "@type": "fhir:StructureDefinition",
+      "dcterms:identifier": "StructureDefinition/sg-episodeofcare",
+      "dcterms:title": "WHO SMART Guidelines EpisodeOfCare",
+      "dcterms:description": "The WHO SMART Guidelines EpisodeOfCare profile defines conformance requirements and exchange expectations for EpisodeOfCare resources in WHO Smart Guidelines content. EpisodeOfCare resources are used to track enrollment of a patient in a specific guideline for a specific period of time, referred to as a Case in the Clinical Practice Guidelines implementation guide.",
+      "dcterms:type": "Structures: Resource Profiles",
+      "schema:sameAs": {
+        "@id": "http://smart.who.int/base-clinical/StructureDefinition/sg-episodeofcare"
+      }
+    },
+    {
+      "@id": "StructureDefinition-sg-group.jsonld",
+      "@type": "fhir:StructureDefinition",
+      "dcterms:identifier": "StructureDefinition/sg-group",
+      "dcterms:title": "WHO SMART Guidelines Group",
+      "dcterms:description": "The WHO SMART Guidelines Group profile defines conformance requirements and exchange expectations for Group resources in WHO Smart Guidelines content.",
+      "dcterms:type": "Structures: Resource Profiles",
+      "schema:sameAs": {
+        "@id": "http://smart.who.int/base-clinical/StructureDefinition/sg-group"
+      }
+    },
+    {
+      "@id": "StructureDefinition-sg-immunization.jsonld",
+      "@type": "fhir:StructureDefinition",
+      "dcterms:identifier": "StructureDefinition/sg-immunization",
+      "dcterms:title": "WHO SMART Guidelines Immunization",
+      "dcterms:description": "The WHO SMART Guidelines Immunization profile defines conformance requirements and exchange expectations for Immunization resources in WHO Smart Guidelines content.",
+      "dcterms:type": "Structures: Resource Profiles",
+      "schema:sameAs": {
+        "@id": "http://smart.who.int/base-clinical/StructureDefinition/sg-immunization"
+      }
+    },
+    {
+      "@id": "StructureDefinition-sg-immunizationnotdone.jsonld",
+      "@type": "fhir:StructureDefinition",
+      "dcterms:identifier": "StructureDefinition/sg-immunizationnotdone",
+      "dcterms:title": "WHO SMART Guidelines Immunization Not Done",
+      "dcterms:description": "The WHO SMART Guidelines Immunization Not Done profile defines conformance requirements and exchange expectations for Immunization resources used to communicate that a specific immunization (or class of immunizations) was not done in WHO Smart Guidelines content.",
+      "dcterms:type": "Structures: Resource Profiles",
+      "schema:sameAs": {
+        "@id": "http://smart.who.int/base-clinical/StructureDefinition/sg-immunizationnotdone"
+      }
+    },
+    {
+      "@id": "StructureDefinition-sg-location.jsonld",
+      "@type": "fhir:StructureDefinition",
+      "dcterms:identifier": "StructureDefinition/sg-location",
+      "dcterms:title": "WHO SMART Guidelines Location",
+      "dcterms:description": "The WHO SMART Guidelines Location profile defines conformance requirements and exchange expectations for Location resources in WHO Smart Guidelines content.",
+      "dcterms:type": "Structures: Resource Profiles",
+      "schema:sameAs": {
+        "@id": "http://smart.who.int/base-clinical/StructureDefinition/sg-location"
+      }
+    },
+    {
+      "@id": "StructureDefinition-sg-measurereport.jsonld",
+      "@type": "fhir:StructureDefinition",
+      "dcterms:identifier": "StructureDefinition/sg-measurereport",
+      "dcterms:title": "WHO SMART Guidelines MeasureReport",
+      "dcterms:description": "The WHO SMART Guidelines MeasureReport profile defines conformance requirements and exchange expectations for MeasureReport resources in WHO Smart Guidelines content.",
+      "dcterms:type": "Structures: Resource Profiles",
+      "schema:sameAs": {
+        "@id": "http://smart.who.int/base-clinical/StructureDefinition/sg-measurereport"
+      }
+    },
+    {
+      "@id": "StructureDefinition-sg-medicationnotrequested.jsonld",
+      "@type": "fhir:StructureDefinition",
+      "dcterms:identifier": "StructureDefinition/sg-medicationnotrequested",
+      "dcterms:title": "WHO SMART Guidelines Medication Not Requested",
+      "dcterms:description": "The WHO SMART Guidelines Medication Not Requested profile defines conformance requirements and exchange expectations for MedicationRequest resources used to communicate that a specific medication (or class of medications) should not be prescribed in WHO Smart Guidelines content.",
+      "dcterms:type": "Structures: Resource Profiles",
+      "schema:sameAs": {
+        "@id": "http://smart.who.int/base-clinical/StructureDefinition/sg-medicationnotrequested"
+      }
+    },
+    {
+      "@id": "StructureDefinition-sg-medicationrequest.jsonld",
+      "@type": "fhir:StructureDefinition",
+      "dcterms:identifier": "StructureDefinition/sg-medicationrequest",
+      "dcterms:title": "WHO SMART Guidelines MedicationRequest",
+      "dcterms:description": "The WHO SMART Guidelines MedicationRequest profile defines conformance requirements and exchange expectations for MedicationRequest resources in WHO Smart Guidelines content.",
+      "dcterms:type": "Structures: Resource Profiles",
+      "schema:sameAs": {
+        "@id": "http://smart.who.int/base-clinical/StructureDefinition/sg-medicationrequest"
+      }
+    },
+    {
+      "@id": "StructureDefinition-sg-observation.jsonld",
+      "@type": "fhir:StructureDefinition",
+      "dcterms:identifier": "StructureDefinition/sg-observation",
+      "dcterms:title": "WHO SMART Guidelines Observation",
+      "dcterms:description": "The WHO SMART Guidelines Observation profile defines conformance requirements and exchange expectations for Observation resources in WHO Smart Guidelines content.",
+      "dcterms:type": "Structures: Resource Profiles",
+      "schema:sameAs": {
+        "@id": "http://smart.who.int/base-clinical/StructureDefinition/sg-observation"
+      }
+    },
+    {
+      "@id": "StructureDefinition-sg-observationnotdone.jsonld",
+      "@type": "fhir:StructureDefinition",
+      "dcterms:identifier": "StructureDefinition/sg-observationnotdone",
+      "dcterms:title": "WHO SMART Guidelines Observation Not Done",
+      "dcterms:description": "The WHO SMART Guidelines Observation Not Done profile defines conformance requirements and exchange expectations for Observation resources used to communicate that a particular observation (or class of observations) was not performed in WHO Smart Guidelines content.",
+      "dcterms:type": "Structures: Resource Profiles",
+      "schema:sameAs": {
+        "@id": "http://smart.who.int/base-clinical/StructureDefinition/sg-observationnotdone"
+      }
+    },
+    {
+      "@id": "StructureDefinition-sg-organization.jsonld",
+      "@type": "fhir:StructureDefinition",
+      "dcterms:identifier": "StructureDefinition/sg-organization",
+      "dcterms:title": "WHO SMART Guidelines Organization",
+      "dcterms:description": "The WHO SMART Guidelines Organization profile defines conformance requirements and exchange expectations for Organization resources in WHO Smart Guidelines content.",
+      "dcterms:type": "Structures: Resource Profiles",
+      "schema:sameAs": {
+        "@id": "http://smart.who.int/base-clinical/StructureDefinition/sg-organization"
+      }
+    },
+    {
+      "@id": "StructureDefinition-sg-patient.jsonld",
+      "@type": "fhir:StructureDefinition",
+      "dcterms:identifier": "StructureDefinition/sg-patient",
+      "dcterms:title": "WHO SMART Guidelines Patient",
+      "dcterms:description": "The WHO SMART Guidelines Patient profile defines conformance requirements and exchange expectations for Patient resources in WHO Smart Guidelines content.",
+      "dcterms:type": "Structures: Resource Profiles",
+      "schema:sameAs": {
+        "@id": "http://smart.who.int/base-clinical/StructureDefinition/sg-patient"
+      }
+    },
+    {
+      "@id": "StructureDefinition-sg-practitioner.jsonld",
+      "@type": "fhir:StructureDefinition",
+      "dcterms:identifier": "StructureDefinition/sg-practitioner",
+      "dcterms:title": "WHO SMART Guidelines Practitioner",
+      "dcterms:description": "The WHO SMART Guidelines Practitioner profile defines conformance requirements and exchange expectations for Practitioner resources in WHO Smart Guidelines content.",
+      "dcterms:type": "Structures: Resource Profiles",
+      "schema:sameAs": {
+        "@id": "http://smart.who.int/base-clinical/StructureDefinition/sg-practitioner"
+      }
+    },
+    {
+      "@id": "StructureDefinition-sg-practitionerrole.jsonld",
+      "@type": "fhir:StructureDefinition",
+      "dcterms:identifier": "StructureDefinition/sg-practitionerrole",
+      "dcterms:title": "WHO SMART Guidelines PractitionerRole",
+      "dcterms:description": "The WHO SMART Guidelines PractitionerRole profile defines conformance requirements and exchange expectations for PractitionerRole resources in WHO Smart Guidelines content.",
+      "dcterms:type": "Structures: Resource Profiles",
+      "schema:sameAs": {
+        "@id": "http://smart.who.int/base-clinical/StructureDefinition/sg-practitionerrole"
+      }
+    },
+    {
+      "@id": "StructureDefinition-sg-procedure.jsonld",
+      "@type": "fhir:StructureDefinition",
+      "dcterms:identifier": "StructureDefinition/sg-procedure",
+      "dcterms:title": "WHO SMART Guidelines Procedure",
+      "dcterms:description": "The WHO SMART Guidelines Procedure profile defines conformance requirements and exchange expectations for Procedure resources in WHO Smart Guidelines content.",
+      "dcterms:type": "Structures: Resource Profiles",
+      "schema:sameAs": {
+        "@id": "http://smart.who.int/base-clinical/StructureDefinition/sg-procedure"
+      }
+    },
+    {
+      "@id": "StructureDefinition-sg-procedurenotdone.jsonld",
+      "@type": "fhir:StructureDefinition",
+      "dcterms:identifier": "StructureDefinition/sg-procedurenotdone",
+      "dcterms:title": "WHO SMART Guidelines Procedure Not Done",
+      "dcterms:description": "The WHO SMART Guidelines Procedure Not Done profile defines conformance requirements and exchange expectations for Procedure resources used to communicate that a particular procedure (or class of procedures) was not performed in WHO Smart Guidelines content.",
+      "dcterms:type": "Structures: Resource Profiles",
+      "schema:sameAs": {
+        "@id": "http://smart.who.int/base-clinical/StructureDefinition/sg-procedurenotdone"
+      }
+    },
+    {
+      "@id": "StructureDefinition-sg-relatedperson.jsonld",
+      "@type": "fhir:StructureDefinition",
+      "dcterms:identifier": "StructureDefinition/sg-relatedperson",
+      "dcterms:title": "WHO SMART Guidelines RelatedPerson",
+      "dcterms:description": "The WHO SMART Guidelines RelatedPerson profile defines conformance requirements and exchange expectations for RelatedPerson resources in WHO Smart Guidelines content.",
+      "dcterms:type": "Structures: Resource Profiles",
+      "schema:sameAs": {
+        "@id": "http://smart.who.int/base-clinical/StructureDefinition/sg-relatedperson"
+      }
+    },
+    {
+      "@id": "StructureDefinition-sg-servicenotrequested.jsonld",
+      "@type": "fhir:StructureDefinition",
+      "dcterms:identifier": "StructureDefinition/sg-servicenotrequested",
+      "dcterms:title": "WHO SMART Guidelines Service Not Requested",
+      "dcterms:description": "The WHO SMART Guidelines Service Not Requested profile defines conformance requirements and exchange expectations for ServiceRequest resources used to communicate that a particular service (or class of services) should not be performed in WHO Smart Guidelines content.",
+      "dcterms:type": "Structures: Resource Profiles",
+      "schema:sameAs": {
+        "@id": "http://smart.who.int/base-clinical/StructureDefinition/sg-servicenotrequested"
+      }
+    },
+    {
+      "@id": "StructureDefinition-sg-servicerequest.jsonld",
+      "@type": "fhir:StructureDefinition",
+      "dcterms:identifier": "StructureDefinition/sg-servicerequest",
+      "dcterms:title": "WHO SMART Guidelines ServiceRequest",
+      "dcterms:description": "The WHO SMART Guidelines ServiceRequest profile defines conformance requirements and exchange expectations for ServiceRequest resources in WHO Smart Guidelines content.",
+      "dcterms:type": "Structures: Resource Profiles",
+      "schema:sameAs": {
+        "@id": "http://smart.who.int/base-clinical/StructureDefinition/sg-servicerequest"
+      }
+    },
+    {
+      "@id": "StructureDefinition-sg-reportedLocation.jsonld",
+      "@type": "fhir:StructureDefinition",
+      "dcterms:identifier": "StructureDefinition/sg-reportedLocation",
+      "dcterms:title": "WHO SMART Guidelines Reported Location",
+      "dcterms:description": "The location at which the reported data was generated",
+      "dcterms:type": "Structures: Extension Definitions",
+      "schema:sameAs": {
+        "@id": "http://smart.who.int/base-clinical/StructureDefinition/sg-reportedLocation"
+      }
+    },
+    {
+      "@id": "ImplementationGuide-smart.who.int.base-clinical.jsonld",
+      "@type": "fhir:ImplementationGuide",
+      "dcterms:identifier": "ImplementationGuide/smart.who.int.base-clinical",
+      "dcterms:title": "SMART Base Clinical",
+      "dcterms:description": "This implementation guide defines common clinical artifacts for use with WHO SMART Guidelines content",
+      "schema:sameAs": {
+        "@id": "http://smart.who.int/base-clinical/ImplementationGuide/smart.who.int.base-clinical"
+      }
+    }
+  ]
+}

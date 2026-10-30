@@ -1,0 +1,1317 @@
+{
+  "$schema": "folio-fhir-artifact-index/v2",
+  "id": "smart-base-clinical",
+  "title": "smart.who.int.base-clinical — artefact index (from the IG Publisher AST cache)",
+  "packageId": "smart.who.int.base-clinical",
+  "version": "1.0.1",
+  "canonicalBase": "http://smart.who.int/base-clinical",
+  "source": {
+    "kind": "output",
+    "of": "output-ast",
+    "revision": "3c6fcc9b7a6bc5ecd777e7deb58f56df5da65c64",
+    "readAt": "2026-10-30"
+  },
+  "provenance": {},
+  "sidecarApi": "unknown",
+  "count": 27,
+  "artifacts": [
+    {
+      "key": "ImplementationGuide/smart.who.int.base-clinical",
+      "resourceType": "ImplementationGuide",
+      "id": "smart.who.int.base-clinical",
+      "name": "SMARTBaseClinical",
+      "title": "SMART Base Clinical",
+      "description": "This implementation guide defines common clinical artifacts for use with WHO SMART Guidelines content",
+      "canonical": "http://smart.who.int/base-clinical/ImplementationGuide/smart.who.int.base-clinical",
+      "version": "1.0.1",
+      "profiles": [
+        "http://smart.who.int/base/StructureDefinition/SGImplementationGuide"
+      ],
+      "published": {},
+      "materialization": {
+        "state": "materialized",
+        "provenance": {
+          "local": "fsh-generated/resources/ImplementationGuide-smart.who.int.base-clinical.json"
+        },
+        "localPath": "output-ast/resources/ImplementationGuide/smart.who.int.base-clinical--e99412b2.json",
+        "gates": {
+          "size": {
+            "verdict": "unknown",
+            "basis": "ig-ast validity does not measure the AST's size"
+          },
+          "restrictions": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          },
+          "retention": {
+            "verdict": "permitted",
+            "basis": "a compiled cache, regenerable from its inputs by a full IG Publisher run"
+          },
+          "sourceLoss": {
+            "verdict": "unknown",
+            "basis": "a compiled copy is derived, not the source; it cannot stand in for it"
+          },
+          "copyright": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          }
+        },
+        "purpose": "compiled",
+        "inputs": {
+          "toolchain": "ig-publisher 3.0.0 / core 7.0.1",
+          "sourceRevision": "3c6fcc9b7a6bc5ecd777e7deb58f56df5da65c64",
+          "inputDigest": "376f4de40f80de989ec9a2fa3126a8c612a85d9b48b7c51355df890c0ee5a865"
+        },
+        "materializedAt": "2026-10-30T13:46:57.506062103Z"
+      }
+    },
+    {
+      "key": "Library/WHOCommon",
+      "resourceType": "Library",
+      "id": "WHOCommon",
+      "name": "WHOCommon",
+      "title": "WHO Common",
+      "description": "Defines common logic and functions usable across all WHO SMART Guideline content",
+      "canonical": "http://smart.who.int/base-clinical/Library/WHOCommon",
+      "version": "1.0.1",
+      "category": "Other",
+      "published": {},
+      "materialization": {
+        "state": "materialized",
+        "provenance": {
+          "local": "input/resources/Library-WHOCommon.json"
+        },
+        "localPath": "output-ast/resources/Library/WHOCommon--3946c982.json",
+        "gates": {
+          "size": {
+            "verdict": "unknown",
+            "basis": "ig-ast validity does not measure the AST's size"
+          },
+          "restrictions": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          },
+          "retention": {
+            "verdict": "permitted",
+            "basis": "a compiled cache, regenerable from its inputs by a full IG Publisher run"
+          },
+          "sourceLoss": {
+            "verdict": "unknown",
+            "basis": "a compiled copy is derived, not the source; it cannot stand in for it"
+          },
+          "copyright": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          }
+        },
+        "purpose": "compiled",
+        "inputs": {
+          "toolchain": "ig-publisher 3.0.0 / core 7.0.1",
+          "sourceRevision": "3c6fcc9b7a6bc5ecd777e7deb58f56df5da65c64",
+          "inputDigest": "376f4de40f80de989ec9a2fa3126a8c612a85d9b48b7c51355df890c0ee5a865"
+        },
+        "materializedAt": "2026-10-30T13:46:57.506062103Z"
+      }
+    },
+    {
+      "key": "StructureDefinition/sg-allergyintolerance",
+      "resourceType": "StructureDefinition",
+      "id": "sg-allergyintolerance",
+      "name": "SGAllergyIntolerance",
+      "title": "WHO SMART Guidelines AllergyIntolerance",
+      "description": "The WHO SMART Guidelines AllergyIntolerance profile defines conformance requirements and exchange expectations for AllergyIntolerance resources in WHO Smart Guidelines content.",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-allergyintolerance",
+      "version": "1.0.1",
+      "category": "Structures: Resource Profiles",
+      "published": {},
+      "materialization": {
+        "state": "materialized",
+        "provenance": {
+          "local": "input/profiles/structuredefinition-sg-allergyintolerance.json"
+        },
+        "localPath": "output-ast/resources/StructureDefinition/sg-allergyintolerance--55f44ac8.json",
+        "gates": {
+          "size": {
+            "verdict": "unknown",
+            "basis": "ig-ast validity does not measure the AST's size"
+          },
+          "restrictions": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          },
+          "retention": {
+            "verdict": "permitted",
+            "basis": "a compiled cache, regenerable from its inputs by a full IG Publisher run"
+          },
+          "sourceLoss": {
+            "verdict": "unknown",
+            "basis": "a compiled copy is derived, not the source; it cannot stand in for it"
+          },
+          "copyright": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          }
+        },
+        "purpose": "compiled",
+        "inputs": {
+          "toolchain": "ig-publisher 3.0.0 / core 7.0.1",
+          "sourceRevision": "3c6fcc9b7a6bc5ecd777e7deb58f56df5da65c64",
+          "inputDigest": "376f4de40f80de989ec9a2fa3126a8c612a85d9b48b7c51355df890c0ee5a865"
+        },
+        "materializedAt": "2026-10-30T13:46:57.506062103Z"
+      }
+    },
+    {
+      "key": "StructureDefinition/sg-careplan",
+      "resourceType": "StructureDefinition",
+      "id": "sg-careplan",
+      "name": "SGCarePlan",
+      "title": "WHO SMART Guidelines CarePlan",
+      "description": "The WHO SMART Guidelines CarePlan profile defines conformance requirements and exchange expectations for CarePlan resources in WHO Smart Guidelines content.",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-careplan",
+      "version": "1.0.1",
+      "category": "Structures: Resource Profiles",
+      "published": {},
+      "materialization": {
+        "state": "materialized",
+        "provenance": {
+          "local": "input/profiles/structuredefinition-sg-careplan.json"
+        },
+        "localPath": "output-ast/resources/StructureDefinition/sg-careplan--0a0ceef2.json",
+        "gates": {
+          "size": {
+            "verdict": "unknown",
+            "basis": "ig-ast validity does not measure the AST's size"
+          },
+          "restrictions": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          },
+          "retention": {
+            "verdict": "permitted",
+            "basis": "a compiled cache, regenerable from its inputs by a full IG Publisher run"
+          },
+          "sourceLoss": {
+            "verdict": "unknown",
+            "basis": "a compiled copy is derived, not the source; it cannot stand in for it"
+          },
+          "copyright": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          }
+        },
+        "purpose": "compiled",
+        "inputs": {
+          "toolchain": "ig-publisher 3.0.0 / core 7.0.1",
+          "sourceRevision": "3c6fcc9b7a6bc5ecd777e7deb58f56df5da65c64",
+          "inputDigest": "376f4de40f80de989ec9a2fa3126a8c612a85d9b48b7c51355df890c0ee5a865"
+        },
+        "materializedAt": "2026-10-30T13:46:57.506062103Z"
+      }
+    },
+    {
+      "key": "StructureDefinition/sg-careteam",
+      "resourceType": "StructureDefinition",
+      "id": "sg-careteam",
+      "name": "SGCareTeam",
+      "title": "WHO SMART Guidelines CareTeam",
+      "description": "The WHO SMART Guidelines CareTeam profile defines conformance requirements and exchange expectations for CareTeam resources in WHO Smart Guidelines content.",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-careteam",
+      "version": "1.0.1",
+      "category": "Structures: Resource Profiles",
+      "published": {},
+      "materialization": {
+        "state": "materialized",
+        "provenance": {
+          "local": "input/profiles/structuredefinition-sg-careteam.json"
+        },
+        "localPath": "output-ast/resources/StructureDefinition/sg-careteam--8f6a3cc0.json",
+        "gates": {
+          "size": {
+            "verdict": "unknown",
+            "basis": "ig-ast validity does not measure the AST's size"
+          },
+          "restrictions": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          },
+          "retention": {
+            "verdict": "permitted",
+            "basis": "a compiled cache, regenerable from its inputs by a full IG Publisher run"
+          },
+          "sourceLoss": {
+            "verdict": "unknown",
+            "basis": "a compiled copy is derived, not the source; it cannot stand in for it"
+          },
+          "copyright": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          }
+        },
+        "purpose": "compiled",
+        "inputs": {
+          "toolchain": "ig-publisher 3.0.0 / core 7.0.1",
+          "sourceRevision": "3c6fcc9b7a6bc5ecd777e7deb58f56df5da65c64",
+          "inputDigest": "376f4de40f80de989ec9a2fa3126a8c612a85d9b48b7c51355df890c0ee5a865"
+        },
+        "materializedAt": "2026-10-30T13:46:57.506062103Z"
+      }
+    },
+    {
+      "key": "StructureDefinition/sg-condition",
+      "resourceType": "StructureDefinition",
+      "id": "sg-condition",
+      "name": "SGCondition",
+      "title": "WHO SMART Guidelines Condition",
+      "description": "The WHO SMART Guidelines Condition profile defines conformance requirements and exchange expectations for Condition resources in WHO Smart Guidelines content.",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-condition",
+      "version": "1.0.1",
+      "category": "Structures: Resource Profiles",
+      "published": {},
+      "materialization": {
+        "state": "materialized",
+        "provenance": {
+          "local": "input/profiles/structuredefinition-sg-condition.json"
+        },
+        "localPath": "output-ast/resources/StructureDefinition/sg-condition--56e2f337.json",
+        "gates": {
+          "size": {
+            "verdict": "unknown",
+            "basis": "ig-ast validity does not measure the AST's size"
+          },
+          "restrictions": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          },
+          "retention": {
+            "verdict": "permitted",
+            "basis": "a compiled cache, regenerable from its inputs by a full IG Publisher run"
+          },
+          "sourceLoss": {
+            "verdict": "unknown",
+            "basis": "a compiled copy is derived, not the source; it cannot stand in for it"
+          },
+          "copyright": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          }
+        },
+        "purpose": "compiled",
+        "inputs": {
+          "toolchain": "ig-publisher 3.0.0 / core 7.0.1",
+          "sourceRevision": "3c6fcc9b7a6bc5ecd777e7deb58f56df5da65c64",
+          "inputDigest": "376f4de40f80de989ec9a2fa3126a8c612a85d9b48b7c51355df890c0ee5a865"
+        },
+        "materializedAt": "2026-10-30T13:46:57.506062103Z"
+      }
+    },
+    {
+      "key": "StructureDefinition/sg-encounter",
+      "resourceType": "StructureDefinition",
+      "id": "sg-encounter",
+      "name": "SGEncounter",
+      "title": "WHO SMART Guidelines Encounter",
+      "description": "The WHO SMART Guidelines Encounter profile defines conformance requirements and exchange expectations for Encounter resources in WHO Smart Guidelines content.",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-encounter",
+      "version": "1.0.1",
+      "category": "Structures: Resource Profiles",
+      "published": {},
+      "materialization": {
+        "state": "materialized",
+        "provenance": {
+          "local": "input/profiles/structuredefinition-sg-encounter.json"
+        },
+        "localPath": "output-ast/resources/StructureDefinition/sg-encounter--a680638e.json",
+        "gates": {
+          "size": {
+            "verdict": "unknown",
+            "basis": "ig-ast validity does not measure the AST's size"
+          },
+          "restrictions": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          },
+          "retention": {
+            "verdict": "permitted",
+            "basis": "a compiled cache, regenerable from its inputs by a full IG Publisher run"
+          },
+          "sourceLoss": {
+            "verdict": "unknown",
+            "basis": "a compiled copy is derived, not the source; it cannot stand in for it"
+          },
+          "copyright": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          }
+        },
+        "purpose": "compiled",
+        "inputs": {
+          "toolchain": "ig-publisher 3.0.0 / core 7.0.1",
+          "sourceRevision": "3c6fcc9b7a6bc5ecd777e7deb58f56df5da65c64",
+          "inputDigest": "376f4de40f80de989ec9a2fa3126a8c612a85d9b48b7c51355df890c0ee5a865"
+        },
+        "materializedAt": "2026-10-30T13:46:57.506062103Z"
+      }
+    },
+    {
+      "key": "StructureDefinition/sg-episodeofcare",
+      "resourceType": "StructureDefinition",
+      "id": "sg-episodeofcare",
+      "name": "SGEpisodeOfCare",
+      "title": "WHO SMART Guidelines EpisodeOfCare",
+      "description": "The WHO SMART Guidelines EpisodeOfCare profile defines conformance requirements and exchange expectations for EpisodeOfCare resources in WHO Smart Guidelines content. EpisodeOfCare resources are used to track enrollment of a patient in a specific guideline for a specific period of time, referred to as a Case in the Clinical Practice Guidelines implementation guide.",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-episodeofcare",
+      "version": "1.0.1",
+      "category": "Structures: Resource Profiles",
+      "published": {},
+      "materialization": {
+        "state": "materialized",
+        "provenance": {
+          "local": "input/profiles/structuredefinition-sg-episodeofcare.json"
+        },
+        "localPath": "output-ast/resources/StructureDefinition/sg-episodeofcare--7fbe981f.json",
+        "gates": {
+          "size": {
+            "verdict": "unknown",
+            "basis": "ig-ast validity does not measure the AST's size"
+          },
+          "restrictions": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          },
+          "retention": {
+            "verdict": "permitted",
+            "basis": "a compiled cache, regenerable from its inputs by a full IG Publisher run"
+          },
+          "sourceLoss": {
+            "verdict": "unknown",
+            "basis": "a compiled copy is derived, not the source; it cannot stand in for it"
+          },
+          "copyright": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          }
+        },
+        "purpose": "compiled",
+        "inputs": {
+          "toolchain": "ig-publisher 3.0.0 / core 7.0.1",
+          "sourceRevision": "3c6fcc9b7a6bc5ecd777e7deb58f56df5da65c64",
+          "inputDigest": "376f4de40f80de989ec9a2fa3126a8c612a85d9b48b7c51355df890c0ee5a865"
+        },
+        "materializedAt": "2026-10-30T13:46:57.506062103Z"
+      }
+    },
+    {
+      "key": "StructureDefinition/sg-group",
+      "resourceType": "StructureDefinition",
+      "id": "sg-group",
+      "name": "SGGroup",
+      "title": "WHO SMART Guidelines Group",
+      "description": "The WHO SMART Guidelines Group profile defines conformance requirements and exchange expectations for Group resources in WHO Smart Guidelines content.",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-group",
+      "version": "1.0.1",
+      "category": "Structures: Resource Profiles",
+      "published": {},
+      "materialization": {
+        "state": "materialized",
+        "provenance": {
+          "local": "input/profiles/structuredefinition-sg-group.json"
+        },
+        "localPath": "output-ast/resources/StructureDefinition/sg-group--967b5dd4.json",
+        "gates": {
+          "size": {
+            "verdict": "unknown",
+            "basis": "ig-ast validity does not measure the AST's size"
+          },
+          "restrictions": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          },
+          "retention": {
+            "verdict": "permitted",
+            "basis": "a compiled cache, regenerable from its inputs by a full IG Publisher run"
+          },
+          "sourceLoss": {
+            "verdict": "unknown",
+            "basis": "a compiled copy is derived, not the source; it cannot stand in for it"
+          },
+          "copyright": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          }
+        },
+        "purpose": "compiled",
+        "inputs": {
+          "toolchain": "ig-publisher 3.0.0 / core 7.0.1",
+          "sourceRevision": "3c6fcc9b7a6bc5ecd777e7deb58f56df5da65c64",
+          "inputDigest": "376f4de40f80de989ec9a2fa3126a8c612a85d9b48b7c51355df890c0ee5a865"
+        },
+        "materializedAt": "2026-10-30T13:46:57.506062103Z"
+      }
+    },
+    {
+      "key": "StructureDefinition/sg-immunization",
+      "resourceType": "StructureDefinition",
+      "id": "sg-immunization",
+      "name": "SGImmunization",
+      "title": "WHO SMART Guidelines Immunization",
+      "description": "The WHO SMART Guidelines Immunization profile defines conformance requirements and exchange expectations for Immunization resources in WHO Smart Guidelines content.",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-immunization",
+      "version": "1.0.1",
+      "category": "Structures: Resource Profiles",
+      "published": {},
+      "materialization": {
+        "state": "materialized",
+        "provenance": {
+          "local": "input/profiles/structuredefinition-sg-immunization.json"
+        },
+        "localPath": "output-ast/resources/StructureDefinition/sg-immunization--fedb32ac.json",
+        "gates": {
+          "size": {
+            "verdict": "unknown",
+            "basis": "ig-ast validity does not measure the AST's size"
+          },
+          "restrictions": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          },
+          "retention": {
+            "verdict": "permitted",
+            "basis": "a compiled cache, regenerable from its inputs by a full IG Publisher run"
+          },
+          "sourceLoss": {
+            "verdict": "unknown",
+            "basis": "a compiled copy is derived, not the source; it cannot stand in for it"
+          },
+          "copyright": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          }
+        },
+        "purpose": "compiled",
+        "inputs": {
+          "toolchain": "ig-publisher 3.0.0 / core 7.0.1",
+          "sourceRevision": "3c6fcc9b7a6bc5ecd777e7deb58f56df5da65c64",
+          "inputDigest": "376f4de40f80de989ec9a2fa3126a8c612a85d9b48b7c51355df890c0ee5a865"
+        },
+        "materializedAt": "2026-10-30T13:46:57.506062103Z"
+      }
+    },
+    {
+      "key": "StructureDefinition/sg-immunizationnotdone",
+      "resourceType": "StructureDefinition",
+      "id": "sg-immunizationnotdone",
+      "name": "SGImmunizationNotDone",
+      "title": "WHO SMART Guidelines Immunization Not Done",
+      "description": "The WHO SMART Guidelines Immunization Not Done profile defines conformance requirements and exchange expectations for Immunization resources used to communicate that a specific immunization (or class of immunizations) was not done in WHO Smart Guidelines content.",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-immunizationnotdone",
+      "version": "1.0.1",
+      "category": "Structures: Resource Profiles",
+      "published": {},
+      "materialization": {
+        "state": "materialized",
+        "provenance": {
+          "local": "input/profiles/structuredefinition-sg-immunizationnotdone.json"
+        },
+        "localPath": "output-ast/resources/StructureDefinition/sg-immunizationnotdone--c1e1755c.json",
+        "gates": {
+          "size": {
+            "verdict": "unknown",
+            "basis": "ig-ast validity does not measure the AST's size"
+          },
+          "restrictions": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          },
+          "retention": {
+            "verdict": "permitted",
+            "basis": "a compiled cache, regenerable from its inputs by a full IG Publisher run"
+          },
+          "sourceLoss": {
+            "verdict": "unknown",
+            "basis": "a compiled copy is derived, not the source; it cannot stand in for it"
+          },
+          "copyright": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          }
+        },
+        "purpose": "compiled",
+        "inputs": {
+          "toolchain": "ig-publisher 3.0.0 / core 7.0.1",
+          "sourceRevision": "3c6fcc9b7a6bc5ecd777e7deb58f56df5da65c64",
+          "inputDigest": "376f4de40f80de989ec9a2fa3126a8c612a85d9b48b7c51355df890c0ee5a865"
+        },
+        "materializedAt": "2026-10-30T13:46:57.506062103Z"
+      }
+    },
+    {
+      "key": "StructureDefinition/sg-location",
+      "resourceType": "StructureDefinition",
+      "id": "sg-location",
+      "name": "SGLocation",
+      "title": "WHO SMART Guidelines Location",
+      "description": "The WHO SMART Guidelines Location profile defines conformance requirements and exchange expectations for Location resources in WHO Smart Guidelines content.",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-location",
+      "version": "1.0.1",
+      "category": "Structures: Resource Profiles",
+      "published": {},
+      "materialization": {
+        "state": "materialized",
+        "provenance": {
+          "local": "input/profiles/structuredefinition-sg-location.json"
+        },
+        "localPath": "output-ast/resources/StructureDefinition/sg-location--16a002fd.json",
+        "gates": {
+          "size": {
+            "verdict": "unknown",
+            "basis": "ig-ast validity does not measure the AST's size"
+          },
+          "restrictions": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          },
+          "retention": {
+            "verdict": "permitted",
+            "basis": "a compiled cache, regenerable from its inputs by a full IG Publisher run"
+          },
+          "sourceLoss": {
+            "verdict": "unknown",
+            "basis": "a compiled copy is derived, not the source; it cannot stand in for it"
+          },
+          "copyright": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          }
+        },
+        "purpose": "compiled",
+        "inputs": {
+          "toolchain": "ig-publisher 3.0.0 / core 7.0.1",
+          "sourceRevision": "3c6fcc9b7a6bc5ecd777e7deb58f56df5da65c64",
+          "inputDigest": "376f4de40f80de989ec9a2fa3126a8c612a85d9b48b7c51355df890c0ee5a865"
+        },
+        "materializedAt": "2026-10-30T13:46:57.506062103Z"
+      }
+    },
+    {
+      "key": "StructureDefinition/sg-measurereport",
+      "resourceType": "StructureDefinition",
+      "id": "sg-measurereport",
+      "name": "SGMeasureReport",
+      "title": "WHO SMART Guidelines MeasureReport",
+      "description": "The WHO SMART Guidelines MeasureReport profile defines conformance requirements and exchange expectations for MeasureReport resources in WHO Smart Guidelines content.",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-measurereport",
+      "version": "1.0.1",
+      "category": "Structures: Resource Profiles",
+      "published": {},
+      "materialization": {
+        "state": "materialized",
+        "provenance": {
+          "local": "input/profiles/structuredefinition-sg-measurereport.json"
+        },
+        "localPath": "output-ast/resources/StructureDefinition/sg-measurereport--a0db0bc8.json",
+        "gates": {
+          "size": {
+            "verdict": "unknown",
+            "basis": "ig-ast validity does not measure the AST's size"
+          },
+          "restrictions": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          },
+          "retention": {
+            "verdict": "permitted",
+            "basis": "a compiled cache, regenerable from its inputs by a full IG Publisher run"
+          },
+          "sourceLoss": {
+            "verdict": "unknown",
+            "basis": "a compiled copy is derived, not the source; it cannot stand in for it"
+          },
+          "copyright": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          }
+        },
+        "purpose": "compiled",
+        "inputs": {
+          "toolchain": "ig-publisher 3.0.0 / core 7.0.1",
+          "sourceRevision": "3c6fcc9b7a6bc5ecd777e7deb58f56df5da65c64",
+          "inputDigest": "376f4de40f80de989ec9a2fa3126a8c612a85d9b48b7c51355df890c0ee5a865"
+        },
+        "materializedAt": "2026-10-30T13:46:57.506062103Z"
+      }
+    },
+    {
+      "key": "StructureDefinition/sg-medicationnotrequested",
+      "resourceType": "StructureDefinition",
+      "id": "sg-medicationnotrequested",
+      "name": "SGMedicationNotRequested",
+      "title": "WHO SMART Guidelines Medication Not Requested",
+      "description": "The WHO SMART Guidelines Medication Not Requested profile defines conformance requirements and exchange expectations for MedicationRequest resources used to communicate that a specific medication (or class of medications) should not be prescribed in WHO Smart Guidelines content.",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-medicationnotrequested",
+      "version": "1.0.1",
+      "category": "Structures: Resource Profiles",
+      "published": {},
+      "materialization": {
+        "state": "materialized",
+        "provenance": {
+          "local": "input/profiles/structuredefinition-sg-medicationnotrequested.json"
+        },
+        "localPath": "output-ast/resources/StructureDefinition/sg-medicationnotrequested--960ead97.json",
+        "gates": {
+          "size": {
+            "verdict": "unknown",
+            "basis": "ig-ast validity does not measure the AST's size"
+          },
+          "restrictions": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          },
+          "retention": {
+            "verdict": "permitted",
+            "basis": "a compiled cache, regenerable from its inputs by a full IG Publisher run"
+          },
+          "sourceLoss": {
+            "verdict": "unknown",
+            "basis": "a compiled copy is derived, not the source; it cannot stand in for it"
+          },
+          "copyright": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          }
+        },
+        "purpose": "compiled",
+        "inputs": {
+          "toolchain": "ig-publisher 3.0.0 / core 7.0.1",
+          "sourceRevision": "3c6fcc9b7a6bc5ecd777e7deb58f56df5da65c64",
+          "inputDigest": "376f4de40f80de989ec9a2fa3126a8c612a85d9b48b7c51355df890c0ee5a865"
+        },
+        "materializedAt": "2026-10-30T13:46:57.506062103Z"
+      }
+    },
+    {
+      "key": "StructureDefinition/sg-medicationrequest",
+      "resourceType": "StructureDefinition",
+      "id": "sg-medicationrequest",
+      "name": "SGMedicationRequest",
+      "title": "WHO SMART Guidelines MedicationRequest",
+      "description": "The WHO SMART Guidelines MedicationRequest profile defines conformance requirements and exchange expectations for MedicationRequest resources in WHO Smart Guidelines content.",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-medicationrequest",
+      "version": "1.0.1",
+      "category": "Structures: Resource Profiles",
+      "published": {},
+      "materialization": {
+        "state": "materialized",
+        "provenance": {
+          "local": "input/profiles/structuredefinition-sg-medicationrequest.json"
+        },
+        "localPath": "output-ast/resources/StructureDefinition/sg-medicationrequest--6ff7ca1c.json",
+        "gates": {
+          "size": {
+            "verdict": "unknown",
+            "basis": "ig-ast validity does not measure the AST's size"
+          },
+          "restrictions": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          },
+          "retention": {
+            "verdict": "permitted",
+            "basis": "a compiled cache, regenerable from its inputs by a full IG Publisher run"
+          },
+          "sourceLoss": {
+            "verdict": "unknown",
+            "basis": "a compiled copy is derived, not the source; it cannot stand in for it"
+          },
+          "copyright": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          }
+        },
+        "purpose": "compiled",
+        "inputs": {
+          "toolchain": "ig-publisher 3.0.0 / core 7.0.1",
+          "sourceRevision": "3c6fcc9b7a6bc5ecd777e7deb58f56df5da65c64",
+          "inputDigest": "376f4de40f80de989ec9a2fa3126a8c612a85d9b48b7c51355df890c0ee5a865"
+        },
+        "materializedAt": "2026-10-30T13:46:57.506062103Z"
+      }
+    },
+    {
+      "key": "StructureDefinition/sg-observation",
+      "resourceType": "StructureDefinition",
+      "id": "sg-observation",
+      "name": "SGObservation",
+      "title": "WHO SMART Guidelines Observation",
+      "description": "The WHO SMART Guidelines Observation profile defines conformance requirements and exchange expectations for Observation resources in WHO Smart Guidelines content.",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-observation",
+      "version": "1.0.1",
+      "category": "Structures: Resource Profiles",
+      "published": {},
+      "materialization": {
+        "state": "materialized",
+        "provenance": {
+          "local": "input/profiles/structuredefinition-sg-observation.json"
+        },
+        "localPath": "output-ast/resources/StructureDefinition/sg-observation--1434db81.json",
+        "gates": {
+          "size": {
+            "verdict": "unknown",
+            "basis": "ig-ast validity does not measure the AST's size"
+          },
+          "restrictions": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          },
+          "retention": {
+            "verdict": "permitted",
+            "basis": "a compiled cache, regenerable from its inputs by a full IG Publisher run"
+          },
+          "sourceLoss": {
+            "verdict": "unknown",
+            "basis": "a compiled copy is derived, not the source; it cannot stand in for it"
+          },
+          "copyright": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          }
+        },
+        "purpose": "compiled",
+        "inputs": {
+          "toolchain": "ig-publisher 3.0.0 / core 7.0.1",
+          "sourceRevision": "3c6fcc9b7a6bc5ecd777e7deb58f56df5da65c64",
+          "inputDigest": "376f4de40f80de989ec9a2fa3126a8c612a85d9b48b7c51355df890c0ee5a865"
+        },
+        "materializedAt": "2026-10-30T13:46:57.506062103Z"
+      }
+    },
+    {
+      "key": "StructureDefinition/sg-observationnotdone",
+      "resourceType": "StructureDefinition",
+      "id": "sg-observationnotdone",
+      "name": "SGObservationNotDone",
+      "title": "WHO SMART Guidelines Observation Not Done",
+      "description": "The WHO SMART Guidelines Observation Not Done profile defines conformance requirements and exchange expectations for Observation resources used to communicate that a particular observation (or class of observations) was not performed in WHO Smart Guidelines content.",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-observationnotdone",
+      "version": "1.0.1",
+      "category": "Structures: Resource Profiles",
+      "published": {},
+      "materialization": {
+        "state": "materialized",
+        "provenance": {
+          "local": "input/profiles/structuredefinition-sg-observationnotdone.json"
+        },
+        "localPath": "output-ast/resources/StructureDefinition/sg-observationnotdone--516230d6.json",
+        "gates": {
+          "size": {
+            "verdict": "unknown",
+            "basis": "ig-ast validity does not measure the AST's size"
+          },
+          "restrictions": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          },
+          "retention": {
+            "verdict": "permitted",
+            "basis": "a compiled cache, regenerable from its inputs by a full IG Publisher run"
+          },
+          "sourceLoss": {
+            "verdict": "unknown",
+            "basis": "a compiled copy is derived, not the source; it cannot stand in for it"
+          },
+          "copyright": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          }
+        },
+        "purpose": "compiled",
+        "inputs": {
+          "toolchain": "ig-publisher 3.0.0 / core 7.0.1",
+          "sourceRevision": "3c6fcc9b7a6bc5ecd777e7deb58f56df5da65c64",
+          "inputDigest": "376f4de40f80de989ec9a2fa3126a8c612a85d9b48b7c51355df890c0ee5a865"
+        },
+        "materializedAt": "2026-10-30T13:46:57.506062103Z"
+      }
+    },
+    {
+      "key": "StructureDefinition/sg-organization",
+      "resourceType": "StructureDefinition",
+      "id": "sg-organization",
+      "name": "SGOrganization",
+      "title": "WHO SMART Guidelines Organization",
+      "description": "The WHO SMART Guidelines Organization profile defines conformance requirements and exchange expectations for Organization resources in WHO Smart Guidelines content.",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-organization",
+      "version": "1.0.1",
+      "category": "Structures: Resource Profiles",
+      "published": {},
+      "materialization": {
+        "state": "materialized",
+        "provenance": {
+          "local": "input/profiles/structuredefinition-sg-organization.json"
+        },
+        "localPath": "output-ast/resources/StructureDefinition/sg-organization--4f0648d9.json",
+        "gates": {
+          "size": {
+            "verdict": "unknown",
+            "basis": "ig-ast validity does not measure the AST's size"
+          },
+          "restrictions": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          },
+          "retention": {
+            "verdict": "permitted",
+            "basis": "a compiled cache, regenerable from its inputs by a full IG Publisher run"
+          },
+          "sourceLoss": {
+            "verdict": "unknown",
+            "basis": "a compiled copy is derived, not the source; it cannot stand in for it"
+          },
+          "copyright": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          }
+        },
+        "purpose": "compiled",
+        "inputs": {
+          "toolchain": "ig-publisher 3.0.0 / core 7.0.1",
+          "sourceRevision": "3c6fcc9b7a6bc5ecd777e7deb58f56df5da65c64",
+          "inputDigest": "376f4de40f80de989ec9a2fa3126a8c612a85d9b48b7c51355df890c0ee5a865"
+        },
+        "materializedAt": "2026-10-30T13:46:57.506062103Z"
+      }
+    },
+    {
+      "key": "StructureDefinition/sg-patient",
+      "resourceType": "StructureDefinition",
+      "id": "sg-patient",
+      "name": "SGPatient",
+      "title": "WHO SMART Guidelines Patient",
+      "description": "The WHO SMART Guidelines Patient profile defines conformance requirements and exchange expectations for Patient resources in WHO Smart Guidelines content.",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-patient",
+      "version": "1.0.1",
+      "category": "Structures: Resource Profiles",
+      "published": {},
+      "materialization": {
+        "state": "materialized",
+        "provenance": {
+          "local": "input/profiles/structuredefinition-sg-patient.json"
+        },
+        "localPath": "output-ast/resources/StructureDefinition/sg-patient--7f19243e.json",
+        "gates": {
+          "size": {
+            "verdict": "unknown",
+            "basis": "ig-ast validity does not measure the AST's size"
+          },
+          "restrictions": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          },
+          "retention": {
+            "verdict": "permitted",
+            "basis": "a compiled cache, regenerable from its inputs by a full IG Publisher run"
+          },
+          "sourceLoss": {
+            "verdict": "unknown",
+            "basis": "a compiled copy is derived, not the source; it cannot stand in for it"
+          },
+          "copyright": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          }
+        },
+        "purpose": "compiled",
+        "inputs": {
+          "toolchain": "ig-publisher 3.0.0 / core 7.0.1",
+          "sourceRevision": "3c6fcc9b7a6bc5ecd777e7deb58f56df5da65c64",
+          "inputDigest": "376f4de40f80de989ec9a2fa3126a8c612a85d9b48b7c51355df890c0ee5a865"
+        },
+        "materializedAt": "2026-10-30T13:46:57.506062103Z"
+      }
+    },
+    {
+      "key": "StructureDefinition/sg-practitioner",
+      "resourceType": "StructureDefinition",
+      "id": "sg-practitioner",
+      "name": "SGPractitioner",
+      "title": "WHO SMART Guidelines Practitioner",
+      "description": "The WHO SMART Guidelines Practitioner profile defines conformance requirements and exchange expectations for Practitioner resources in WHO Smart Guidelines content.",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-practitioner",
+      "version": "1.0.1",
+      "category": "Structures: Resource Profiles",
+      "published": {},
+      "materialization": {
+        "state": "materialized",
+        "provenance": {
+          "local": "input/profiles/structuredefinition-sg-practitioner.json"
+        },
+        "localPath": "output-ast/resources/StructureDefinition/sg-practitioner--abc9d447.json",
+        "gates": {
+          "size": {
+            "verdict": "unknown",
+            "basis": "ig-ast validity does not measure the AST's size"
+          },
+          "restrictions": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          },
+          "retention": {
+            "verdict": "permitted",
+            "basis": "a compiled cache, regenerable from its inputs by a full IG Publisher run"
+          },
+          "sourceLoss": {
+            "verdict": "unknown",
+            "basis": "a compiled copy is derived, not the source; it cannot stand in for it"
+          },
+          "copyright": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          }
+        },
+        "purpose": "compiled",
+        "inputs": {
+          "toolchain": "ig-publisher 3.0.0 / core 7.0.1",
+          "sourceRevision": "3c6fcc9b7a6bc5ecd777e7deb58f56df5da65c64",
+          "inputDigest": "376f4de40f80de989ec9a2fa3126a8c612a85d9b48b7c51355df890c0ee5a865"
+        },
+        "materializedAt": "2026-10-30T13:46:57.506062103Z"
+      }
+    },
+    {
+      "key": "StructureDefinition/sg-practitionerrole",
+      "resourceType": "StructureDefinition",
+      "id": "sg-practitionerrole",
+      "name": "SGPractitionerRole",
+      "title": "WHO SMART Guidelines PractitionerRole",
+      "description": "The WHO SMART Guidelines PractitionerRole profile defines conformance requirements and exchange expectations for PractitionerRole resources in WHO Smart Guidelines content.",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-practitionerrole",
+      "version": "1.0.1",
+      "category": "Structures: Resource Profiles",
+      "published": {},
+      "materialization": {
+        "state": "materialized",
+        "provenance": {
+          "local": "input/profiles/structuredefinition-sg-practitionerrole.json"
+        },
+        "localPath": "output-ast/resources/StructureDefinition/sg-practitionerrole--71259e85.json",
+        "gates": {
+          "size": {
+            "verdict": "unknown",
+            "basis": "ig-ast validity does not measure the AST's size"
+          },
+          "restrictions": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          },
+          "retention": {
+            "verdict": "permitted",
+            "basis": "a compiled cache, regenerable from its inputs by a full IG Publisher run"
+          },
+          "sourceLoss": {
+            "verdict": "unknown",
+            "basis": "a compiled copy is derived, not the source; it cannot stand in for it"
+          },
+          "copyright": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          }
+        },
+        "purpose": "compiled",
+        "inputs": {
+          "toolchain": "ig-publisher 3.0.0 / core 7.0.1",
+          "sourceRevision": "3c6fcc9b7a6bc5ecd777e7deb58f56df5da65c64",
+          "inputDigest": "376f4de40f80de989ec9a2fa3126a8c612a85d9b48b7c51355df890c0ee5a865"
+        },
+        "materializedAt": "2026-10-30T13:46:57.506062103Z"
+      }
+    },
+    {
+      "key": "StructureDefinition/sg-procedure",
+      "resourceType": "StructureDefinition",
+      "id": "sg-procedure",
+      "name": "SGProcedure",
+      "title": "WHO SMART Guidelines Procedure",
+      "description": "The WHO SMART Guidelines Procedure profile defines conformance requirements and exchange expectations for Procedure resources in WHO Smart Guidelines content.",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-procedure",
+      "version": "1.0.1",
+      "category": "Structures: Resource Profiles",
+      "published": {},
+      "materialization": {
+        "state": "materialized",
+        "provenance": {
+          "local": "input/profiles/structuredefinition-sg-procedure.json"
+        },
+        "localPath": "output-ast/resources/StructureDefinition/sg-procedure--d6213493.json",
+        "gates": {
+          "size": {
+            "verdict": "unknown",
+            "basis": "ig-ast validity does not measure the AST's size"
+          },
+          "restrictions": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          },
+          "retention": {
+            "verdict": "permitted",
+            "basis": "a compiled cache, regenerable from its inputs by a full IG Publisher run"
+          },
+          "sourceLoss": {
+            "verdict": "unknown",
+            "basis": "a compiled copy is derived, not the source; it cannot stand in for it"
+          },
+          "copyright": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          }
+        },
+        "purpose": "compiled",
+        "inputs": {
+          "toolchain": "ig-publisher 3.0.0 / core 7.0.1",
+          "sourceRevision": "3c6fcc9b7a6bc5ecd777e7deb58f56df5da65c64",
+          "inputDigest": "376f4de40f80de989ec9a2fa3126a8c612a85d9b48b7c51355df890c0ee5a865"
+        },
+        "materializedAt": "2026-10-30T13:46:57.506062103Z"
+      }
+    },
+    {
+      "key": "StructureDefinition/sg-procedurenotdone",
+      "resourceType": "StructureDefinition",
+      "id": "sg-procedurenotdone",
+      "name": "SGProcedureNotDone",
+      "title": "WHO SMART Guidelines Procedure Not Done",
+      "description": "The WHO SMART Guidelines Procedure Not Done profile defines conformance requirements and exchange expectations for Procedure resources used to communicate that a particular procedure (or class of procedures) was not performed in WHO Smart Guidelines content.",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-procedurenotdone",
+      "version": "1.0.1",
+      "category": "Structures: Resource Profiles",
+      "published": {},
+      "materialization": {
+        "state": "materialized",
+        "provenance": {
+          "local": "input/profiles/structuredefinition-sg-procedurenotdone.json"
+        },
+        "localPath": "output-ast/resources/StructureDefinition/sg-procedurenotdone--f6a83b4c.json",
+        "gates": {
+          "size": {
+            "verdict": "unknown",
+            "basis": "ig-ast validity does not measure the AST's size"
+          },
+          "restrictions": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          },
+          "retention": {
+            "verdict": "permitted",
+            "basis": "a compiled cache, regenerable from its inputs by a full IG Publisher run"
+          },
+          "sourceLoss": {
+            "verdict": "unknown",
+            "basis": "a compiled copy is derived, not the source; it cannot stand in for it"
+          },
+          "copyright": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          }
+        },
+        "purpose": "compiled",
+        "inputs": {
+          "toolchain": "ig-publisher 3.0.0 / core 7.0.1",
+          "sourceRevision": "3c6fcc9b7a6bc5ecd777e7deb58f56df5da65c64",
+          "inputDigest": "376f4de40f80de989ec9a2fa3126a8c612a85d9b48b7c51355df890c0ee5a865"
+        },
+        "materializedAt": "2026-10-30T13:46:57.506062103Z"
+      }
+    },
+    {
+      "key": "StructureDefinition/sg-relatedperson",
+      "resourceType": "StructureDefinition",
+      "id": "sg-relatedperson",
+      "name": "SGRelatedPerson",
+      "title": "WHO SMART Guidelines RelatedPerson",
+      "description": "The WHO SMART Guidelines RelatedPerson profile defines conformance requirements and exchange expectations for RelatedPerson resources in WHO Smart Guidelines content.",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-relatedperson",
+      "version": "1.0.1",
+      "category": "Structures: Resource Profiles",
+      "published": {},
+      "materialization": {
+        "state": "materialized",
+        "provenance": {
+          "local": "input/profiles/structuredefinition-sg-relatedperson.json"
+        },
+        "localPath": "output-ast/resources/StructureDefinition/sg-relatedperson--497d8281.json",
+        "gates": {
+          "size": {
+            "verdict": "unknown",
+            "basis": "ig-ast validity does not measure the AST's size"
+          },
+          "restrictions": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          },
+          "retention": {
+            "verdict": "permitted",
+            "basis": "a compiled cache, regenerable from its inputs by a full IG Publisher run"
+          },
+          "sourceLoss": {
+            "verdict": "unknown",
+            "basis": "a compiled copy is derived, not the source; it cannot stand in for it"
+          },
+          "copyright": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          }
+        },
+        "purpose": "compiled",
+        "inputs": {
+          "toolchain": "ig-publisher 3.0.0 / core 7.0.1",
+          "sourceRevision": "3c6fcc9b7a6bc5ecd777e7deb58f56df5da65c64",
+          "inputDigest": "376f4de40f80de989ec9a2fa3126a8c612a85d9b48b7c51355df890c0ee5a865"
+        },
+        "materializedAt": "2026-10-30T13:46:57.506062103Z"
+      }
+    },
+    {
+      "key": "StructureDefinition/sg-reportedLocation",
+      "resourceType": "StructureDefinition",
+      "id": "sg-reportedLocation",
+      "name": "SGReportedLocation",
+      "title": "WHO SMART Guidelines Reported Location",
+      "description": "The location at which the reported data was generated",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-reportedLocation",
+      "version": "1.0.1",
+      "category": "Structures: Extension Definitions",
+      "published": {},
+      "materialization": {
+        "state": "materialized",
+        "provenance": {
+          "local": "input/extensions/structuredefinition-sg-reportedLocation.json"
+        },
+        "localPath": "output-ast/resources/StructureDefinition/sg-reportedLocation--431eaf03.json",
+        "gates": {
+          "size": {
+            "verdict": "unknown",
+            "basis": "ig-ast validity does not measure the AST's size"
+          },
+          "restrictions": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          },
+          "retention": {
+            "verdict": "permitted",
+            "basis": "a compiled cache, regenerable from its inputs by a full IG Publisher run"
+          },
+          "sourceLoss": {
+            "verdict": "unknown",
+            "basis": "a compiled copy is derived, not the source; it cannot stand in for it"
+          },
+          "copyright": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          }
+        },
+        "purpose": "compiled",
+        "inputs": {
+          "toolchain": "ig-publisher 3.0.0 / core 7.0.1",
+          "sourceRevision": "3c6fcc9b7a6bc5ecd777e7deb58f56df5da65c64",
+          "inputDigest": "376f4de40f80de989ec9a2fa3126a8c612a85d9b48b7c51355df890c0ee5a865"
+        },
+        "materializedAt": "2026-10-30T13:46:57.506062103Z"
+      }
+    },
+    {
+      "key": "StructureDefinition/sg-servicenotrequested",
+      "resourceType": "StructureDefinition",
+      "id": "sg-servicenotrequested",
+      "name": "SGServiceNotRequested",
+      "title": "WHO SMART Guidelines Service Not Requested",
+      "description": "The WHO SMART Guidelines Service Not Requested profile defines conformance requirements and exchange expectations for ServiceRequest resources used to communicate that a particular service (or class of services) should not be performed in WHO Smart Guidelines content.",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-servicenotrequested",
+      "version": "1.0.1",
+      "category": "Structures: Resource Profiles",
+      "published": {},
+      "materialization": {
+        "state": "materialized",
+        "provenance": {
+          "local": "input/profiles/structuredefinition-sg-servicenotrequested.json"
+        },
+        "localPath": "output-ast/resources/StructureDefinition/sg-servicenotrequested--7fbc1847.json",
+        "gates": {
+          "size": {
+            "verdict": "unknown",
+            "basis": "ig-ast validity does not measure the AST's size"
+          },
+          "restrictions": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          },
+          "retention": {
+            "verdict": "permitted",
+            "basis": "a compiled cache, regenerable from its inputs by a full IG Publisher run"
+          },
+          "sourceLoss": {
+            "verdict": "unknown",
+            "basis": "a compiled copy is derived, not the source; it cannot stand in for it"
+          },
+          "copyright": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          }
+        },
+        "purpose": "compiled",
+        "inputs": {
+          "toolchain": "ig-publisher 3.0.0 / core 7.0.1",
+          "sourceRevision": "3c6fcc9b7a6bc5ecd777e7deb58f56df5da65c64",
+          "inputDigest": "376f4de40f80de989ec9a2fa3126a8c612a85d9b48b7c51355df890c0ee5a865"
+        },
+        "materializedAt": "2026-10-30T13:46:57.506062103Z"
+      }
+    },
+    {
+      "key": "StructureDefinition/sg-servicerequest",
+      "resourceType": "StructureDefinition",
+      "id": "sg-servicerequest",
+      "name": "SGServiceRequest",
+      "title": "WHO SMART Guidelines ServiceRequest",
+      "description": "The WHO SMART Guidelines ServiceRequest profile defines conformance requirements and exchange expectations for ServiceRequest resources in WHO Smart Guidelines content.",
+      "canonical": "http://smart.who.int/base-clinical/StructureDefinition/sg-servicerequest",
+      "version": "1.0.1",
+      "category": "Structures: Resource Profiles",
+      "published": {},
+      "materialization": {
+        "state": "materialized",
+        "provenance": {
+          "local": "input/profiles/structuredefinition-sg-servicerequest.json"
+        },
+        "localPath": "output-ast/resources/StructureDefinition/sg-servicerequest--93108c65.json",
+        "gates": {
+          "size": {
+            "verdict": "unknown",
+            "basis": "ig-ast validity does not measure the AST's size"
+          },
+          "restrictions": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          },
+          "retention": {
+            "verdict": "permitted",
+            "basis": "a compiled cache, regenerable from its inputs by a full IG Publisher run"
+          },
+          "sourceLoss": {
+            "verdict": "unknown",
+            "basis": "a compiled copy is derived, not the source; it cannot stand in for it"
+          },
+          "copyright": {
+            "verdict": "unknown",
+            "basis": "derived from the IG's own source; inherits its terms, not assessed here"
+          }
+        },
+        "purpose": "compiled",
+        "inputs": {
+          "toolchain": "ig-publisher 3.0.0 / core 7.0.1",
+          "sourceRevision": "3c6fcc9b7a6bc5ecd777e7deb58f56df5da65c64",
+          "inputDigest": "376f4de40f80de989ec9a2fa3126a8c612a85d9b48b7c51355df890c0ee5a865"
+        },
+        "materializedAt": "2026-10-30T13:46:57.506062103Z"
+      }
+    }
+  ]
+}

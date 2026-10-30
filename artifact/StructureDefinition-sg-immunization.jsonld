@@ -1,0 +1,44 @@
+{
+  "@context": {
+    "fhir": "http://hl7.org/fhir/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "schema": "https://schema.org/",
+    "prov": "http://www.w3.org/ns/prov#"
+  },
+  "$schema": "folio-ig-artifact-jsonld/v1",
+  "@id": "StructureDefinition-sg-immunization.jsonld",
+  "@type": "fhir:StructureDefinition",
+  "dcterms:identifier": "StructureDefinition/sg-immunization",
+  "schema:name": "SGImmunization",
+  "dcterms:title": "WHO SMART Guidelines Immunization",
+  "dcterms:description": "The WHO SMART Guidelines Immunization profile defines conformance requirements and exchange expectations for Immunization resources in WHO Smart Guidelines content.",
+  "schema:version": "1.0.1",
+  "dcterms:type": "Structures: Resource Profiles",
+  "schema:sameAs": {
+    "@id": "http://smart.who.int/base-clinical/StructureDefinition/sg-immunization"
+  },
+  "schema:creativeWorkStatus": "materialized",
+  "schema:encoding": [
+    {
+      "@type": "schema:MediaObject",
+      "schema:contentUrl": {
+        "@id": "../ast-data/resources/StructureDefinition/sg-immunization--fedb32ac.json"
+      },
+      "schema:encodingFormat": "application/fhir+json",
+      "dcterms:source": "local"
+    }
+  ],
+  "prov:wasGeneratedBy": {
+    "@type": "prov:Activity",
+    "schema:instrument": "ig-publisher 3.0.0 / core 7.0.1",
+    "prov:used": "3c6fcc9b7a6bc5ecd777e7deb58f56df5da65c64"
+  },
+  "dcterms:isPartOf": {
+    "@type": "fhir:ImplementationGuide",
+    "dcterms:identifier": "smart.who.int.base-clinical",
+    "schema:version": "1.0.1",
+    "schema:sameAs": {
+      "@id": "http://smart.who.int/base-clinical"
+    }
+  }
+}
