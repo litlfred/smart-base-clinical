@@ -14,7 +14,7 @@
       "source": {
         "remote": {
           "repository": "litlfred/smart-base",
-          "ref": "415d637fecb3ad52ee5095087224994009ca780e",
+          "ref": "742a6d9d6fd27d14c6a9ef716e6f17d18a736a59",
           "overrides": {
             "smart-base": {
               "path": "smart-base",
@@ -50,8 +50,8 @@
             "consent": {
               "by": "litlfred",
               "on": "2026-10-30",
-              "ref": "415d637fecb3ad52ee5095087224994009ca780e",
-              "evidence": "litlfred, 2026-10-30T11:13Z: \"merge and repin window open for 4 horus\""
+              "ref": "742a6d9d6fd27d14c6a9ef716e6f17d18a736a59",
+              "evidence": "litlfred 2026-10-30 16:37Z 'merge window +3 hrs' (to ~19:38Z) and 'can we accelerate cat-harness re-pin round'; standing rule 'Merge all ready and then deal with aftermath'. Re-pin wave to main tip 742a6d9."
             }
           }
         }
@@ -62,7 +62,7 @@
       "source": {
         "remote": {
           "repository": "litlfred/fhir-harness",
-          "ref": "fdb4c98bbaf500b44d0e48dd2c73da34d6098d11",
+          "ref": "f51390f2c5d088b74d838928773b24cce2e37949",
           "overrides": {
             "fhir-harness": {
               "whole": true
@@ -72,8 +72,8 @@
             "consent": {
               "by": "litlfred",
               "on": "2026-10-30",
-              "ref": "fdb4c98bbaf500b44d0e48dd2c73da34d6098d11",
-              "evidence": "litlfred, 2026-10-30T11:13Z: \"merge and repin window open for 4 horus\""
+              "ref": "f51390f2c5d088b74d838928773b24cce2e37949",
+              "evidence": "litlfred 2026-10-30 16:37Z 'merge window +3 hrs' (to ~19:38Z) and 'can we accelerate cat-harness re-pin round'; standing rule 'Merge all ready and then deal with aftermath'. Re-pin wave to main tip f51390f."
             }
           }
         }
@@ -84,7 +84,7 @@
       "source": {
         "remote": {
           "repository": "litlfred/folio-assistant-core",
-          "ref": "581bad49e58d6ec4e2a75242d12fc8115ff6d4c3",
+          "ref": "84bad7f9e31129868c192af5695136bed4d29370",
           "overrides": {
             "folio-assistant-core": {
               "whole": true
@@ -100,8 +100,8 @@
             "consent": {
               "by": "litlfred",
               "on": "2026-10-30",
-              "ref": "581bad49e58d6ec4e2a75242d12fc8115ff6d4c3",
-              "evidence": "litlfred, 2026-10-30T11:13Z: \"merge and repin window open for 4 horus\""
+              "ref": "84bad7f9e31129868c192af5695136bed4d29370",
+              "evidence": "litlfred 2026-10-30 16:37Z 'merge window +3 hrs' (to ~19:38Z) and 'can we accelerate cat-harness re-pin round'; standing rule 'Merge all ready and then deal with aftermath'. Re-pin wave to main tip 84bad7f."
             }
           }
         }
@@ -112,7 +112,7 @@
       "source": {
         "remote": {
           "repository": "litlfred/cat-harness",
-          "ref": "f4fddbd79d3716a57865c33fefaec7808e7fd4b9",
+          "ref": "3ad90ab023310a64a26b8ff01b4429cba6dd8c05",
           "overrides": {
             "cat-harness": {
               "whole": true
@@ -128,8 +128,8 @@
             "consent": {
               "by": "litlfred",
               "on": "2026-10-30",
-              "ref": "f4fddbd79d3716a57865c33fefaec7808e7fd4b9",
-              "evidence": "litlfred, 2026-10-30T11:13Z: \"merge and repin window open for 4 horus\""
+              "ref": "3ad90ab023310a64a26b8ff01b4429cba6dd8c05",
+              "evidence": "litlfred 2026-10-30 16:37Z 'merge window +3 hrs' (to ~19:38Z) and 'can we accelerate cat-harness re-pin round'; standing rule 'Merge all ready and then deal with aftermath'. Re-pin wave to main tip 3ad90ab."
             }
           }
         }
@@ -140,7 +140,7 @@
       "source": {
         "remote": {
           "repository": "litlfred/cat-harness-tools",
-          "ref": "826f9d4b49d5ea5f9c3f728e8d6fde097abb1319",
+          "ref": "af45ee9e99d14a67c998c0d40fd1c01239dcd505",
           "overrides": {
             "cat-harness-tools": {
               "whole": true
@@ -153,8 +153,8 @@
             "consent": {
               "by": "litlfred",
               "on": "2026-10-30",
-              "ref": "826f9d4b49d5ea5f9c3f728e8d6fde097abb1319",
-              "evidence": "litlfred, 2026-10-30T11:13Z: \"merge and repin window open for 4 horus\""
+              "ref": "af45ee9e99d14a67c998c0d40fd1c01239dcd505",
+              "evidence": "litlfred 2026-10-30 16:37Z 'merge window +3 hrs' (to ~19:38Z) and 'can we accelerate cat-harness re-pin round'; standing rule 'Merge all ready and then deal with aftermath'. Re-pin wave to main tip af45ee9."
             }
           }
         }
@@ -165,7 +165,7 @@
       "source": {
         "remote": {
           "repository": "litlfred/bootstrap",
-          "ref": "3b6112915e988b5a821a4d2049d513d7e91f81af",
+          "ref": "3ce2b5d641779ca78432971abb919e6e3afdc60a",
           "overrides": {
             "bootstrap": {
               "whole": true
@@ -175,8 +175,8 @@
             "consent": {
               "by": "litlfred",
               "on": "2026-10-30",
-              "ref": "3b6112915e988b5a821a4d2049d513d7e91f81af",
-              "evidence": "litlfred, 2026-10-30T11:13Z: \"merge and repin window open for 4 horus\""
+              "ref": "3ce2b5d641779ca78432971abb919e6e3afdc60a",
+              "evidence": "litlfred 2026-10-30 16:37Z 'merge window +3 hrs' (to ~19:38Z) and 'can we accelerate cat-harness re-pin round'; standing rule 'Merge all ready and then deal with aftermath'. Re-pin wave to main tip 3ce2b5d."
             }
           }
         }
@@ -187,7 +187,7 @@
       "source": {
         "remote": {
           "repository": "litlfred/bootstrap-tools",
-          "ref": "988a9aa5ef63bb8a4289d577a2c6cee36b570a50",
+          "ref": "b7fb762ba968a6868bbe5004144ddf78023eb9c7",
           "overrides": {
             "bootstrap-tools": {
               "whole": true
@@ -200,8 +200,8 @@
             "consent": {
               "by": "litlfred",
               "on": "2026-10-30",
-              "ref": "988a9aa5ef63bb8a4289d577a2c6cee36b570a50",
-              "evidence": "litlfred, 2026-10-30T11:13Z: \"merge and repin window open for 4 horus\""
+              "ref": "b7fb762ba968a6868bbe5004144ddf78023eb9c7",
+              "evidence": "litlfred 2026-10-30 16:37Z 'merge window +3 hrs' (to ~19:38Z) and 'can we accelerate cat-harness re-pin round'; standing rule 'Merge all ready and then deal with aftermath'. Re-pin wave to main tip b7fb762."
             }
           }
         }
