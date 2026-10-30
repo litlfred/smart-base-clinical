@@ -171,7 +171,7 @@
           "id": "*",
           "path": "fhir-harness",
           "upstreamPath": ".",
-          "treeDigest": "e702610681decf63408977bfc101ecda57367182ac68457460a8b25f36dff42d",
+          "treeDigest": "2f93d567a05f8834c24e896da36e5368dec4e3b018a36657bf88aeb27fd53f81",
           "files": 707
         }
       ],
