@@ -40,7 +40,10 @@ permissions:
 
 jobs:
   refresh:
-    uses: litlfred/fhir-harness/.github/workflows/ig-ast-refresh.yml@main
+    uses: litlfred/fhir-harness/.github/workflows/ig-ast-refresh.yml@claude/seed-current-template
     with:
       ref: ${{ inputs.ref || github.sha }}
       force: ${{ inputs.force || false }}
+      # who.template.root is not in FHIR/ig-registry's templates.json, and
+      # build.fhir.org serves no package for it (fhir-harness#196).
+      template-repos: who.template.root=WorldHealthOrganization/smart-ig-template
