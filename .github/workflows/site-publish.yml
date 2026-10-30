@@ -78,6 +78,9 @@ jobs:
       # a valid AST. A branch that changes the inputs is refused by
       # `ig-site:ast` (stale), as the route requires.
       ref: ${{ github.event.repository.default_branch }}
+      # As in ig-ast-refresh.yml: build.fhir.org serves no package for
+      # who.template.root#current (fhir-harness#196).
+      template-repos: who.template.root=WorldHealthOrganization/smart-ig-template
 
   publish:
     needs: ast
