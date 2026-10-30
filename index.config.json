@@ -14,7 +14,7 @@
       "source": {
         "remote": {
           "repository": "litlfred/smart-base",
-          "ref": "41ed9b217b4539c80345ad6b3a7b01a32b36ceee",
+          "ref": "415d637fecb3ad52ee5095087224994009ca780e",
           "overrides": {
             "smart-base": {
               "path": "smart-base",
@@ -33,7 +33,6 @@
                 "smart-base-docs",
                 "smart-base-document-kinds",
                 "smart-base-findings",
-                "smart-base-external-schemas",
                 "smart-base-platform",
                 "smart-base-typologies",
                 "smart-base-validators",
@@ -50,9 +49,9 @@
           "trust": {
             "consent": {
               "by": "litlfred",
-              "on": "2026-10-15",
-              "ref": "41ed9b217b4539c80345ad6b3a7b01a32b36ceee",
-              "evidence": "Owner litlfred, 2026-10-15 (17:30Z): 'merge and repin for next 3 hrs. keep draining'"
+              "on": "2026-10-30",
+              "ref": "415d637fecb3ad52ee5095087224994009ca780e",
+              "evidence": "litlfred, 2026-10-30T11:13Z: \"merge and repin window open for 4 horus\""
             }
           }
         }
@@ -63,7 +62,7 @@
       "source": {
         "remote": {
           "repository": "litlfred/fhir-harness",
-          "ref": "4c7fa7ba11bad9172b45cf93c7b8821efe970d60",
+          "ref": "fdb4c98bbaf500b44d0e48dd2c73da34d6098d11",
           "overrides": {
             "fhir-harness": {
               "whole": true
@@ -72,9 +71,9 @@
           "trust": {
             "consent": {
               "by": "litlfred",
-              "on": "2026-10-15",
-              "ref": "4c7fa7ba11bad9172b45cf93c7b8821efe970d60",
-              "evidence": "Owner litlfred, 2026-10-15 (17:30Z): 'merge and repin for next 3 hrs. keep draining'"
+              "on": "2026-10-30",
+              "ref": "fdb4c98bbaf500b44d0e48dd2c73da34d6098d11",
+              "evidence": "litlfred, 2026-10-30T11:13Z: \"merge and repin window open for 4 horus\""
             }
           }
         }
@@ -85,7 +84,7 @@
       "source": {
         "remote": {
           "repository": "litlfred/folio-assistant-core",
-          "ref": "f412c113e5eae7b7d5eaff5188005dd3bd0315ff",
+          "ref": "581bad49e58d6ec4e2a75242d12fc8115ff6d4c3",
           "overrides": {
             "folio-assistant-core": {
               "whole": true
@@ -100,9 +99,9 @@
           "trust": {
             "consent": {
               "by": "litlfred",
-              "on": "2026-10-15",
-              "ref": "f412c113e5eae7b7d5eaff5188005dd3bd0315ff",
-              "evidence": "Owner litlfred, 2026-10-15 (17:30Z): 'merge and repin for next 3 hrs. keep draining'"
+              "on": "2026-10-30",
+              "ref": "581bad49e58d6ec4e2a75242d12fc8115ff6d4c3",
+              "evidence": "litlfred, 2026-10-30T11:13Z: \"merge and repin window open for 4 horus\""
             }
           }
         }
@@ -113,7 +112,7 @@
       "source": {
         "remote": {
           "repository": "litlfred/cat-harness",
-          "ref": "5463bf121d472bbda817c6e0a4a73a2945793164",
+          "ref": "f4fddbd79d3716a57865c33fefaec7808e7fd4b9",
           "overrides": {
             "cat-harness": {
               "whole": true
@@ -128,9 +127,9 @@
           "trust": {
             "consent": {
               "by": "litlfred",
-              "on": "2026-10-15",
-              "ref": "5463bf121d472bbda817c6e0a4a73a2945793164",
-              "evidence": "Owner litlfred, 2026-10-15 (17:30Z): 'merge and repin for next 3 hrs. keep draining'"
+              "on": "2026-10-30",
+              "ref": "f4fddbd79d3716a57865c33fefaec7808e7fd4b9",
+              "evidence": "litlfred, 2026-10-30T11:13Z: \"merge and repin window open for 4 horus\""
             }
           }
         }
@@ -141,7 +140,7 @@
       "source": {
         "remote": {
           "repository": "litlfred/cat-harness-tools",
-          "ref": "3c1462defcdfdea8ced956fecd6d88fa63a4fd74",
+          "ref": "826f9d4b49d5ea5f9c3f728e8d6fde097abb1319",
           "overrides": {
             "cat-harness-tools": {
               "whole": true
@@ -153,9 +152,9 @@
           "trust": {
             "consent": {
               "by": "litlfred",
-              "on": "2026-10-15",
-              "ref": "3c1462defcdfdea8ced956fecd6d88fa63a4fd74",
-              "evidence": "Owner litlfred, 2026-10-15 (17:30Z): 'merge and repin for next 3 hrs. keep draining'"
+              "on": "2026-10-30",
+              "ref": "826f9d4b49d5ea5f9c3f728e8d6fde097abb1319",
+              "evidence": "litlfred, 2026-10-30T11:13Z: \"merge and repin window open for 4 horus\""
             }
           }
         }
@@ -166,7 +165,7 @@
       "source": {
         "remote": {
           "repository": "litlfred/bootstrap",
-          "ref": "9ecfb729b38b9196063fee76c6f7932f92502353",
+          "ref": "3b6112915e988b5a821a4d2049d513d7e91f81af",
           "overrides": {
             "bootstrap": {
               "whole": true
@@ -175,9 +174,9 @@
           "trust": {
             "consent": {
               "by": "litlfred",
-              "on": "2026-10-15",
-              "ref": "9ecfb729b38b9196063fee76c6f7932f92502353",
-              "evidence": "Owner litlfred, 2026-10-15 (17:30Z): 'merge and repin for next 3 hrs. keep draining'"
+              "on": "2026-10-30",
+              "ref": "3b6112915e988b5a821a4d2049d513d7e91f81af",
+              "evidence": "litlfred, 2026-10-30T11:13Z: \"merge and repin window open for 4 horus\""
             }
           }
         }
@@ -188,7 +187,7 @@
       "source": {
         "remote": {
           "repository": "litlfred/bootstrap-tools",
-          "ref": "7dc55773590bbc3158c877a3d61222aa7864006c",
+          "ref": "988a9aa5ef63bb8a4289d577a2c6cee36b570a50",
           "overrides": {
             "bootstrap-tools": {
               "whole": true
@@ -200,13 +199,17 @@
           "trust": {
             "consent": {
               "by": "litlfred",
-              "on": "2026-10-15",
-              "ref": "7dc55773590bbc3158c877a3d61222aa7864006c",
-              "evidence": "Owner litlfred, 2026-10-15 (17:30Z): 'merge and repin for next 3 hrs. keep draining'"
+              "on": "2026-10-30",
+              "ref": "988a9aa5ef63bb8a4289d577a2c6cee36b570a50",
+              "evidence": "litlfred, 2026-10-30T11:13Z: \"merge and repin window open for 4 horus\""
             }
           }
         }
       }
     }
-  ]
+  ],
+  "site": {
+    "landing": "smart-base",
+    "agentRun": true
+  }
 }
