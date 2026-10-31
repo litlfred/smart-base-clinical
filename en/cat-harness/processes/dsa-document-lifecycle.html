@@ -588,7 +588,7 @@
 -->
 <!-- The harness icon row's own style, which railed pages load without docs-ui.css (beans `lhvt`, `9rq1`). -->
 <link rel="stylesheet" href="../../../assets/css/navbar-row.css?v=7d7d00921e0f">
-<link rel="stylesheet" href="../../../assets/css/docs-ui.css?v=4885e06b0507">
+<link rel="stylesheet" href="../../../assets/css/docs-ui.css?v=6071ae228cf3">
 <!-- Narrow viewports: wide content scrolls in its own box, never the page
      (bean `2r2n`). The standalone viewers inline the same file through
      `withViewerNav`, so both kinds of page read one set of rules. -->
@@ -605,7 +605,7 @@
      Loaded AFTER docs-ui.css deliberately: it supplies the `--fa-sticky-*`
      roles that docs-ui.css consumes, and a custom property has to be set on a
      matching element before the rule reading it takes effect. -->
-<link rel="stylesheet" href="../../../assets/css/themes.css?v=5c199f8420d3">
+<link rel="stylesheet" href="../../../assets/css/themes.css?v=37c8ab192a5f">
 <!-- UML overview colours: one class per graph typology, set on the Mermaid nodes
      that `scripts/gen-uml-overview.ts` writes into docs/uml/overview/. -->
 <link rel="stylesheet" href="../../../assets/css/uml.css?v=e677f91cbf66">
@@ -613,7 +613,7 @@
      `avatars:css:check` fails the build when it is stale. One stylesheet
      rather than 68 assets: the glyph is a mask and the colour is a property,
      so a scheme swap is a custom property and the trash state is a selector. -->
-<link rel="stylesheet" href="../../../assets/css/avatars.css?v=50927e324c20">
+<link rel="stylesheet" href="../../../assets/css/avatars.css?v=64b44e43f389">
 
 <!--
   The kinds THIS INSTANCE DECLARES, for the avatar fan.
@@ -647,7 +647,7 @@
 <script src="../../../assets/js/kg-render.js" defer></script>
 <!-- BEFORE docs-ui.js, which calls it: the one drawing of the harness icon row (beans `lhvt`, `9rq1`). -->
 <script src="../../../assets/js/navbar-row.js?v=7dce6a7e2ab0" defer></script>
-<script src="../../../assets/js/docs-ui.js?v=944bce476b33" defer></script>
+<script src="../../../assets/js/docs-ui.js?v=8b5567635976" defer></script>
 <!-- The edit, source and feedback links of every page, from the platform's one
   recipe (cat-harness-tools/src/core/edit-links.ts, bean v433): links carry their
   facts and this builds the hrefs. -->
@@ -736,9 +736,9 @@
   is broken when it is doing exactly what it can.
 -->
 
-<link rel="stylesheet" href="../../../assets/css/navbar.css"><script src="../../../assets/navbar/rail-1p9xz7j6paw.js" defer></script><script src="../../../assets/js/navbar.js" defer></script><link rel="stylesheet" href="../../../assets/page-layout.css" data-fa-page-layout><script src="../../../assets/page-layout.js" defer data-fa-page-layout></script><meta name="fa-pinned-data" content="../../.."></head>
+<link rel="stylesheet" href="../../../assets/css/navbar.css"><script src="../../../assets/navbar/rail-13sxfw5j2pc.js" defer></script><script src="../../../assets/js/navbar.js" defer></script><link rel="stylesheet" href="../../../assets/page-layout.css" data-fa-page-layout><script src="../../../assets/page-layout.js" defer data-fa-page-layout></script><meta name="fa-pinned-data" content="../../.."></head>
 
-<body><script type="application/json" id="fa-rail" data-fa-root="https://litlfred.github.io/folio-assistant" data-fa-to-root="../../..">{"data":"rail-1p9xz7j6paw","here":"/en/cat-harness/processes/dsa-document-lifecycle.html","documentIndex":{"label":"On this page","icon":"§","items":[{"href":"#how-it-connects","label":"How it connects"},{"href":"#lanes--who-acts","label":"Lanes — who acts"},{"href":"#steps","label":"Steps"},{"href":"#decisions","label":"Decisions"}],"collapsible":true}}</script><nav class="fa-nav" aria-label="folio-assistant" data-fa-rail="pending"><a href="../../../">SMART Base Clinical</a></nav>
+<body><script type="application/json" id="fa-rail" data-fa-root="https://litlfred.github.io/folio-assistant" data-fa-to-root="../../..">{"data":"rail-13sxfw5j2pc","here":"/en/cat-harness/processes/dsa-document-lifecycle.html","documentIndex":{"label":"On this page","icon":"§","items":[{"href":"#how-it-connects","label":"How it connects"},{"href":"#lanes--who-acts","label":"Lanes — who acts"},{"href":"#steps","label":"Steps"},{"href":"#decisions","label":"Decisions"}],"collapsible":true}}</script><nav class="fa-nav" aria-label="folio-assistant" data-fa-rail="pending"><a href="../../../">SMART Base Clinical</a></nav>
   <a class="skip-to-main" href="#main-content">Skip to main content</a>
   <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
   <symbol id="svg-link" viewBox="0 0 24 24">
@@ -846,12 +846,13 @@
 </h1>
     
 
-<p><code class="language-plaintext highlighter-rouge">Process_DsaDocumentLifecycle</code> · advisory · 22 step(s)</p>
+<p><code class="language-plaintext highlighter-rouge">Process_DsaDocumentLifecycle</code> · advisory · 27 step(s)</p>
 
 <p>How a data sharing agreement is drafted, negotiated, signed, published with a version, a hash and a catalogue record, and later amended, renewed or ended. It covers the agreement as a document folio only: processes P1, P2 and P14 of the DSA process catalogue.
 Two entry points: a request for an agreement (P1, then P2), and a change to one in force (P14). An amendment or a renewal with a new end date runs P1 and P2 again and publishes a new version linked to the old one; the old version stays readable.
 Standards named: ODRL 2.2 (the Agreement), DCAT 3 (catalogue record, distributions, checksums, versions) and DCMI Terms (dcterms:source from the policy to the text). No field is defined here.
-Steps no skill covers yet are user tasks with a no-skill reason starting “Gap:”. Owner’s option B13-B, 2026-10-30; folio-assistant#2702.</p>
+Steps no skill covers yet are user tasks with a no-skill reason starting “Gap:”. Owner’s option B13-B, 2026-10-30; folio-assistant#2702.
+Consent rules (owner, 2026-10-30), which every agreement drawn here keeps. 1. Legal basis: an agreement carries the odrl:obtainConsent duty only when consent is its legal basis; treatment, public-health law and research waivers do not rest on consent (P1.2a, P1.3). 2. Version pinning: a Consent cites the agreement’s fixed-version URL and hash (FHIR R4 Consent.policy.uri), and for a computable agreement the ODRL policy uid is that same URL (P2.1, P2.2b, P2.3); an amendment that widens use needs new consent, one that narrows use does not (P14.3). 3. Plain language: every agreement that needs consent publishes a plain-language summary, hashed with the agreement, and that summary is what the person consents to (P1.2b, P2.2a). How a person gives, withdraws or is asked again for consent is the trust layer’s, not this diagram’s.</p>
 
 <p><em>No rendered diagram — run <code class="language-plaintext highlighter-rouge">bun run cat render:bpmn</code>.</em></p>
 <h2 id="how-it-connects">
@@ -933,7 +934,7 @@ Steps no skill covers yet are user tasks with a no-skill reason starting “Gap:
 </h2>
     
 
-<p>Every one of the 22 step(s) is documented.</p>
+<p>Every one of the 27 step(s) is documented.</p>
 
 <div class="table-wrapper"><table>
   <thead>
@@ -955,7 +956,7 @@ Steps no skill covers yet are user tasks with a no-skill reason starting “Gap:
       <td><strong>P1.1 · Agree purpose, datasets, period, duties and trust anchors</strong><br /><code class="language-plaintext highlighter-rouge">Task_AgreeTerms</code></td>
       <td>Parties and signatories (provider, recipient)</td>
       <td>—</td>
-      <td>The parties agree the purpose, the datasets, the period, the conditions and duties, and which trust anchors each side accepts. This sets what the text must say; it is a negotiation between people.</td>
+      <td>The parties agree the purpose, the datasets, the period, the conditions and duties, which trust anchors each side accepts, and the legal basis the sharing rests on (consent, treatment, public-health law or a research waiver). This sets what the text must say; it is a negotiation between people.</td>
     </tr>
     <tr>
       <td><strong>P1.2 · Write the legal text</strong><br /><code class="language-plaintext highlighter-rouge">Task_WriteText</code></td>
@@ -964,16 +965,28 @@ Steps no skill covers yet are user tasks with a no-skill reason starting “Gap:
       <td>Write the agreement as a document folio: one normative statement per clause the parties must keep, through normative-statements. The text says which governs if it and a machine-readable form disagree (suggested: the text).</td>
     </tr>
     <tr>
+      <td><strong>P1.2a · Record the legal basis</strong><br /><code class="language-plaintext highlighter-rouge">Task_RecordLegalBasis</code></td>
+      <td>Author and policy author</td>
+      <td><code class="language-plaintext highlighter-rouge">normative-statements</code></td>
+      <td>The text states the legal basis the parties agreed in P1.1 as a normative statement: consent, treatment, public-health law, or a research waiver. Consent rule 1: only an agreement whose legal basis is consent carries the odrl:obtainConsent duty; treatment, public-health law and research waivers do not rest on consent. The gateway that follows, the ODRL and the reviewers all read the basis from this statement.</td>
+    </tr>
+    <tr>
+      <td><strong>P1.2b · Draft the plain-language summary</strong><br /><code class="language-plaintext highlighter-rouge">Task_PlainSummary</code></td>
+      <td>Author and policy author</td>
+      <td><code class="language-plaintext highlighter-rouge">document-authoring</code></td>
+      <td>Consent-based only. Write a plain-language summary of the agreement in the same document folio: what it lets the recipient do with the person’s data, in words the person can read. Consent rule 3: every agreement that needs consent publishes this summary, hashed with the agreement (P2.2a), and the summary is what the person consents to. It is reviewed, rendered and versioned with the text.</td>
+    </tr>
+    <tr>
       <td><strong>P1.3 · Derive the ODRL 2.2 Agreement</strong><br /><code class="language-plaintext highlighter-rouge">Task_DeriveOdrl</code></td>
       <td>Author and policy author</td>
       <td>—</td>
-      <td>Computable only. One assigner and one assignee (ODRL 2.2 §2.1.3), permissions and prohibitions with target assets (§2.2), constraints (§2.5.1) and duties (§2.6.3), written as JSON-LD. Purposes from HL7 PurposeOfUse.</td>
+      <td>Computable only. One assigner and one assignee (ODRL 2.2 §2.1.3), permissions and prohibitions with target assets (§2.2), constraints (§2.5.1) and duties (§2.6.3), written as JSON-LD. Purposes from HL7 PurposeOfUse. Consent rule 1: the Agreement carries the odrl:obtainConsent duty only when the legal basis recorded in P1.2a is consent.</td>
     </tr>
     <tr>
       <td><strong>P1.4 · Check the ODRL against the text</strong><br /><code class="language-plaintext highlighter-rouge">Task_CheckOdrl</code></td>
       <td>Reviewer (legal, policy)</td>
       <td><code class="language-plaintext highlighter-rouge">content-review</code></td>
-      <td>Computable only. A person checks that the ODRL says what the text says, and signs it off. A program can check the ODRL is well formed; it cannot check that it matches the text.</td>
+      <td>Computable only. A person checks that the ODRL says what the text says, and signs it off. A program can check the ODRL is well formed; it cannot check that it matches the text. The check includes the consent duty: present when the legal basis is consent, absent otherwise (consent rule 1).</td>
     </tr>
     <tr>
       <td><strong>P1.5 · Split public terms from private annexes</strong><br /><code class="language-plaintext highlighter-rouge">Task_SplitAnnexes</code></td>
@@ -985,7 +998,7 @@ Steps no skill covers yet are user tasks with a no-skill reason starting “Gap:
       <td><strong>Review the draft agreement</strong><br /><code class="language-plaintext highlighter-rouge">Task_Review</code></td>
       <td>Reviewer (legal, policy)</td>
       <td><code class="language-plaintext highlighter-rouge">content-review</code><br /><code class="language-plaintext highlighter-rouge">review-comments</code></td>
-      <td>Legal and policy review of the whole draft. Reviewers comment on blocks through review-comments; review says which review skill answers which question.</td>
+      <td>Legal and policy review of the whole draft. Reviewers comment on blocks through review-comments; review says which review skill answers which question. For a consent-based agreement the reviewers also check that the plain-language summary says what the text says, since it is what the person consents to (consent rule 3).</td>
     </tr>
     <tr>
       <td><strong>Public comment on the template</strong><br /><code class="language-plaintext highlighter-rouge">Call_PublicComment</code></td>
@@ -997,7 +1010,7 @@ Steps no skill covers yet are user tasks with a no-skill reason starting “Gap:
       <td><strong>Render the text to HTML / PDF</strong><br /><code class="language-plaintext highlighter-rouge">Task_Render</code></td>
       <td>Build pipeline (system)</td>
       <td><code class="language-plaintext highlighter-rouge">document-publishing</code></td>
-      <td>Render the agreed text to the form that will be signed (HTML and PDF), without a TeX installation.</td>
+      <td>Render the agreed text to the form that will be signed (HTML and PDF), without a TeX installation. A consent-based agreement’s plain-language summary is rendered with it.</td>
     </tr>
     <tr>
       <td><strong>P1.6 · Sign</strong><br /><code class="language-plaintext highlighter-rouge">Task_Sign</code></td>
@@ -1009,7 +1022,7 @@ Steps no skill covers yet are user tasks with a no-skill reason starting “Gap:
       <td><strong>P2.1 · Assign the version and its immutable URL</strong><br /><code class="language-plaintext highlighter-rouge">Task_AssignVersion</code></td>
       <td>Publisher (data provider’s publication manager)</td>
       <td><code class="language-plaintext highlighter-rouge">content-publish</code><br /><code class="language-plaintext highlighter-rouge">package-release</code></td>
-      <td>Each signed version gets its own immutable URL (for example /dsa/42/v3). A ‘latest’ URL may exist; nothing cites it. A new version never overwrites an old one.</td>
+      <td>Each signed version gets its own immutable URL (for example /dsa/42/v3). A ‘latest’ URL may exist; nothing cites it. A new version never overwrites an old one. This fixed-version URL is the one a Consent cites (consent rule 2), and a computable agreement’s ODRL policy uid is set to it (P2.3).</td>
     </tr>
     <tr>
       <td><strong>P2.2 · Record the SHA-256 of each file</strong><br /><code class="language-plaintext highlighter-rouge">Task_Hash</code></td>
@@ -1018,16 +1031,28 @@ Steps no skill covers yet are user tasks with a no-skill reason starting “Gap:
       <td>Compute SHA-256 (FIPS 180-4) of the signed text, and of the ODRL file if there is one. Written as an SRI string or an RFC 6920 ni URI.</td>
     </tr>
     <tr>
+      <td><strong>P2.2a · Hash the plain-language summary with the agreement</strong><br /><code class="language-plaintext highlighter-rouge">Task_HashSummary</code></td>
+      <td>Publisher (data provider’s publication manager)</td>
+      <td>—</td>
+      <td>Consent-based only. Record the SHA-256 of the plain-language summary beside the agreement’s, in the same version (consent rule 3). The summary a person consented to can then be checked against the agreement it summarises; a changed summary is a new version.</td>
+    </tr>
+    <tr>
+      <td><strong>P2.2b · State the fixed-version URL and hash a Consent cites</strong><br /><code class="language-plaintext highlighter-rouge">Task_ConsentCitation</code></td>
+      <td>Publisher (data provider’s publication manager)</td>
+      <td><code class="language-plaintext highlighter-rouge">content-publish</code></td>
+      <td>Consent-based only. The version’s publication metadata states the fixed-version URL (P2.1) and the hash (P2.2) that a Consent cites in FHIR R4 Consent.policy.uri (consent rule 2), never the ‘latest’ URL. For a computable agreement that URL is also the ODRL policy uid (P2.3): a Consent counts only when its Consent.policy.uri equals the agreement’s ODRL policy uid, so the two are the same string.</td>
+    </tr>
+    <tr>
       <td><strong>P2.3 · Make the ODRL cite the text by URL and hash</strong><br /><code class="language-plaintext highlighter-rouge">Task_OdrlCitesText</code></td>
       <td>Author and policy author</td>
       <td>—</td>
-      <td>The ODRL policy names the signed text with dcterms:source (DCMI Terms), pointing at the immutable URL whose checksum was just recorded.</td>
+      <td>The ODRL policy names the signed text with dcterms:source (DCMI Terms), pointing at the immutable URL whose checksum was just recorded. Its uid is that same fixed-version URL, the URL a Consent cites in Consent.policy.uri (consent rule 2).</td>
     </tr>
     <tr>
       <td><strong>Publish the version at its URL</strong><br /><code class="language-plaintext highlighter-rouge">Task_Publish</code></td>
       <td>Build pipeline (system)</td>
       <td><code class="language-plaintext highlighter-rouge">content-publish</code></td>
-      <td>Publish the files at the version’s immutable URL. If the parties’ names are sensitive, publish only the template and the hash of the signed instance.</td>
+      <td>Publish the files at the version’s immutable URL. If the parties’ names are sensitive, publish only the template and the hash of the signed instance. A consent-based agreement publishes its plain-language summary and its hash with the text (consent rule 3). Check before publishing (consent rule 2): a computable agreement’s ODRL policy uid equals this version’s fixed-version URL, the URL a Consent cites; if they differ, the version is not published.</td>
     </tr>
     <tr>
       <td><strong>P2.4–5 · Write the DCAT 3 record and link versions</strong><br /><code class="language-plaintext highlighter-rouge">Task_Catalogue</code></td>
@@ -1060,6 +1085,12 @@ Steps no skill covers yet are user tasks with a no-skill reason starting “Gap:
       <td>Existing grants keep citing the old hash. The parties decide, per agreement: they stay valid until expiry, or they are revoked and reissued against the new version (in smart-trust). The old version stays readable.</td>
     </tr>
     <tr>
+      <td><strong>P14.3 · Record that new consent is needed</strong><br /><code class="language-plaintext highlighter-rouge">Task_NewConsentNeeded</code></td>
+      <td>Parties and signatories (provider, recipient)</td>
+      <td>—</td>
+      <td>The amendment widens use, so a Consent citing the old version’s URL and hash does not cover the new version (consent rule 2). Record on the bean, and in the new version’s text, that new consent is needed; the new version gets its own plain-language summary (P1.2b). Asking each person again is the trust layer’s.</td>
+    </tr>
+    <tr>
       <td><strong>P14.5 · Set the catalogue status to ended</strong><br /><code class="language-plaintext highlighter-rouge">Task_SetStatus</code></td>
       <td>Publisher (data provider’s publication manager)</td>
       <td>—</td>
@@ -1088,7 +1119,7 @@ Steps no skill covers yet are user tasks with a no-skill reason starting “Gap:
 </h2>
     
 
-<p>Every one of the 7 decision(s) is documented.</p>
+<p>Every one of the 10 decision(s) is documented.</p>
 
 <div class="table-wrapper"><table>
   <thead>
@@ -1103,6 +1134,11 @@ Steps no skill covers yet are user tasks with a no-skill reason starting “Gap:
       <td><strong>Bean claimed?</strong><br /><code class="language-plaintext highlighter-rouge">GW_BeanYours</code></td>
       <td>Reads which end Process_BeanOpen reached. <code class="language-plaintext highlighter-rouge">claimed</code>: the bean is in progress and this process works it. <code class="language-plaintext highlighter-rouge">not yours</code>: a sibling session or a human holds it, nothing was written to it, and this process stops here rather than work a bean it does not own (bean-coordination).</td>
       <td><strong>not yours</strong> → Not yours — left alone<br /><strong>claimed</strong> → P1.1 · Agree purpose, datasets, period, duties and trust anchors</td>
+    </tr>
+    <tr>
+      <td><strong>Consent the legal basis?</strong><br /><code class="language-plaintext highlighter-rouge">GW_ConsentBasis</code></td>
+      <td>Reads the legal basis recorded in P1.2a. <code class="language-plaintext highlighter-rouge">consent</code>: the agreement needs a plain-language summary (consent rule 3) and, if it is computable, the odrl:obtainConsent duty (consent rule 1). <code class="language-plaintext highlighter-rouge">treatment, law or waiver</code>: no summary for consent and no consent duty.</td>
+      <td><strong>consent</strong> → P1.2b · Draft the plain-language summary<br /><strong>treatment, law or waiver</strong> → GW_ConsentBasisJoin</td>
     </tr>
     <tr>
       <td><strong>Computable agreement?</strong><br /><code class="language-plaintext highlighter-rouge">GW_Computable</code></td>
@@ -1120,6 +1156,11 @@ Steps no skill covers yet are user tasks with a no-skill reason starting “Gap:
       <td><strong>changes needed</strong> → GW_DraftMerge<br /><strong>ready</strong> → Render the text to HTML / PDF</td>
     </tr>
     <tr>
+      <td><strong>Consent-based agreement?</strong><br /><code class="language-plaintext highlighter-rouge">GW_ConsentPublish</code></td>
+      <td>The legal basis recorded in P1.2a. <code class="language-plaintext highlighter-rouge">consent</code>: hash the plain-language summary with the agreement, and state the fixed-version URL and hash a Consent cites. <code class="language-plaintext highlighter-rouge">not consent-based</code>: go straight on.</td>
+      <td><strong>consent</strong> → P2.2a · Hash the plain-language summary with the agreement<br /><strong>not consent-based</strong> → GW_ConsentPublishJoin</td>
+    </tr>
+    <tr>
       <td><strong>ODRL to update?</strong><br /><code class="language-plaintext highlighter-rouge">GW_CiteComputable</code></td>
       <td>Is there an ODRL Agreement for this version? <code class="language-plaintext highlighter-rouge">yes</code>: it must cite the text by URL and hash. <code class="language-plaintext highlighter-rouge">document only</code>: go straight to publishing.</td>
       <td><strong>yes</strong> → P2.3 · Make the ODRL cite the text by URL and hash<br /><strong>document only</strong> → GW_CiteJoin</td>
@@ -1133,6 +1174,11 @@ Steps no skill covers yet are user tasks with a no-skill reason starting “Gap:
       <td><strong>Amend, renew or end?</strong><br /><code class="language-plaintext highlighter-rouge">GW_ChangeKind</code></td>
       <td>The parties’ decision. <code class="language-plaintext highlighter-rouge">new version</code> (amend, or renew with a new end date) runs P1 again and publishes a new version linked to the old one. <code class="language-plaintext highlighter-rouge">renew by grant</code> (the version has no end date): nothing in the document changes. <code class="language-plaintext highlighter-rouge">end</code> (expiry or termination) closes the agreement.</td>
       <td><strong>new version</strong> → P14.2 · Decide what happens to existing grants<br /><strong>renew by grant</strong> → Renewed by a new grant<br /><strong>end</strong> → P14.5 · Set the catalogue status to ended</td>
+    </tr>
+    <tr>
+      <td><strong>Consent-based: does the amendment widen use?</strong><br /><code class="language-plaintext highlighter-rouge">GW_WidensUse</code></td>
+      <td>Consent rule 2, for a new version only. <code class="language-plaintext highlighter-rouge">widens use</code> (for example more data, more purposes, more recipients or a longer period): the Consents that cite the old version do not cover the new one, so new consent is needed. <code class="language-plaintext highlighter-rouge">narrows use</code>: no new consent is needed. <code class="language-plaintext highlighter-rouge">not consent-based</code>: there is no consent to renew.</td>
+      <td><strong>widens use</strong> → P14.3 · Record that new consent is needed<br /><strong>narrows use</strong> → GW_WidensJoin<br /><strong>not consent-based</strong> → GW_WidensJoin</td>
     </tr>
   </tbody>
 </table></div>

@@ -1,7 +1,7 @@
 {
   "$schema": "folio-library-document/v1",
   "id": "9789241549912-webannexes-eng",
-  "title": "WHO recommendations on antenatal care for a positive pregnancy experience: web annexes *",
+  "title": "WHO recommendations on antenatal care for a positive pregnancy experience: web annexes",
   "variant": "pdf",
   "pages": 24,
   "tocSource": "undetermined",
@@ -597,8 +597,8 @@
   ],
   "figures": [],
   "links": {
-    "repo": "litlfred/smart-base",
+    "repo": "litlfred/who-iris",
     "branch": "main",
-    "dir": "smart-base/library/9789241549912-webannexes-eng"
+    "dir": "library/9789241549912-webannexes-eng"
   }
 }

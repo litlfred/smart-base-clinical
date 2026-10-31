@@ -6740,6 +6740,11 @@
     function libraryMetaRows(a, key, entry) {
       var rows = [["Title", (entry && entry.title && entry.title !== entry.id) ? entry.title : a.title]];
       if (!entry) {
+        if (key.indexOf("linked/") === 0) {
+          rows.push(["Disposition", "referenced (linked by URL)"]);
+          if (a && a.href) rows.push(["URL", a.href]);
+          return rows;
+        }
         rows.push(["Library", key.split("/")[0]]);
         return rows;
       }
@@ -6818,6 +6823,7 @@
       var i = key.indexOf("/");
       if (i <= 0 || i === key.length - 1) return null;
       var instance = key.slice(0, i);
+      if (instance === "linked") return null;
       var id = key.slice(i + 1);
       var library = withBase("/cat-harness/library/" + encodeURIComponent(instance) + "/");
       return { instance: instance, id: id, library: library,
@@ -6931,6 +6937,10 @@
       var label = String(a.title || "").replace(/\s+/g, " ").trim();
       var isLibrary = zoomKindOf(a) === "library";
       var place = isLibrary ? libraryPlaceOf(key) : null;
+      var href = place ? place.entry : safeHref(a.href);
+      // WHERE A PRESS GOES: the entry page until the index names a visualizer,
+      // or the external URL for a linked document (R28).
+      var opens = place ? place.entry : (isLibrary && href ? href : "");
       var card = el("article", {
         class: "fa-glass-asset",
         "data-fa-asset": key,
@@ -6940,22 +6950,13 @@
         // A library card OPENS (issue #1900), so it is a stop in the tab
         // order: zoomed to its cover the title link is not drawn, and Enter on
         // the card is then the only key into the entry.
-        tabindex: place ? "0" : "-1",
+        tabindex: opens ? "0" : "-1",
       });
-      // WHERE A PRESS GOES: the entry page until the index names a visualizer.
-      var opens = place ? place.entry : "";
-      if (place) card.setAttribute("data-fa-opens", opens);
+      if (opens) card.setAttribute("data-fa-opens", opens);
       var live = el("span", { class: "fa-sr-only", "aria-live": "polite" });
       var face = el("div", { class: "fa-glass-asset-face", "data-fa-grip": "" });
       var ava = glassAvatarFor(a, prefs.avatars);
       if (ava) face.appendChild(ava);
-      // CHECKED AGAIN AT RENDER, and that is not belt-and-braces. The
-      // store is `localStorage`, which the reader's own devtools can
-      // rewrite, so a value sanitised on the way in is not a value that is
-      // safe on the way out. The boundary is where the URL reaches an
-      // `href`, and that is here. A LIBRARY card's title links its entry —
-      // the address composed from its key, the same one a click opens.
-      var href = place ? place.entry : safeHref(a.href);
       face.appendChild(href
         ? el("a", { class: "fa-glass-asset-name", href: href }, a.title)
         : el("span", { class: "fa-glass-asset-name" }, a.title));
@@ -7042,7 +7043,7 @@
         if (card.getAttribute("data-fa-moving") === "true") return;
         // ENTER OPENS a library card — the keyboard half of the click below.
         // Not in move mode: there Enter is "done moving" (`wireMove`).
-        if (place && e.key === "Enter" && !e.defaultPrevented) {
+        if (opens && e.key === "Enter" && !e.defaultPrevented) {
           e.preventDefault();
           window.location.assign(opens);
         }
@@ -7097,7 +7098,7 @@
       var pressAt = null;
       card.addEventListener("pointerdown", function (e) { pressAt = { x: e.clientX, y: e.clientY }; });
       card.addEventListener("click", function (e) {
-        if (!place) return;
+        if (!opens) return;
         if (e.button !== 0 || e.defaultPrevented) return;
         if (e.target.closest && e.target.closest("button, a, [data-fa-control], input, select, textarea")) return;
         if (card.getAttribute("data-fa-moving") === "true") return;
@@ -7788,8 +7789,172 @@
      * panel's own header row, and the strip below it is the tiles. Hidden,
      * the panel slides down to that header row — still the panel, still
      * holding the way back. */
+    /* LINK A DOCUMENT (bean `95sk`, R28) — a reader action on the glass that
+     * links an external document by URL onto their folio glass and shows the
+     * `bun run cat folio:create --link` command that records it as a
+     * `referenced` node in `library/<slug>/`. */
+    function slugifyLinkTitle(s) {
+      return String(s || "")
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "");
+    }
+    function buildLinkDocument(body) {
+      body.appendChild(el("p", { class: "fa-glass-panel-status" },
+        "Link an external document by URL onto your folio glass. To commit it into the repository's library as a referenced source, run the command shown below."));
+      var form = el("form", { class: "fa-glass-link-form", novalidate: "novalidate" });
+
+      var urlField = el("div", { class: "fa-glass-link-field" });
+      urlField.appendChild(el("label", { class: "fa-glass-choice-label", for: "fa-glass-link-url" }, "Document URL"));
+      var urlInput = el("input", {
+        type: "url",
+        id: "fa-glass-link-url",
+        class: "fa-glass-link-input",
+        placeholder: "https://example.org/guideline",
+        required: "required",
+      });
+      urlField.appendChild(urlInput);
+      form.appendChild(urlField);
+
+      var titleField = el("div", { class: "fa-glass-link-field" });
+      titleField.appendChild(el("label", { class: "fa-glass-choice-label", for: "fa-glass-link-title" }, "Title"));
+      var titleInput = el("input", {
+        type: "text",
+        id: "fa-glass-link-title",
+        class: "fa-glass-link-input",
+        placeholder: "Document title",
+        required: "required",
+      });
+      titleField.appendChild(titleInput);
+      form.appendChild(titleField);
+
+      var slugField = el("div", { class: "fa-glass-link-field" });
+      slugField.appendChild(el("label", { class: "fa-glass-choice-label", for: "fa-glass-link-slug" }, "Slug (optional)"));
+      var slugInput = el("input", {
+        type: "text",
+        id: "fa-glass-link-slug",
+        class: "fa-glass-link-input",
+        placeholder: "my-guideline",
+      });
+      slugField.appendChild(slugInput);
+      form.appendChild(slugField);
+
+      var cmdWrap = el("p", { class: "fa-glass-panel-status fa-glass-link-cmd-wrap" }, "Repository command: ");
+      var cmdCode = el("code", { "data-fa-link-command": "" });
+      cmdWrap.appendChild(cmdCode);
+      form.appendChild(cmdWrap);
+
+      function resolvedSlug() {
+        var raw = slugInput.value.trim();
+        if (raw) return raw;
+        var fromTitle = slugifyLinkTitle(titleInput.value);
+        if (fromTitle) return fromTitle;
+        return "linked-doc";
+      }
+      function updateCommandPreview() {
+        var u = urlInput.value.trim() || "<url>";
+        var t = (titleInput.value.trim() || "<title>").replace(/"/g, "\\\"");
+        var s = resolvedSlug();
+        cmdCode.textContent = "bun run cat folio:create --link \"" + u + "\" --slug " + s + " --title \"" + t + "\"";
+      }
+      urlInput.addEventListener("input", updateCommandPreview);
+      titleInput.addEventListener("input", updateCommandPreview);
+      slugInput.addEventListener("input", updateCommandPreview);
+      updateCommandPreview();
+
+      var err = el("p", { class: "fa-glass-link-error", role: "alert", hidden: "hidden" });
+      form.appendChild(err);
+
+      var submit = el("button", { type: "submit", class: "fa-glass-reset fa-glass-link-submit" }, "Link document");
+      form.appendChild(submit);
+
+      var listHost = el("div", { class: "fa-glass-linked-host" });
+      function renderLinkedList() {
+        while (listHost.firstChild) listHost.removeChild(listHost.firstChild);
+        var all = folioAssets();
+        var keys = Object.keys(all).filter(function (k) { return k.indexOf("linked/") === 0; }).sort();
+        if (keys.length === 0) return;
+        var ul = el("ul", { class: "fa-glass-todo-list fa-glass-linked-list" });
+        keys.forEach(function (k) {
+          var item = all[k];
+          var li = el("li", {
+            class: "fa-glass-todo",
+            "data-fa-library-item": k,
+            "data-fa-library-title": item.title || k,
+            "data-fa-library-href": safeHref(item.href) || "",
+            "data-fa-library-kind": "library",
+          });
+          var row = el("div", { class: "fa-glass-todo-row", "data-fa-pullout-host": "" });
+          var a = safeHref(item.href)
+            ? el("a", { class: "fa-glass-todo-summary", href: safeHref(item.href) }, item.title || k)
+            : el("span", { class: "fa-glass-todo-summary" }, item.title || k);
+          row.appendChild(a);
+          li.appendChild(row);
+          ul.appendChild(li);
+        });
+        listHost.appendChild(ul);
+        paintLibraryRows();
+      }
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var rawUrl = urlInput.value.trim();
+        var rawTitle = titleInput.value.trim();
+        var slug = resolvedSlug();
+        var safe = /^https?:\/\/\S+$/i.test(rawUrl) ? safeHref(rawUrl) : undefined;
+        if (!safe) {
+          err.textContent = "Enter an http:// or https:// URL to link a document.";
+          err.removeAttribute("hidden");
+          urlInput.focus();
+          return;
+        }
+        if (!rawTitle) {
+          err.textContent = "Enter a title for the linked document.";
+          err.removeAttribute("hidden");
+          titleInput.focus();
+          return;
+        }
+        if (!/^[a-z0-9][a-z0-9-]*$/.test(slug)) {
+          err.textContent = "Slug must use lower-case letters, digits and hyphens.";
+          err.removeAttribute("hidden");
+          slugInput.focus();
+          return;
+        }
+        err.setAttribute("hidden", "hidden");
+        err.textContent = "";
+        displayInFolio("linked/" + slug, {
+          title: rawTitle,
+          href: safe,
+          kind: "library",
+        });
+        glassLive.textContent = "Linked " + rawTitle + " onto your folio glass.";
+        urlInput.value = "";
+        titleInput.value = "";
+        slugInput.value = "";
+        updateCommandPreview();
+        renderLinkedList();
+      });
+
+      body.appendChild(form);
+      body.appendChild(listHost);
+      renderLinkedList();
+    }
+
     var dock = el("div", { class: "fa-glass-dock" });
     var dockHead = el("div", { class: "fa-glass-dock-head" });
+    var linkDocBtn = el("button", {
+      type: "button",
+      class: "fa-glass-link-doc",
+      "data-fa-glass-action": "link-document",
+      "aria-expanded": "false",
+      "aria-controls": "fa-glass-panel",
+      title: "Link an external document by URL into your folio",
+    }, "Link a document");
+    panelButtons["glass-link-document"] = linkDocBtn;
+    linkDocBtn.addEventListener("click", function () {
+      openPanel("glass-link-document", "Link a document", buildLinkDocument);
+    });
+    dockHead.appendChild(linkDocBtn);
     var stripToggle = el("button", {
       type: "button",
       class: "fa-glass-strip-toggle",
@@ -8354,7 +8519,7 @@
       Array.prototype.slice.call(strip.querySelectorAll("[data-fa-strip-item]")).forEach(function (n) {
         strip.removeChild(n);
       });
-      Object.keys(panelButtons).forEach(function (k) { if (k !== "glass-more") delete panelButtons[k]; });
+      Object.keys(panelButtons).forEach(function (k) { if (k !== "glass-more" && k !== "glass-link-document") delete panelButtons[k]; });
       var waiting = false;
       stripIds.forEach(function (id) {
         var node = null;

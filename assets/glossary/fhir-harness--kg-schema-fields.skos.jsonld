@@ -1572,6 +1572,519 @@
       "skos:note": "candidate"
     },
     {
+      "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields/iti-108-consent-client.iti108cacheoptions.clock",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Iti108CacheOptions.clock"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Clock for expiry, in epoch milliseconds (tests). Defaults to `Date.now`."
+        }
+      ],
+      "dcterms:source": "fhir-harness/schemas/iti-108-consent-client.ts#Iti108CacheOptions.clock",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields/iti-108-consent-client.iti108cacheoptions.ttlms",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Iti108CacheOptions.ttlMs"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "How long a determined result may be reused, in milliseconds."
+        }
+      ],
+      "dcterms:source": "fhir-harness/schemas/iti-108-consent-client.ts#Iti108CacheOptions.ttlMs",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields/iti-108-consent-client.iti108determinedresult.bundletotal",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Iti108DeterminedResult.bundleTotal"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Total reported by the first Bundle page, if present."
+        }
+      ],
+      "dcterms:source": "fhir-harness/schemas/iti-108-consent-client.ts#Iti108DeterminedResult.bundleTotal",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields/iti-108-consent-client.iti108determinedresult.consents",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Iti108DeterminedResult.consents"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Active, non-expired FHIR R4 `Consent` resources returned by the registry."
+        }
+      ],
+      "dcterms:source": "fhir-harness/schemas/iti-108-consent-client.ts#Iti108DeterminedResult.consents",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields/iti-108-consent-client.iti108determinedresult.evaluatedat",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Iti108DeterminedResult.evaluatedAt"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "ISO-8601 timestamp against which `provision.period` validity was evaluated."
+        }
+      ],
+      "dcterms:source": "fhir-harness/schemas/iti-108-consent-client.ts#Iti108DeterminedResult.evaluatedAt",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields/iti-108-consent-client.iti108determinedresult.ignored",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Iti108DeterminedResult.ignored"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Entries in the searchset `Bundle` that were filtered out (inactive, expired, not-yet-valid, informational `OperationOutcome`, etc.)."
+        }
+      ],
+      "dcterms:source": "fhir-harness/schemas/iti-108-consent-client.ts#Iti108DeterminedResult.ignored",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields/iti-108-consent-client.iti108determinedresult.requesturl",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Iti108DeterminedResult.requestUrl"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "The initial ITI-108 search URL issued to the Consent Registry."
+        }
+      ],
+      "dcterms:source": "fhir-harness/schemas/iti-108-consent-client.ts#Iti108DeterminedResult.requestUrl",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields/iti-108-consent-client.iti108query.action",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Iti108Query.action"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Action token(s)."
+        }
+      ],
+      "dcterms:source": "fhir-harness/schemas/iti-108-consent-client.ts#Iti108Query.action",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields/iti-108-consent-client.iti108query.actor",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Iti108Query.actor"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Actor reference(s) (e.g. `\"Practitioner/prac-1\"` or `\"Organization/org-1\"`)."
+        }
+      ],
+      "dcterms:source": "fhir-harness/schemas/iti-108-consent-client.ts#Iti108Query.actor",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields/iti-108-consent-client.iti108query.baseurl",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Iti108Query.baseUrl"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Base URL of the FHIR R4 Consent Registry (e.g. `\"https://registry.example.org/fhir\"`)."
+        }
+      ],
+      "dcterms:source": "fhir-harness/schemas/iti-108-consent-client.ts#Iti108Query.baseUrl",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields/iti-108-consent-client.iti108query.category",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Iti108Query.category"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Category token(s) (e.g. `\"http://loinc.org|59284-0\"`)."
+        }
+      ],
+      "dcterms:source": "fhir-harness/schemas/iti-108-consent-client.ts#Iti108Query.category",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields/iti-108-consent-client.iti108query.date",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Iti108Query.date"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Date filter(s), e.g. `\"ge2026-01-01\"`."
+        }
+      ],
+      "dcterms:source": "fhir-harness/schemas/iti-108-consent-client.ts#Iti108Query.date",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields/iti-108-consent-client.iti108query.fetchimpl",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Iti108Query.fetchImpl"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Custom `fetch` implementation (defaults to `globalThis.fetch`)."
+        }
+      ],
+      "dcterms:source": "fhir-harness/schemas/iti-108-consent-client.ts#Iti108Query.fetchImpl",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields/iti-108-consent-client.iti108query.follownext",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Iti108Query.followNext"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Follow `Bundle.link[relation=\"next\"]` pagination links (defaults to `true`)."
+        }
+      ],
+      "dcterms:source": "fhir-harness/schemas/iti-108-consent-client.ts#Iti108Query.followNext",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields/iti-108-consent-client.iti108query.headers",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Iti108Query.headers"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Optional HTTP headers (e.g. `{ Authorization: \"Bearer ...\" }`); no IUA claim is required."
+        }
+      ],
+      "dcterms:source": "fhir-harness/schemas/iti-108-consent-client.ts#Iti108Query.headers",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields/iti-108-consent-client.iti108query.maxpages",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Iti108Query.maxPages"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Maximum number of Bundle pages to fetch when `followNext` is `true` (defaults to `10`)."
+        }
+      ],
+      "dcterms:source": "fhir-harness/schemas/iti-108-consent-client.ts#Iti108Query.maxPages",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields/iti-108-consent-client.iti108query.now",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Iti108Query.now"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Reference timestamp (`ISO-8601` string or `Date`) used to evaluate `provision.period` expiry (defaults to `new Date()`)."
+        }
+      ],
+      "dcterms:source": "fhir-harness/schemas/iti-108-consent-client.ts#Iti108Query.now",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields/iti-108-consent-client.iti108query.patient",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Iti108Query.patient"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Patient reference (e.g. `\"Patient/pat-1\"` or `\"pat-1\"`)."
+        }
+      ],
+      "dcterms:source": "fhir-harness/schemas/iti-108-consent-client.ts#Iti108Query.patient",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields/iti-108-consent-client.iti108query.patientidentifier",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Iti108Query.patientIdentifier"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Patient business identifier token (e.g. `\"urn:oid:1.2.3|12345\"`), sent as `patient.identifier`."
+        }
+      ],
+      "dcterms:source": "fhir-harness/schemas/iti-108-consent-client.ts#Iti108Query.patientIdentifier",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields/iti-108-consent-client.iti108query.profile",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Iti108Query.profile"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Profile canonical URL filter(s), sent as `_profile`."
+        }
+      ],
+      "dcterms:source": "fhir-harness/schemas/iti-108-consent-client.ts#Iti108Query.profile",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields/iti-108-consent-client.iti108query.purpose",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Iti108Query.purpose"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "PurposeOfUse token(s) (e.g. `\"TREAT\"`, `\"HRESCH\"`)."
+        }
+      ],
+      "dcterms:source": "fhir-harness/schemas/iti-108-consent-client.ts#Iti108Query.purpose",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields/iti-108-consent-client.iti108query.securitylabel",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Iti108Query.securityLabel"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Security label token(s), sent as `security-label`."
+        }
+      ],
+      "dcterms:source": "fhir-harness/schemas/iti-108-consent-client.ts#Iti108Query.securityLabel",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields/iti-108-consent-client.iti108query.sourcereference",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Iti108Query.sourceReference"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Source reference filter, sent as `source-reference`."
+        }
+      ],
+      "dcterms:source": "fhir-harness/schemas/iti-108-consent-client.ts#Iti108Query.sourceReference",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields/iti-108-consent-client.iti108query.status",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Iti108Query.status"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Status parameter sent on the query (defaults to `\"active\"`)."
+        }
+      ],
+      "dcterms:source": "fhir-harness/schemas/iti-108-consent-client.ts#Iti108Query.status",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields/iti-108-consent-client.iti108query.timeoutms",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Iti108Query.timeoutMs"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Request timeout in milliseconds (defaults to `10_000`)."
+        }
+      ],
+      "dcterms:source": "fhir-harness/schemas/iti-108-consent-client.ts#Iti108Query.timeoutMs",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields/pcf-consent.agreementversion.policy",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "AgreementVersion.policy"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "The version's ODRL policy; its `uid` is the fixed-version URL."
+        }
+      ],
+      "dcterms:source": "fhir-harness/schemas/pcf-consent.ts#AgreementVersion.policy",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields/pcf-consent.agreementversion.previousversion",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "AgreementVersion.previousVersion"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "The fixed-version URL of the version this one amends (`dcat:previousVersion`)."
+        }
+      ],
+      "dcterms:source": "fhir-harness/schemas/pcf-consent.ts#AgreementVersion.previousVersion",
+      "skos:note": "candidate"
+    },
+    {
       "@id": "https://litlfred.github.io/fhir-harness/v0/ns#glossary/kg-schema-fields/pcf-consent.consenttoodrloptions.defaultaction",
       "@type": "skos:Concept",
       "skos:inScheme": {

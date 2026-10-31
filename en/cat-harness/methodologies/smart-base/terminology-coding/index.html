@@ -588,7 +588,7 @@
 -->
 <!-- The harness icon row's own style, which railed pages load without docs-ui.css (beans `lhvt`, `9rq1`). -->
 <link rel="stylesheet" href="../../../../../assets/css/navbar-row.css?v=7d7d00921e0f">
-<link rel="stylesheet" href="../../../../../assets/css/docs-ui.css?v=4885e06b0507">
+<link rel="stylesheet" href="../../../../../assets/css/docs-ui.css?v=6071ae228cf3">
 <!-- Narrow viewports: wide content scrolls in its own box, never the page
      (bean `2r2n`). The standalone viewers inline the same file through
      `withViewerNav`, so both kinds of page read one set of rules. -->
@@ -605,7 +605,7 @@
      Loaded AFTER docs-ui.css deliberately: it supplies the `--fa-sticky-*`
      roles that docs-ui.css consumes, and a custom property has to be set on a
      matching element before the rule reading it takes effect. -->
-<link rel="stylesheet" href="../../../../../assets/css/themes.css?v=5c199f8420d3">
+<link rel="stylesheet" href="../../../../../assets/css/themes.css?v=37c8ab192a5f">
 <!-- UML overview colours: one class per graph typology, set on the Mermaid nodes
      that `scripts/gen-uml-overview.ts` writes into docs/uml/overview/. -->
 <link rel="stylesheet" href="../../../../../assets/css/uml.css?v=e677f91cbf66">
@@ -613,7 +613,7 @@
      `avatars:css:check` fails the build when it is stale. One stylesheet
      rather than 68 assets: the glyph is a mask and the colour is a property,
      so a scheme swap is a custom property and the trash state is a selector. -->
-<link rel="stylesheet" href="../../../../../assets/css/avatars.css?v=50927e324c20">
+<link rel="stylesheet" href="../../../../../assets/css/avatars.css?v=64b44e43f389">
 
 <!--
   The kinds THIS INSTANCE DECLARES, for the avatar fan.
@@ -647,7 +647,7 @@
 <script src="../../../../../assets/js/kg-render.js" defer></script>
 <!-- BEFORE docs-ui.js, which calls it: the one drawing of the harness icon row (beans `lhvt`, `9rq1`). -->
 <script src="../../../../../assets/js/navbar-row.js?v=7dce6a7e2ab0" defer></script>
-<script src="../../../../../assets/js/docs-ui.js?v=944bce476b33" defer></script>
+<script src="../../../../../assets/js/docs-ui.js?v=8b5567635976" defer></script>
 <!-- The edit, source and feedback links of every page, from the platform's one
   recipe (cat-harness-tools/src/core/edit-links.ts, bean v433): links carry their
   facts and this builds the hrefs. -->
@@ -743,9 +743,9 @@
   }
 </style>
 
-<link rel="stylesheet" href="../../../../../assets/css/navbar.css"><script src="../../../../../assets/navbar/rail-1p9xz7j6paw.js" defer></script><script src="../../../../../assets/js/navbar.js" defer></script><link rel="stylesheet" href="../../../../../assets/page-layout.css" data-fa-page-layout><script src="../../../../../assets/page-layout.js" defer data-fa-page-layout></script><meta name="fa-pinned-data" content="../../../../.."></head>
+<link rel="stylesheet" href="../../../../../assets/css/navbar.css"><script src="../../../../../assets/navbar/rail-13sxfw5j2pc.js" defer></script><script src="../../../../../assets/js/navbar.js" defer></script><link rel="stylesheet" href="../../../../../assets/page-layout.css" data-fa-page-layout><script src="../../../../../assets/page-layout.js" defer data-fa-page-layout></script><meta name="fa-pinned-data" content="../../../../.."></head>
 
-<body><script type="application/json" id="fa-rail" data-fa-root="https://litlfred.github.io/folio-assistant" data-fa-to-root="../../../../..">{"data":"rail-1p9xz7j6paw","here":"/en/cat-harness/methodologies/smart-base/terminology-coding/","documentIndex":{"label":"On this page","icon":"§","items":[{"href":"#1-the-scheme-for-each-slot","label":"1. The scheme for each slot"},{"href":"#2-the-reuse-first-precedence-kvd2-decision-d4","label":"2. The reuse-first precedence (kvd2 decision D4)"},{"href":"#3-provenance-and-review-status-on-every-coding","label":"3. Provenance and review status on every coding"},{"href":"#4-adjudicating-l1-coverage-exclusions-l1-extraction-reviewer","label":"4. Adjudicating L1 coverage exclusions (l1-extraction-reviewer)"},{"href":"#5-refusals","label":"5. Refusals"}],"collapsible":true}}</script><nav class="fa-nav" aria-label="folio-assistant" data-fa-rail="pending"><a href="../../../../../">SMART Base Clinical</a></nav>
+<body><script type="application/json" id="fa-rail" data-fa-root="https://litlfred.github.io/folio-assistant" data-fa-to-root="../../../../..">{"data":"rail-13sxfw5j2pc","here":"/en/cat-harness/methodologies/smart-base/terminology-coding/","documentIndex":{"label":"On this page","icon":"§","items":[{"href":"#1-the-scheme-for-each-slot","label":"1. The scheme for each slot"},{"href":"#2-the-reuse-first-precedence-kvd2-decision-d4","label":"2. The reuse-first precedence (kvd2 decision D4)"},{"href":"#3-provenance-and-review-status-on-every-coding","label":"3. Provenance and review status on every coding"},{"href":"#4-adjudicating-l1-coverage-exclusions-l1-extraction-reviewer","label":"4. Adjudicating L1 coverage exclusions (l1-extraction-reviewer)"},{"href":"#5-refusals","label":"5. Refusals"}],"collapsible":true}}</script><nav class="fa-nav" aria-label="folio-assistant" data-fa-rail="pending"><a href="../../../../../">SMART Base Clinical</a></nav>
   <a class="skip-to-main" href="#main-content">Skip to main content</a>
   <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
   <symbol id="svg-link" viewBox="0 0 24 24">
@@ -889,7 +889,7 @@
 
 <p><strong>Applies when.</strong> Classifying and coding L1 narrative content (guideline recommendations, implementation practices, remarks) and L2 Digital Adaptation Kit (DAK) artefacts (personas, user scenarios, business processes, data-dictionary elements, decision-table concepts and indicators) against authoritative vocabularies and local code lists. Reach for it whenever a slot requires a code or SKOS concept (condition, intervention, persona/role, medicine, guideline domain, business process, or GRADE rating), or when deciding whether to reuse an existing term, fall back to a generic base concept, or propose a local glossary candidate. It does NOT grade evidence (that is <code class="language-plaintext highlighter-rouge">grade</code>), does NOT model BPMN/DMN control flow (<code class="language-plaintext highlighter-rouge">crdm</code>), and does NOT plan programme investment (<code class="language-plaintext highlighter-rouge">diig</code>).</p>
 
-<p><strong>Origin.</strong> World Health Organization, <em>SMART Guidelines: Digital Adaptation Kits (DAKs)</em> (Mehl et al., <em>BMJ Global Health</em> 2021;6:e004908, ingested at <code class="language-plaintext highlighter-rouge">smart-base/library/mehl-2021-who-smart-guidelines/</code>); <em>Classification of digital health interventions, services and applications in health (CDISAH) v2.0</em> (WHO, 2023, ISBN 978-92-4-008194-9, ingested at <code class="language-plaintext highlighter-rouge">smart-base/library/9789240081949-eng/</code>, superseding CDHI v1.0 at <code class="language-plaintext highlighter-rouge">smart-base/library/who-rhr-1806-eng/</code>); <em>Digital transformation handbook for health supply chain architecture</em> (WHO, 2024, ISBN 978-92-4-010119-7, ingested at <code class="language-plaintext highlighter-rouge">smart-base/library/9789240101197-eng/</code>); and <em>Digital transformation handbook for health product catalogue</em> (WHO, 2025, ISBN 978-92-4-011619-1, ingested at <code class="language-plaintext highlighter-rouge">smart-base/library/9789240116191-eng/</code>).</p>
+<p><strong>Origin.</strong> World Health Organization, <em>SMART Guidelines: Digital Adaptation Kits (DAKs)</em> (Mehl et al., <em>BMJ Global Health</em> 2021;6:e004908, ingested at <code class="language-plaintext highlighter-rouge">smart-base/library/mehl-2021-who-smart-guidelines/</code>); <em>Classification of digital health interventions, services and applications in health (CDISAH) v2.0</em> (WHO, 2023, ISBN 978-92-4-008194-9, ingested at <code class="language-plaintext highlighter-rouge">who-iris/library/9789240081949-eng/</code>, superseding CDHI v1.0 at <code class="language-plaintext highlighter-rouge">who-iris/library/who-rhr-1806-eng/</code>); <em>Digital transformation handbook for health supply chain architecture</em> (WHO, 2024, ISBN 978-92-4-010119-7, ingested at <code class="language-plaintext highlighter-rouge">who-iris/library/9789240101197-eng/</code>); and <em>Digital transformation handbook for health product catalogue</em> (WHO, 2025, ISBN 978-92-4-011619-1, ingested at <code class="language-plaintext highlighter-rouge">who-iris/library/9789240116191-eng/</code>).</p>
 
 <p><strong>Ingested sources:</strong></p>
 

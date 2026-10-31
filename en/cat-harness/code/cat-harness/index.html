@@ -588,7 +588,7 @@
 -->
 <!-- The harness icon row's own style, which railed pages load without docs-ui.css (beans `lhvt`, `9rq1`). -->
 <link rel="stylesheet" href="../../../../assets/css/navbar-row.css?v=7d7d00921e0f">
-<link rel="stylesheet" href="../../../../assets/css/docs-ui.css?v=4885e06b0507">
+<link rel="stylesheet" href="../../../../assets/css/docs-ui.css?v=6071ae228cf3">
 <!-- Narrow viewports: wide content scrolls in its own box, never the page
      (bean `2r2n`). The standalone viewers inline the same file through
      `withViewerNav`, so both kinds of page read one set of rules. -->
@@ -605,7 +605,7 @@
      Loaded AFTER docs-ui.css deliberately: it supplies the `--fa-sticky-*`
      roles that docs-ui.css consumes, and a custom property has to be set on a
      matching element before the rule reading it takes effect. -->
-<link rel="stylesheet" href="../../../../assets/css/themes.css?v=5c199f8420d3">
+<link rel="stylesheet" href="../../../../assets/css/themes.css?v=37c8ab192a5f">
 <!-- UML overview colours: one class per graph typology, set on the Mermaid nodes
      that `scripts/gen-uml-overview.ts` writes into docs/uml/overview/. -->
 <link rel="stylesheet" href="../../../../assets/css/uml.css?v=e677f91cbf66">
@@ -613,7 +613,7 @@
      `avatars:css:check` fails the build when it is stale. One stylesheet
      rather than 68 assets: the glyph is a mask and the colour is a property,
      so a scheme swap is a custom property and the trash state is a selector. -->
-<link rel="stylesheet" href="../../../../assets/css/avatars.css?v=50927e324c20">
+<link rel="stylesheet" href="../../../../assets/css/avatars.css?v=64b44e43f389">
 
 <!--
   The kinds THIS INSTANCE DECLARES, for the avatar fan.
@@ -647,7 +647,7 @@
 <script src="../../../../assets/js/kg-render.js" defer></script>
 <!-- BEFORE docs-ui.js, which calls it: the one drawing of the harness icon row (beans `lhvt`, `9rq1`). -->
 <script src="../../../../assets/js/navbar-row.js?v=7dce6a7e2ab0" defer></script>
-<script src="../../../../assets/js/docs-ui.js?v=944bce476b33" defer></script>
+<script src="../../../../assets/js/docs-ui.js?v=8b5567635976" defer></script>
 <!-- The edit, source and feedback links of every page, from the platform's one
   recipe (cat-harness-tools/src/core/edit-links.ts, bean v433): links carry their
   facts and this builds the hrefs. -->
@@ -736,9 +736,9 @@
   is broken when it is doing exactly what it can.
 -->
 
-<link rel="stylesheet" href="../../../../assets/css/navbar.css"><script src="../../../../assets/navbar/rail-1p9xz7j6paw.js" defer></script><script src="../../../../assets/js/navbar.js" defer></script><link rel="stylesheet" href="../../../../assets/page-layout.css" data-fa-page-layout><script src="../../../../assets/page-layout.js" defer data-fa-page-layout></script><meta name="fa-pinned-data" content="../../../.."></head>
+<link rel="stylesheet" href="../../../../assets/css/navbar.css"><script src="../../../../assets/navbar/rail-13sxfw5j2pc.js" defer></script><script src="../../../../assets/js/navbar.js" defer></script><link rel="stylesheet" href="../../../../assets/page-layout.css" data-fa-page-layout><script src="../../../../assets/page-layout.js" defer data-fa-page-layout></script><meta name="fa-pinned-data" content="../../../.."></head>
 
-<body><script type="application/json" id="fa-rail" data-fa-root="https://litlfred.github.io/folio-assistant" data-fa-to-root="../../../..">{"data":"rail-1p9xz7j6paw","here":"/en/cat-harness/code/cat-harness/"}</script><nav class="fa-nav" aria-label="folio-assistant" data-fa-rail="pending"><a href="../../../../">SMART Base Clinical</a></nav>
+<body><script type="application/json" id="fa-rail" data-fa-root="https://litlfred.github.io/folio-assistant" data-fa-to-root="../../../..">{"data":"rail-13sxfw5j2pc","here":"/en/cat-harness/code/cat-harness/"}</script><nav class="fa-nav" aria-label="folio-assistant" data-fa-rail="pending"><a href="../../../../">SMART Base Clinical</a></nav>
   <a class="skip-to-main" href="#main-content">Skip to main content</a>
   <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
   <symbol id="svg-link" viewBox="0 0 24 24">
@@ -875,7 +875,7 @@
   
   
 </h3>
-    <p class="sv-sub">The harness's own minimal folio renderer (bean ohx6, owner ruling 2026-10-10): `file-list.ts`, which renders the folio as the list of files it holds into `folio/index.md`, and the skill that says when to run it. Code and a skill, not folio content: the folio reader reads only `folio/*.json`, and the renderer skips this directory.</p><p class="sv-sub">4 files</p><ul><li><a href="https://github.com/litlfred/cat-harness/blob/3ad90ab023310a64a26b8ff01b4429cba6dd8c05/folio-render/README.md"><code>README.md</code></a></li><li><a href="https://github.com/litlfred/cat-harness/blob/3ad90ab023310a64a26b8ff01b4429cba6dd8c05/folio-render/file-list.test.ts"><code>file-list.test.ts</code></a></li><li><a href="https://github.com/litlfred/cat-harness/blob/3ad90ab023310a64a26b8ff01b4429cba6dd8c05/folio-render/file-list.ts"><code>file-list.ts</code></a></li><li><a href="https://github.com/litlfred/cat-harness/blob/3ad90ab023310a64a26b8ff01b4429cba6dd8c05/folio-render/folio-file-list.md"><code>folio-file-list.md</code></a></li></ul></section>
+    <p class="sv-sub">The harness's own minimal folio renderer (bean ohx6, owner ruling 2026-10-10): `file-list.ts`, which renders the folio as the list of files it holds into `folio/index.md`, and the skill that says when to run it. Code and a skill, not folio content: the folio reader reads only `folio/*.json`, and the renderer skips this directory.</p><p class="sv-sub">4 files</p><ul><li><a href="https://github.com/litlfred/cat-harness/blob/279c0fc88e8276486f7e0b8c3a2244e3a07f1344/folio-render/README.md"><code>README.md</code></a></li><li><a href="https://github.com/litlfred/cat-harness/blob/279c0fc88e8276486f7e0b8c3a2244e3a07f1344/folio-render/file-list.test.ts"><code>file-list.test.ts</code></a></li><li><a href="https://github.com/litlfred/cat-harness/blob/279c0fc88e8276486f7e0b8c3a2244e3a07f1344/folio-render/file-list.ts"><code>file-list.ts</code></a></li><li><a href="https://github.com/litlfred/cat-harness/blob/279c0fc88e8276486f7e0b8c3a2244e3a07f1344/folio-render/folio-file-list.md"><code>folio-file-list.md</code></a></li></ul></section>
 <section class="sv-item">
 <h3>
   
@@ -884,7 +884,7 @@
   
   
 </h3>
-    <p class="sv-sub">The pinned-upstream registry, `upstream-pins.json` (`&quot;$schema&quot;: &quot;folio-upstream-pins/v1&quot;`): one row per upstream dependency the build pins — such as the just-the-docs theme and the Bun runtime — naming the file the pin is READ from (`pinnedIn`, resolved against this instance's root), the pattern that reads it, what of ours binds to the dependency and the MVP that must pass before it moves. It deliberately holds no version: that lives in the file the build reads. Read by `bun run cat check:upstream-pins` (weekly, `.github/workflows/upstream-pins.yml`) and worked by the `upstream-pin-watch` / `upstream-version-adoption` processes and skill this instance owns. Moved here from the repository root on 2026-10-06 (bean `ar1s`, phase 3: tooling leaves the root before the repo split). HERE rather than in the tool layer because this instance's processes, skills and scripts name it, and a harness file naming a file in the layer above is a wrong-direction reference (`check:reference-direction`). `code`: the checker's input table, authored beside the processes that read it, not content any reader renders.</p><p class="sv-sub">2 files</p><ul><li><a href="https://github.com/litlfred/cat-harness/blob/3ad90ab023310a64a26b8ff01b4429cba6dd8c05/upstream/README.md"><code>README.md</code></a></li><li><a href="https://github.com/litlfred/cat-harness/blob/3ad90ab023310a64a26b8ff01b4429cba6dd8c05/upstream/upstream-pins.json"><code>upstream-pins.json</code></a></li></ul></section>
+    <p class="sv-sub">The pinned-upstream registry, `upstream-pins.json` (`&quot;$schema&quot;: &quot;folio-upstream-pins/v1&quot;`): one row per upstream dependency the build pins — such as the just-the-docs theme and the Bun runtime — naming the file the pin is READ from (`pinnedIn`, resolved against this instance's root), the pattern that reads it, what of ours binds to the dependency and the MVP that must pass before it moves. It deliberately holds no version: that lives in the file the build reads. Read by `bun run cat check:upstream-pins` (weekly, `.github/workflows/upstream-pins.yml`) and worked by the `upstream-pin-watch` / `upstream-version-adoption` processes and skill this instance owns. Moved here from the repository root on 2026-10-06 (bean `ar1s`, phase 3: tooling leaves the root before the repo split). HERE rather than in the tool layer because this instance's processes, skills and scripts name it, and a harness file naming a file in the layer above is a wrong-direction reference (`check:reference-direction`). `code`: the checker's input table, authored beside the processes that read it, not content any reader renders.</p><p class="sv-sub">2 files</p><ul><li><a href="https://github.com/litlfred/cat-harness/blob/279c0fc88e8276486f7e0b8c3a2244e3a07f1344/upstream/README.md"><code>README.md</code></a></li><li><a href="https://github.com/litlfred/cat-harness/blob/279c0fc88e8276486f7e0b8c3a2244e3a07f1344/upstream/upstream-pins.json"><code>upstream-pins.json</code></a></li></ul></section>
 <h2 class="sv-h2">
   
   
@@ -892,7 +892,7 @@
   
   
 </h2>
-    <ul class="sv-list"><li><a href="../bootstrap-tools/">bootstrap-tools</a></li><li><span class="sv-here">cat-harness</span></li><li><a href="../cat-harness-tools/">cat-harness-tools</a></li><li><a href="../fhir-harness/">fhir-harness</a></li><li><a href="../folio-assistant-core/">folio-assistant-core</a></li><li><a href="../smart-base/">smart-base</a></li><li><a href="../smart-base-clinical/">smart-base-clinical</a></li></ul>
+    <ul class="sv-list"><li><a href="../bootstrap-tools/">bootstrap-tools</a></li><li><span class="sv-here">cat-harness</span></li><li><a href="../cat-harness-tools/">cat-harness-tools</a></li><li><a href="../fhir-harness/">fhir-harness</a></li><li><a href="../folio-assistant-core/">folio-assistant-core</a></li><li><a href="../smart-base/">smart-base</a></li><li><a href="../smart-base-clinical/">smart-base-clinical</a></li><li><a href="../who-iris/">who-iris</a></li></ul>
 </div>
 
           

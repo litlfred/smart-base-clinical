@@ -1,7 +1,7 @@
 {
   "$schema": "folio-library-document/v1",
   "id": "9789240101197-eng",
-  "title": "9789240101197-eng",
+  "title": "Digital transformation handbook for health supply chain architecture",
   "variant": "pdf",
   "pages": null,
   "tocSource": "none",
@@ -3682,8 +3682,8 @@
     }
   ],
   "links": {
-    "repo": "litlfred/smart-base",
+    "repo": "litlfred/who-iris",
     "branch": "main",
-    "dir": "smart-base/library/9789240101197-eng"
+    "dir": "library/9789240101197-eng"
   }
 }

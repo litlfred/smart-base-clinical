@@ -13,7 +13,7 @@
   
 
     
-    .site-nav > ul.nav-list:first-child > li:not(:nth-child(4)) > a,
+    .site-nav > ul.nav-list:first-child > li:not(:nth-child(88)) > a,
     .site-nav > ul.nav-list:first-child > li > ul > li a {
       background-image: none;
     }
@@ -23,12 +23,12 @@
       background-image: none;
     }
 
-    .site-nav > ul.nav-list:first-child > li:nth-child(4) > a {
+    .site-nav > ul.nav-list:first-child > li:nth-child(88) > a {
       font-weight: 600;
       text-decoration: none;
-    }.site-nav > ul.nav-list:first-child > li:nth-child(4) > button svg {
+    }.site-nav > ul.nav-list:first-child > li:nth-child(88) > button svg {
       transform: rotate(-90deg);
-    }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(4) > ul.nav-list {
+    }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(88) > ul.nav-list {
       display: block;
     }
   </style>
@@ -604,7 +604,7 @@
 -->
 <!-- The harness icon row's own style, which railed pages load without docs-ui.css (beans `lhvt`, `9rq1`). -->
 <link rel="stylesheet" href="../../../assets/css/navbar-row.css?v=7d7d00921e0f">
-<link rel="stylesheet" href="../../../assets/css/docs-ui.css?v=4885e06b0507">
+<link rel="stylesheet" href="../../../assets/css/docs-ui.css?v=6071ae228cf3">
 <!-- Narrow viewports: wide content scrolls in its own box, never the page
      (bean `2r2n`). The standalone viewers inline the same file through
      `withViewerNav`, so both kinds of page read one set of rules. -->
@@ -621,7 +621,7 @@
      Loaded AFTER docs-ui.css deliberately: it supplies the `--fa-sticky-*`
      roles that docs-ui.css consumes, and a custom property has to be set on a
      matching element before the rule reading it takes effect. -->
-<link rel="stylesheet" href="../../../assets/css/themes.css?v=5c199f8420d3">
+<link rel="stylesheet" href="../../../assets/css/themes.css?v=37c8ab192a5f">
 <!-- UML overview colours: one class per graph typology, set on the Mermaid nodes
      that `scripts/gen-uml-overview.ts` writes into docs/uml/overview/. -->
 <link rel="stylesheet" href="../../../assets/css/uml.css?v=e677f91cbf66">
@@ -629,7 +629,7 @@
      `avatars:css:check` fails the build when it is stale. One stylesheet
      rather than 68 assets: the glyph is a mask and the colour is a property,
      so a scheme swap is a custom property and the trash state is a selector. -->
-<link rel="stylesheet" href="../../../assets/css/avatars.css?v=50927e324c20">
+<link rel="stylesheet" href="../../../assets/css/avatars.css?v=64b44e43f389">
 
 <!--
   The kinds THIS INSTANCE DECLARES, for the avatar fan.
@@ -663,7 +663,7 @@
 <script src="../../../assets/js/kg-render.js" defer></script>
 <!-- BEFORE docs-ui.js, which calls it: the one drawing of the harness icon row (beans `lhvt`, `9rq1`). -->
 <script src="../../../assets/js/navbar-row.js?v=7dce6a7e2ab0" defer></script>
-<script src="../../../assets/js/docs-ui.js?v=944bce476b33" defer></script>
+<script src="../../../assets/js/docs-ui.js?v=8b5567635976" defer></script>
 <!-- The edit, source and feedback links of every page, from the platform's one
   recipe (cat-harness-tools/src/core/edit-links.ts, bean v433): links carry their
   facts and this builds the hrefs. -->
@@ -752,9 +752,9 @@
   is broken when it is doing exactly what it can.
 -->
 
-<link rel="stylesheet" href="../../../assets/css/navbar.css"><script src="../../../assets/navbar/rail-1p9xz7j6paw.js" defer></script><script src="../../../assets/js/navbar.js" defer></script><link rel="stylesheet" href="../../../assets/page-layout.css" data-fa-page-layout><script src="../../../assets/page-layout.js" defer data-fa-page-layout></script><meta name="fa-pinned-data" content="../../.."></head>
+<link rel="stylesheet" href="../../../assets/css/navbar.css"><script src="../../../assets/navbar/rail-13sxfw5j2pc.js" defer></script><script src="../../../assets/js/navbar.js" defer></script><link rel="stylesheet" href="../../../assets/page-layout.css" data-fa-page-layout><script src="../../../assets/page-layout.js" defer data-fa-page-layout></script><meta name="fa-pinned-data" content="../../.."></head>
 
-<body><script type="application/json" id="fa-rail" data-fa-root="https://litlfred.github.io/folio-assistant" data-fa-to-root="../../..">{"data":"rail-1p9xz7j6paw","here":"/en/cat-harness/external-schemas/","documentIndex":{"label":"On this page","icon":"§","items":[{"href":"#the-specifications","label":"The specifications"},{"href":"#who-declares-each-specification","label":"Who declares each specification"},{"href":"#namespaces-the-corpus-uses-against-the-ones-it-declares","label":"Namespaces the corpus uses against the ones it declares"},{"href":"#each-specification","label":"Each specification","children":[{"href":"#dcmi-terms","label":"DCMI Metadata Terms","depth":1},{"href":"#hl7-fhir","label":"HL7 FHIR","depth":1},{"href":"#ietf-handle-system","label":"Handle System Overview (RFC 3650), with its namespace (RFC 3651) and protocol (RFC 3652)","depth":1},{"href":"#omg-bpmn-2.0","label":"Business Process Model and Notation (BPMN)","depth":1},{"href":"#omg-dd-1.0","label":"Diagram Definition (DD)","depth":1},{"href":"#omg-dmn-1.3","label":"Decision Model and Notation (DMN)","depth":1},{"href":"#opengroup-archimate-3.0","label":"ArchiMate® Model Exchange File Format","depth":1},{"href":"#purl-bibo","label":"The Bibliographic Ontology (BIBO)","depth":1},{"href":"#schema-org","label":"Schema.org","depth":1},{"href":"#spar-doco-deo-cito","label":"SPAR Ontologies: DoCO, DEO and CiTO","depth":1},{"href":"#spar-fabio","label":"SPAR Ontologies: FaBiO, the FRBR-aligned Bibliographic Ontology","depth":1},{"href":"#spdx-license-list","label":"SPDX License List","depth":1},{"href":"#w3c-csvw","label":"Metadata Vocabulary for Tabular Data","depth":1},{"href":"#w3c-hydra","label":"Hydra Core Vocabulary","depth":1},{"href":"#w3c-n-quads","label":"RDF 1.1 N-Quads: A line-based syntax for RDF datasets","depth":1},{"href":"#w3c-odrl","label":"ODRL Information Model 2.2","depth":1},{"href":"#w3c-owl2","label":"OWL 2 Web Ontology Language Document Overview (Second Edition)","depth":1},{"href":"#w3c-prov-jsonld","label":"The PROV-JSONLD Serialization: A JSON-LD Representation for the PROV Data Model","depth":1},{"href":"#w3c-prov-o","label":"PROV-O: The PROV Ontology","depth":1},{"href":"#w3c-rdf-calendar","label":"RDF Calendar — an application of the Resource Description Framework to iCalendar Data","depth":1},{"href":"#w3c-rdf","label":"RDF 1.1 Concepts and Abstract Syntax","depth":1},{"href":"#w3c-rdfs","label":"RDF Schema 1.1","depth":1},{"href":"#w3c-skos","label":"SKOS Simple Knowledge Organization System Reference","depth":1},{"href":"#w3c-sparql-1.1-query","label":"SPARQL 1.1 Query Language","depth":1},{"href":"#w3c-web-annotation","label":"Web Annotation Vocabulary","depth":1},{"href":"#w3c-xsd11-datatypes","label":"XML Schema Definition Language (XSD) 1.1 Part 2: Datatypes","depth":1},{"href":"#w3c-xsd11-structures","label":"W3C XML Schema Definition Language (XSD) 1.1 Part 1: Structures","depth":1},{"href":"#who-smart-base","label":"WHO SMART Guidelines base IG","depth":1}],"fold":"28 sub-sections"}],"collapsible":true}}</script><nav class="fa-nav" aria-label="folio-assistant" data-fa-rail="pending"><a href="../../../">SMART Base Clinical</a></nav>
+<body><script type="application/json" id="fa-rail" data-fa-root="https://litlfred.github.io/folio-assistant" data-fa-to-root="../../..">{"data":"rail-13sxfw5j2pc","here":"/en/cat-harness/external-schemas/","documentIndex":{"label":"On this page","icon":"§","items":[{"href":"#the-specifications","label":"The specifications"},{"href":"#who-declares-each-specification","label":"Who declares each specification"},{"href":"#namespaces-the-corpus-uses-against-the-ones-it-declares","label":"Namespaces the corpus uses against the ones it declares"},{"href":"#each-specification","label":"Each specification","children":[{"href":"#dcmi-terms","label":"DCMI Metadata Terms","depth":1},{"href":"#hl7-fhir","label":"HL7 FHIR","depth":1},{"href":"#ietf-handle-system","label":"Handle System Overview (RFC 3650), with its namespace (RFC 3651) and protocol (RFC 3652)","depth":1},{"href":"#omg-bpmn-2.0","label":"Business Process Model and Notation (BPMN)","depth":1},{"href":"#omg-dd-1.0","label":"Diagram Definition (DD)","depth":1},{"href":"#omg-dmn-1.3","label":"Decision Model and Notation (DMN)","depth":1},{"href":"#opengroup-archimate-3.0","label":"ArchiMate® Model Exchange File Format","depth":1},{"href":"#purl-bibo","label":"The Bibliographic Ontology (BIBO)","depth":1},{"href":"#schema-org","label":"Schema.org","depth":1},{"href":"#spar-doco-deo-cito","label":"SPAR Ontologies: DoCO, DEO and CiTO","depth":1},{"href":"#spar-fabio","label":"SPAR Ontologies: FaBiO, the FRBR-aligned Bibliographic Ontology","depth":1},{"href":"#spdx-license-list","label":"SPDX License List","depth":1},{"href":"#w3c-csvw","label":"Metadata Vocabulary for Tabular Data","depth":1},{"href":"#w3c-hydra","label":"Hydra Core Vocabulary","depth":1},{"href":"#w3c-n-quads","label":"RDF 1.1 N-Quads: A line-based syntax for RDF datasets","depth":1},{"href":"#w3c-odrl","label":"ODRL Information Model 2.2","depth":1},{"href":"#w3c-owl2","label":"OWL 2 Web Ontology Language Document Overview (Second Edition)","depth":1},{"href":"#w3c-prov-jsonld","label":"The PROV-JSONLD Serialization: A JSON-LD Representation for the PROV Data Model","depth":1},{"href":"#w3c-prov-o","label":"PROV-O: The PROV Ontology","depth":1},{"href":"#w3c-rdf-calendar","label":"RDF Calendar — an application of the Resource Description Framework to iCalendar Data","depth":1},{"href":"#w3c-rdf","label":"RDF 1.1 Concepts and Abstract Syntax","depth":1},{"href":"#w3c-rdfs","label":"RDF Schema 1.1","depth":1},{"href":"#w3c-skos","label":"SKOS Simple Knowledge Organization System Reference","depth":1},{"href":"#w3c-sparql-1.1-query","label":"SPARQL 1.1 Query Language","depth":1},{"href":"#w3c-web-annotation","label":"Web Annotation Vocabulary","depth":1},{"href":"#w3c-xsd11-datatypes","label":"XML Schema Definition Language (XSD) 1.1 Part 2: Datatypes","depth":1},{"href":"#w3c-xsd11-structures","label":"W3C XML Schema Definition Language (XSD) 1.1 Part 1: Structures","depth":1},{"href":"#who-smart-base","label":"WHO SMART Guidelines base IG","depth":1}],"fold":"28 sub-sections"}],"collapsible":true}}</script><nav class="fa-nav" aria-label="folio-assistant" data-fa-rail="pending"><a href="../../../">SMART Base Clinical</a></nav>
   <a class="skip-to-main" href="#main-content">Skip to main content</a>
   <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
   <symbol id="svg-link" viewBox="0 0 24 24">
@@ -883,7 +883,7 @@ depends on it</strong>, and <strong>which of its terms this repository branches 
 <div class="xs-grid">
 <div class="xs-stat"><b>28</b><span>specifications</span></div>
 <div class="xs-stat"><b>121</b><span>operative terms in graph (65 described, 56 pending)</span></div>
-<div class="xs-stat"><b>303</b><span>declared uses</span></div>
+<div class="xs-stat"><b>310</b><span>declared uses</span></div>
 <div class="xs-stat"><b>0</b><span>declarations naming no record</span></div>
 </div>
 
@@ -1095,12 +1095,6 @@ front-matter list, an <code class="language-plaintext highlighter-rouge">xmlns</
 declares the spec (bean <code class="language-plaintext highlighter-rouge">u63y</code>).</p>
 
 <p>Every declaration names a record on this page.</p>
-
-<p><strong>1 record(s) nothing declares.</strong> A version bump would move nothing that says so:</p>
-
-<ul>
-  <li><a href="#w3c-sparql-1.1-query"><code class="language-plaintext highlighter-rouge">w3c-sparql-1.1-query</code></a></li>
-</ul>
 <h2 id="namespaces-the-corpus-uses-against-the-ones-it-declares">
   
   
@@ -1196,6 +1190,10 @@ a registry nobody prunes is one that stops describing the repository.</p>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">folio-dublin-core/v1 nodes</code></td>
       <td>through the module that types it (<code class="language-plaintext highlighter-rouge">folio-assistant-core/schemas/dublin-core.ts</code>)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">who-iris/skills/iris-dspace.md</code></td>
+      <td><code class="language-plaintext highlighter-rouge">conformsTo:</code> front matter</td>
     </tr>
   </tbody>
 </table></div>
@@ -1332,15 +1330,11 @@ a subset of the edition rather than a transcription of it.</p>
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">cat-harness/schemas/content/vocab-mapping.ts</code></td>
+      <td><code class="language-plaintext highlighter-rouge">cat-harness-tools/schemas/content/vocab-mapping.ts</code></td>
       <td><code class="language-plaintext highlighter-rouge">@conformsTo</code> tag</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">cat-harness/schemas/kg/jsonld.ts</code></td>
-      <td><code class="language-plaintext highlighter-rouge">@conformsTo</code> tag</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">cat-harness/schemas/vocab-mapping-fhir.ts</code></td>
+      <td><code class="language-plaintext highlighter-rouge">cat-harness-tools/schemas/kg/jsonld.ts</code></td>
       <td><code class="language-plaintext highlighter-rouge">@conformsTo</code> tag</td>
     </tr>
     <tr>
@@ -1354,10 +1348,6 @@ a subset of the edition rather than a transcription of it.</p>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">fhir-harness/schemas/vocab-mapping-fhir.ts</code></td>
       <td><code class="language-plaintext highlighter-rouge">@conformsTo</code> tag</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">vocab-mapping graph</code></td>
-      <td>through the module that types it (<code class="language-plaintext highlighter-rouge">cat-harness/schemas/content/vocab-mapping.ts</code>)</td>
     </tr>
   </tbody>
 </table></div>
@@ -1412,7 +1402,7 @@ a subset of the edition rather than a transcription of it.</p>
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">cat-harness/schemas/kg/prov-jsonld.ts</code></td>
+      <td><code class="language-plaintext highlighter-rouge">cat-harness-tools/schemas/kg/prov-jsonld.ts</code></td>
       <td><code class="language-plaintext highlighter-rouge">@conformsTo</code> tag</td>
     </tr>
   </tbody>
@@ -1534,6 +1524,10 @@ graph. That is a determined zero, not an unfilled field.</p>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">smart-base/processes/content/*.bpmn (6)</code></td>
+      <td><code class="language-plaintext highlighter-rouge">xmlns</code> binding</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">who-iris/processes/*.bpmn (4)</code></td>
       <td><code class="language-plaintext highlighter-rouge">xmlns</code> binding</td>
     </tr>
   </tbody>
@@ -1789,6 +1783,10 @@ a subset of the edition rather than a transcription of it.</p>
       <td><code class="language-plaintext highlighter-rouge">smart-base/processes/content/*.bpmn (6)</code></td>
       <td><code class="language-plaintext highlighter-rouge">xmlns</code> binding</td>
     </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">who-iris/processes/*.bpmn (4)</code></td>
+      <td><code class="language-plaintext highlighter-rouge">xmlns</code> binding</td>
+    </tr>
   </tbody>
 </table></div>
 
@@ -1881,11 +1879,11 @@ graph. That is a determined zero, not an unfilled field.</p>
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">cat-harness-tools/archimate/scripts/gen-archimate-pages.ts</code></td>
+      <td><code class="language-plaintext highlighter-rouge">cat-harness-tools/archimate/schemas/archimate.ts</code></td>
       <td><code class="language-plaintext highlighter-rouge">@conformsTo</code> tag</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">cat-harness/archimate/schemas/archimate.ts</code></td>
+      <td><code class="language-plaintext highlighter-rouge">cat-harness-tools/archimate/scripts/gen-archimate-pages.ts</code></td>
       <td><code class="language-plaintext highlighter-rouge">@conformsTo</code> tag</td>
     </tr>
   </tbody>
@@ -2035,7 +2033,7 @@ a subset of the edition rather than a transcription of it.</p>
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">cat-harness/schemas/kg/jsonld.ts</code></td>
+      <td><code class="language-plaintext highlighter-rouge">cat-harness-tools/schemas/kg/jsonld.ts</code></td>
       <td><code class="language-plaintext highlighter-rouge">@conformsTo</code> tag</td>
     </tr>
   </tbody>
@@ -2152,7 +2150,7 @@ graph. That is a determined zero, not an unfilled field.</p>
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">cat-harness/schemas/library/spdx-license-expression.ts</code></td>
+      <td><code class="language-plaintext highlighter-rouge">cat-harness-tools/schemas/library/spdx-license-expression.ts</code></td>
       <td><code class="language-plaintext highlighter-rouge">@conformsTo</code> tag</td>
     </tr>
   </tbody>
@@ -2189,7 +2187,7 @@ graph. That is a determined zero, not an unfilled field.</p>
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">cat-harness/schemas/kg/jsonld.ts</code></td>
+      <td><code class="language-plaintext highlighter-rouge">cat-harness-tools/schemas/kg/jsonld.ts</code></td>
       <td><code class="language-plaintext highlighter-rouge">@conformsTo</code> tag</td>
     </tr>
   </tbody>
@@ -2280,7 +2278,7 @@ graph. That is a determined zero, not an unfilled field.</p>
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">cat-harness/schemas/kg/nquads-distribution.ts</code></td>
+      <td><code class="language-plaintext highlighter-rouge">cat-harness-tools/schemas/kg/nquads-distribution.ts</code></td>
       <td><code class="language-plaintext highlighter-rouge">@conformsTo</code> tag</td>
     </tr>
     <tr>
@@ -2289,6 +2287,10 @@ graph. That is a determined zero, not an unfilled field.</p>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">cat-harness/skills/kg/graph-management/nquads-distribution.md</code></td>
+      <td><code class="language-plaintext highlighter-rouge">conformsTo:</code> front matter</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">who-iris/skills/iris-oxigraph.md</code></td>
       <td><code class="language-plaintext highlighter-rouge">conformsTo:</code> front matter</td>
     </tr>
   </tbody>
@@ -2346,16 +2348,12 @@ a subset of the edition rather than a transcription of it.</p>
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">cat-harness/schemas/content/odrl.ts</code></td>
+      <td><code class="language-plaintext highlighter-rouge">cat-harness-tools/schemas/content/odrl.ts</code></td>
       <td><code class="language-plaintext highlighter-rouge">@conformsTo</code> tag</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">fhir-harness/schemas/pcf-consent.ts</code></td>
       <td><code class="language-plaintext highlighter-rouge">@conformsTo</code> tag</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">policies graph</code></td>
-      <td>through the module that types it (<code class="language-plaintext highlighter-rouge">cat-harness/schemas/content/odrl.ts</code>)</td>
     </tr>
   </tbody>
 </table></div>
@@ -2532,7 +2530,7 @@ a subset of the edition rather than a transcription of it.</p>
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">cat-harness/schemas/kg/prov-jsonld.ts</code></td>
+      <td><code class="language-plaintext highlighter-rouge">cat-harness-tools/schemas/kg/prov-jsonld.ts</code></td>
       <td><code class="language-plaintext highlighter-rouge">@conformsTo</code> tag</td>
     </tr>
   </tbody>
@@ -2573,11 +2571,11 @@ graph. That is a determined zero, not an unfilled field.</p>
       <td><code class="language-plaintext highlighter-rouge">@conformsTo</code> tag</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">cat-harness-tools/scripts/kg-export.ts</code></td>
+      <td><code class="language-plaintext highlighter-rouge">cat-harness-tools/schemas/kg/jsonld.ts</code></td>
       <td><code class="language-plaintext highlighter-rouge">@conformsTo</code> tag</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">cat-harness/schemas/kg/jsonld.ts</code></td>
+      <td><code class="language-plaintext highlighter-rouge">cat-harness-tools/scripts/kg-export.ts</code></td>
       <td><code class="language-plaintext highlighter-rouge">@conformsTo</code> tag</td>
     </tr>
   </tbody>
@@ -2824,28 +2822,24 @@ a subset of the edition rather than a transcription of it.</p>
   </thead>
   <tbody>
     <tr>
+      <td><code class="language-plaintext highlighter-rouge">cat-harness-tools/schemas/content/vocab-mapping.ts</code></td>
+      <td><code class="language-plaintext highlighter-rouge">@conformsTo</code> tag</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">cat-harness-tools/schemas/content/vocabulary.ts</code></td>
+      <td><code class="language-plaintext highlighter-rouge">@conformsTo</code> tag</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">cat-harness-tools/schemas/kg/jsonld.ts</code></td>
+      <td><code class="language-plaintext highlighter-rouge">@conformsTo</code> tag</td>
+    </tr>
+    <tr>
       <td><code class="language-plaintext highlighter-rouge">cat-harness-tools/scripts/glossary-export.ts</code></td>
       <td><code class="language-plaintext highlighter-rouge">@conformsTo</code> tag</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">cat-harness-tools/scripts/ns-export.ts</code></td>
       <td><code class="language-plaintext highlighter-rouge">@conformsTo</code> tag</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">cat-harness/schemas/content/vocab-mapping.ts</code></td>
-      <td><code class="language-plaintext highlighter-rouge">@conformsTo</code> tag</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">cat-harness/schemas/content/vocabulary.ts</code></td>
-      <td><code class="language-plaintext highlighter-rouge">@conformsTo</code> tag</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">cat-harness/schemas/kg/jsonld.ts</code></td>
-      <td><code class="language-plaintext highlighter-rouge">@conformsTo</code> tag</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">vocab-mapping graph</code></td>
-      <td>through the module that types it (<code class="language-plaintext highlighter-rouge">cat-harness/schemas/content/vocab-mapping.ts</code>)</td>
     </tr>
   </tbody>
 </table></div>
@@ -2969,7 +2963,22 @@ a subset of the edition rather than a transcription of it.</p>
 
 <p><strong>Note.</strong> The query language the IRIS replica’s Oxigraph pipeline (skill iris-oxigraph) runs over the catalogue’s N-Quads: faceted rollups and combined queries, in the browser (WebAssembly) and on the CLI. A language, not an RDF vocabulary, so it claims no namespace; the IRIs its queries match are the vocabularies’ own (dcterms, skos, …), recorded under those.</p>
 
-<p><strong>What depends on it.</strong> Nothing here declares it.</p>
+<p><strong>What depends on it.</strong></p>
+
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th>user</th>
+      <th>declared by</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">who-iris/skills/iris-oxigraph.md</code></td>
+      <td><code class="language-plaintext highlighter-rouge">conformsTo:</code> front matter</td>
+    </tr>
+  </tbody>
+</table></div>
 
 <p><strong>No operative terms.</strong> This repository conforms to the specification
 without branching on any of its terms, so none is materialised into the
@@ -3002,7 +3011,7 @@ graph. That is a determined zero, not an unfilled field.</p>
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">cat-harness/schemas/kg/jsonld.ts</code></td>
+      <td><code class="language-plaintext highlighter-rouge">cat-harness-tools/schemas/kg/jsonld.ts</code></td>
       <td><code class="language-plaintext highlighter-rouge">@conformsTo</code> tag</td>
     </tr>
   </tbody>
@@ -3039,11 +3048,11 @@ graph. That is a determined zero, not an unfilled field.</p>
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">cat-harness-tools/scripts/kg-export.ts</code></td>
+      <td><code class="language-plaintext highlighter-rouge">cat-harness-tools/schemas/kg/jsonld.ts</code></td>
       <td><code class="language-plaintext highlighter-rouge">@conformsTo</code> tag</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">cat-harness/schemas/kg/jsonld.ts</code></td>
+      <td><code class="language-plaintext highlighter-rouge">cat-harness-tools/scripts/kg-export.ts</code></td>
       <td><code class="language-plaintext highlighter-rouge">@conformsTo</code> tag</td>
     </tr>
   </tbody>
@@ -3125,7 +3134,7 @@ graph. That is a determined zero, not an unfilled field.</p>
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">cat-harness/schemas/kg/jsonld.ts</code></td>
+      <td><code class="language-plaintext highlighter-rouge">cat-harness-tools/schemas/kg/jsonld.ts</code></td>
       <td><code class="language-plaintext highlighter-rouge">@conformsTo</code> tag</td>
     </tr>
   </tbody>

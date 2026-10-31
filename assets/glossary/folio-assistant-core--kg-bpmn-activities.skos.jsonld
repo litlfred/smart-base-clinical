@@ -1686,7 +1686,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "The parties agree the purpose, the datasets, the period, the conditions and duties, and which trust anchors each side accepts. This sets what the text must say; it is a negotiation between people."
+          "@value": "The parties agree the purpose, the datasets, the period, the conditions and duties, which trust anchors each side accepts, and the legal basis the sharing rests on (consent, treatment, public-health law or a research waiver). This sets what the text must say; it is a negotiation between people."
         }
       ],
       "skos:notation": "Task_AgreeTerms",
@@ -1706,7 +1706,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "Each signed version gets its own immutable URL (for example /dsa/42/v3). A 'latest' URL may exist; nothing cites it. A new version never overwrites an old one."
+          "@value": "Each signed version gets its own immutable URL (for example /dsa/42/v3). A 'latest' URL may exist; nothing cites it. A new version never overwrites an old one. This fixed-version URL is the one a Consent cites (consent rule 2), and a computable agreement's ODRL policy uid is set to it (P2.3)."
         }
       ],
       "skos:notation": "Task_AssignVersion",
@@ -1746,11 +1746,31 @@
       ],
       "skos:definition": [
         {
-          "@value": "Computable only. A person checks that the ODRL says what the text says, and signs it off. A program can check the ODRL is well formed; it cannot check that it matches the text."
+          "@value": "Computable only. A person checks that the ODRL says what the text says, and signs it off. A program can check the ODRL is well formed; it cannot check that it matches the text. The check includes the consent duty: present when the legal basis is consent, absent otherwise (consent rule 1)."
         }
       ],
       "skos:notation": "Task_CheckOdrl",
       "dcterms:source": "folio-assistant-core/processes/content/dsa-document-lifecycle.bpmn#Task_CheckOdrl",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant-core/v0/ns#glossary/kg-bpmn-activities/process_dsadocumentlifecycle.task_consentcitation",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/folio-assistant-core/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "P2.2b · State the fixed-version URL and hash a Consent cites [content-publish]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Consent-based only. The version's publication metadata states the fixed-version URL (P2.1) and the hash (P2.2) that a Consent cites in FHIR R4 Consent.policy.uri (consent rule 2), never the 'latest' URL. For a computable agreement that URL is also the ODRL policy uid (P2.3): a Consent counts only when its Consent.policy.uri equals the agreement's ODRL policy uid, so the two are the same string."
+        }
+      ],
+      "skos:notation": "Task_ConsentCitation",
+      "dcterms:source": "folio-assistant-core/processes/content/dsa-document-lifecycle.bpmn#Task_ConsentCitation",
       "skos:note": "candidate"
     },
     {
@@ -1806,7 +1826,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "Computable only. One assigner and one assignee (ODRL 2.2 §2.1.3), permissions and prohibitions with target assets (§2.2), constraints (§2.5.1) and duties (§2.6.3), written as JSON-LD. Purposes from HL7 PurposeOfUse."
+          "@value": "Computable only. One assigner and one assignee (ODRL 2.2 §2.1.3), permissions and prohibitions with target assets (§2.2), constraints (§2.5.1) and duties (§2.6.3), written as JSON-LD. Purposes from HL7 PurposeOfUse. Consent rule 1: the Agreement carries the odrl:obtainConsent duty only when the legal basis recorded in P1.2a is consent."
         }
       ],
       "skos:notation": "Task_DeriveOdrl",
@@ -1854,6 +1874,46 @@
       "skos:note": "candidate"
     },
     {
+      "@id": "https://litlfred.github.io/folio-assistant-core/v0/ns#glossary/kg-bpmn-activities/process_dsadocumentlifecycle.task_hashsummary",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/folio-assistant-core/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "P2.2a · Hash the plain-language summary with the agreement"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Consent-based only. Record the SHA-256 of the plain-language summary beside the agreement's, in the same version (consent rule 3). The summary a person consented to can then be checked against the agreement it summarises; a changed summary is a new version."
+        }
+      ],
+      "skos:notation": "Task_HashSummary",
+      "dcterms:source": "folio-assistant-core/processes/content/dsa-document-lifecycle.bpmn#Task_HashSummary",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant-core/v0/ns#glossary/kg-bpmn-activities/process_dsadocumentlifecycle.task_newconsentneeded",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/folio-assistant-core/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "P14.3 · Record that new consent is needed"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "The amendment widens use, so a Consent citing the old version's URL and hash does not cover the new version (consent rule 2). Record on the bean, and in the new version's text, that new consent is needed; the new version gets its own plain-language summary (P1.2b). Asking each person again is the trust layer's."
+        }
+      ],
+      "skos:notation": "Task_NewConsentNeeded",
+      "dcterms:source": "folio-assistant-core/processes/content/dsa-document-lifecycle.bpmn#Task_NewConsentNeeded",
+      "skos:note": "candidate"
+    },
+    {
       "@id": "https://litlfred.github.io/folio-assistant-core/v0/ns#glossary/kg-bpmn-activities/process_dsadocumentlifecycle.task_odrlcitestext",
       "@type": "skos:Concept",
       "skos:inScheme": {
@@ -1866,11 +1926,31 @@
       ],
       "skos:definition": [
         {
-          "@value": "The ODRL policy names the signed text with dcterms:source (DCMI Terms), pointing at the immutable URL whose checksum was just recorded."
+          "@value": "The ODRL policy names the signed text with dcterms:source (DCMI Terms), pointing at the immutable URL whose checksum was just recorded. Its uid is that same fixed-version URL, the URL a Consent cites in Consent.policy.uri (consent rule 2)."
         }
       ],
       "skos:notation": "Task_OdrlCitesText",
       "dcterms:source": "folio-assistant-core/processes/content/dsa-document-lifecycle.bpmn#Task_OdrlCitesText",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant-core/v0/ns#glossary/kg-bpmn-activities/process_dsadocumentlifecycle.task_plainsummary",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/folio-assistant-core/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "P1.2b · Draft the plain-language summary [document-authoring]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Consent-based only. Write a plain-language summary of the agreement in the same document folio: what it lets the recipient do with the person's data, in words the person can read. Consent rule 3: every agreement that needs consent publishes this summary, hashed with the agreement (P2.2a), and the summary is what the person consents to. It is reviewed, rendered and versioned with the text."
+        }
+      ],
+      "skos:notation": "Task_PlainSummary",
+      "dcterms:source": "folio-assistant-core/processes/content/dsa-document-lifecycle.bpmn#Task_PlainSummary",
       "skos:note": "candidate"
     },
     {
@@ -1886,11 +1966,31 @@
       ],
       "skos:definition": [
         {
-          "@value": "Publish the files at the version's immutable URL. If the parties' names are sensitive, publish only the template and the hash of the signed instance."
+          "@value": "Publish the files at the version's immutable URL. If the parties' names are sensitive, publish only the template and the hash of the signed instance. A consent-based agreement publishes its plain-language summary and its hash with the text (consent rule 3). Check before publishing (consent rule 2): a computable agreement's ODRL policy uid equals this version's fixed-version URL, the URL a Consent cites; if they differ, the version is not published."
         }
       ],
       "skos:notation": "Task_Publish",
       "dcterms:source": "folio-assistant-core/processes/content/dsa-document-lifecycle.bpmn#Task_Publish",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/folio-assistant-core/v0/ns#glossary/kg-bpmn-activities/process_dsadocumentlifecycle.task_recordlegalbasis",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/folio-assistant-core/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "P1.2a · Record the legal basis [normative-statements]"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "The text states the legal basis the parties agreed in P1.1 as a normative statement: consent, treatment, public-health law, or a research waiver. Consent rule 1: only an agreement whose legal basis is consent carries the odrl:obtainConsent duty; treatment, public-health law and research waivers do not rest on consent. The gateway that follows, the ODRL and the reviewers all read the basis from this statement."
+        }
+      ],
+      "skos:notation": "Task_RecordLegalBasis",
+      "dcterms:source": "folio-assistant-core/processes/content/dsa-document-lifecycle.bpmn#Task_RecordLegalBasis",
       "skos:note": "candidate"
     },
     {
@@ -1906,7 +2006,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "Render the agreed text to the form that will be signed (HTML and PDF), without a TeX installation."
+          "@value": "Render the agreed text to the form that will be signed (HTML and PDF), without a TeX installation. A consent-based agreement's plain-language summary is rendered with it."
         }
       ],
       "skos:notation": "Task_Render",
@@ -1926,7 +2026,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "Legal and policy review of the whole draft. Reviewers comment on blocks through review-comments; review says which review skill answers which question."
+          "@value": "Legal and policy review of the whole draft. Reviewers comment on blocks through review-comments; review says which review skill answers which question. For a consent-based agreement the reviewers also check that the plain-language summary says what the text says, since it is what the person consents to (consent rule 3)."
         }
       ],
       "skos:notation": "Task_Review",

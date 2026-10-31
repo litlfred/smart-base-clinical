@@ -675,6 +675,13 @@
   mask-image: var(--fa-avatar-glyph);
 }
 
+.fa-avatar[data-fa-kind="who-iris"] {
+  /* an open book — a repository of published documents, in WHO blue */
+  --fa-avatar-glyph: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 6h6a2 2 0 012 2v10a2 2 0 00-2-2H4zM20 6h-6a2 2 0 00-2 2v10a2 2 0 012-2h6zM4 6v10M20 6v10' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  -webkit-mask-image: var(--fa-avatar-glyph);
+  mask-image: var(--fa-avatar-glyph);
+}
+
 .fa-avatar {
   /* a question mark — no avatar is declared for this kind */
   --fa-avatar-glyph: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 9a3 3 0 114 3v2m0 3h.01' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
@@ -775,6 +782,7 @@
   .fa-avatar[data-fa-kind="fhir-harness"] { background-color: hsl(10 46% 34%); }
   .fa-avatar[data-fa-kind="folio-assistant-core"] { background-color: hsl(212 46% 34%); }
   .fa-avatar[data-fa-kind="smart-base"] { background-color: hsl(199 46% 34%); }
+  .fa-avatar[data-fa-kind="who-iris"] { background-color: hsl(199 46% 34%); }
   .fa-avatar { background-color: hsl(0 46% 34%); }
 }
 
@@ -871,6 +879,7 @@
     .fa-avatar[data-fa-kind="fhir-harness"] { background-color: hsl(10 46% 34%); }
     .fa-avatar[data-fa-kind="folio-assistant-core"] { background-color: hsl(212 46% 34%); }
     .fa-avatar[data-fa-kind="smart-base"] { background-color: hsl(199 46% 34%); }
+    .fa-avatar[data-fa-kind="who-iris"] { background-color: hsl(199 46% 34%); }
     .fa-avatar { background-color: hsl(0 46% 34%); }
   }
 }
@@ -968,6 +977,7 @@
   .fa-avatar[data-fa-kind="fhir-harness"] { background-color: hsl(10 42% 72%); }
   .fa-avatar[data-fa-kind="folio-assistant-core"] { background-color: hsl(212 42% 72%); }
   .fa-avatar[data-fa-kind="smart-base"] { background-color: hsl(199 42% 72%); }
+  .fa-avatar[data-fa-kind="who-iris"] { background-color: hsl(199 42% 72%); }
   .fa-avatar { background-color: hsl(0 42% 72%); }
 }
 
@@ -1064,6 +1074,7 @@
     .fa-avatar[data-fa-kind="fhir-harness"] { background-color: hsl(10 42% 72%); }
     .fa-avatar[data-fa-kind="folio-assistant-core"] { background-color: hsl(212 42% 72%); }
     .fa-avatar[data-fa-kind="smart-base"] { background-color: hsl(199 42% 72%); }
+    .fa-avatar[data-fa-kind="who-iris"] { background-color: hsl(199 42% 72%); }
     .fa-avatar { background-color: hsl(0 42% 72%); }
   }
 }
@@ -1163,6 +1174,7 @@
   .fa-avatar[data-fa-kind="fhir-harness"][data-fa-trash="true"] { background-color: hsl(10 16% 52%); }
   .fa-avatar[data-fa-kind="folio-assistant-core"][data-fa-trash="true"] { background-color: hsl(212 16% 52%); }
   .fa-avatar[data-fa-kind="smart-base"][data-fa-trash="true"] { background-color: hsl(199 16% 52%); }
+  .fa-avatar[data-fa-kind="who-iris"][data-fa-trash="true"] { background-color: hsl(199 16% 52%); }
 }
 
 @media (prefers-color-scheme: light) {
@@ -1258,6 +1270,7 @@
     .fa-avatar[data-fa-kind="fhir-harness"][data-fa-trash="true"] { background-color: hsl(10 16% 52%); }
     .fa-avatar[data-fa-kind="folio-assistant-core"][data-fa-trash="true"] { background-color: hsl(212 16% 52%); }
     .fa-avatar[data-fa-kind="smart-base"][data-fa-trash="true"] { background-color: hsl(199 16% 52%); }
+    .fa-avatar[data-fa-kind="who-iris"][data-fa-trash="true"] { background-color: hsl(199 16% 52%); }
   }
 }
 
@@ -1353,6 +1366,7 @@
   .fa-avatar[data-fa-kind="fhir-harness"][data-fa-trash="true"] { background-color: hsl(10 14% 56%); }
   .fa-avatar[data-fa-kind="folio-assistant-core"][data-fa-trash="true"] { background-color: hsl(212 14% 56%); }
   .fa-avatar[data-fa-kind="smart-base"][data-fa-trash="true"] { background-color: hsl(199 14% 56%); }
+  .fa-avatar[data-fa-kind="who-iris"][data-fa-trash="true"] { background-color: hsl(199 14% 56%); }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -1448,5 +1462,6 @@
     .fa-avatar[data-fa-kind="fhir-harness"][data-fa-trash="true"] { background-color: hsl(10 14% 56%); }
     .fa-avatar[data-fa-kind="folio-assistant-core"][data-fa-trash="true"] { background-color: hsl(212 14% 56%); }
     .fa-avatar[data-fa-kind="smart-base"][data-fa-trash="true"] { background-color: hsl(199 14% 56%); }
+    .fa-avatar[data-fa-kind="who-iris"][data-fa-trash="true"] { background-color: hsl(199 14% 56%); }
   }
 }

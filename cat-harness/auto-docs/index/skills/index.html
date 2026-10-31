@@ -588,7 +588,7 @@
 -->
 <!-- The harness icon row's own style, which railed pages load without docs-ui.css (beans `lhvt`, `9rq1`). -->
 <link rel="stylesheet" href="../../../../assets/css/navbar-row.css?v=7d7d00921e0f">
-<link rel="stylesheet" href="../../../../assets/css/docs-ui.css?v=4885e06b0507">
+<link rel="stylesheet" href="../../../../assets/css/docs-ui.css?v=6071ae228cf3">
 <!-- Narrow viewports: wide content scrolls in its own box, never the page
      (bean `2r2n`). The standalone viewers inline the same file through
      `withViewerNav`, so both kinds of page read one set of rules. -->
@@ -605,7 +605,7 @@
      Loaded AFTER docs-ui.css deliberately: it supplies the `--fa-sticky-*`
      roles that docs-ui.css consumes, and a custom property has to be set on a
      matching element before the rule reading it takes effect. -->
-<link rel="stylesheet" href="../../../../assets/css/themes.css?v=5c199f8420d3">
+<link rel="stylesheet" href="../../../../assets/css/themes.css?v=37c8ab192a5f">
 <!-- UML overview colours: one class per graph typology, set on the Mermaid nodes
      that `scripts/gen-uml-overview.ts` writes into docs/uml/overview/. -->
 <link rel="stylesheet" href="../../../../assets/css/uml.css?v=e677f91cbf66">
@@ -613,7 +613,7 @@
      `avatars:css:check` fails the build when it is stale. One stylesheet
      rather than 68 assets: the glyph is a mask and the colour is a property,
      so a scheme swap is a custom property and the trash state is a selector. -->
-<link rel="stylesheet" href="../../../../assets/css/avatars.css?v=50927e324c20">
+<link rel="stylesheet" href="../../../../assets/css/avatars.css?v=64b44e43f389">
 
 <!--
   The kinds THIS INSTANCE DECLARES, for the avatar fan.
@@ -647,7 +647,7 @@
 <script src="../../../../assets/js/kg-render.js" defer></script>
 <!-- BEFORE docs-ui.js, which calls it: the one drawing of the harness icon row (beans `lhvt`, `9rq1`). -->
 <script src="../../../../assets/js/navbar-row.js?v=7dce6a7e2ab0" defer></script>
-<script src="../../../../assets/js/docs-ui.js?v=944bce476b33" defer></script>
+<script src="../../../../assets/js/docs-ui.js?v=8b5567635976" defer></script>
 <!-- The edit, source and feedback links of every page, from the platform's one
   recipe (cat-harness-tools/src/core/edit-links.ts, bean v433): links carry their
   facts and this builds the hrefs. -->
@@ -736,9 +736,9 @@
   is broken when it is doing exactly what it can.
 -->
 
-<link rel="stylesheet" href="../../../../assets/css/navbar.css"><script src="../../../../assets/navbar/rail-1p9xz7j6paw.js" defer></script><script src="../../../../assets/js/navbar.js" defer></script><link rel="stylesheet" href="../../../../assets/page-layout.css" data-fa-page-layout><script src="../../../../assets/page-layout.js" defer data-fa-page-layout></script><meta name="fa-pinned-data" content="../../../.."></head>
+<link rel="stylesheet" href="../../../../assets/css/navbar.css"><script src="../../../../assets/navbar/rail-13sxfw5j2pc.js" defer></script><script src="../../../../assets/js/navbar.js" defer></script><link rel="stylesheet" href="../../../../assets/page-layout.css" data-fa-page-layout><script src="../../../../assets/page-layout.js" defer data-fa-page-layout></script><meta name="fa-pinned-data" content="../../../.."></head>
 
-<body><script type="application/json" id="fa-rail" data-fa-root="https://litlfred.github.io/folio-assistant" data-fa-to-root="../../../..">{"data":"rail-1p9xz7j6paw","here":"/cat-harness/auto-docs/index/skills/"}</script><nav class="fa-nav" aria-label="folio-assistant" data-fa-rail="pending"><a href="../../../../">SMART Base Clinical</a></nav>
+<body><script type="application/json" id="fa-rail" data-fa-root="https://litlfred.github.io/folio-assistant" data-fa-to-root="../../../..">{"data":"rail-13sxfw5j2pc","here":"/cat-harness/auto-docs/index/skills/"}</script><nav class="fa-nav" aria-label="folio-assistant" data-fa-rail="pending"><a href="../../../../">SMART Base Clinical</a></nav>
   <a class="skip-to-main" href="#main-content">Skip to main content</a>
   <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
   <symbol id="svg-link" viewBox="0 0 24 24">
@@ -920,8 +920,9 @@
 <li><a href="bootstrap-tools-skills/">bootstrap-tools-skills</a> <span class="p">bootstrap-tools/skills</span> <span class="n">3</span></li>
 <li><a href="core-skills/">core-skills</a> <span class="p">folio-assistant-core/skills</span> <span class="n">38</span></li>
 <li><a href="fhir-ig-skills/">fhir-ig-skills</a> <span class="p">fhir-harness/skills</span> <span class="n">18</span></li>
-<li><a href="skills/">skills</a> <span class="p">cat-harness/skills</span> <span class="n">248</span></li>
+<li><a href="skills/">skills</a> <span class="p">cat-harness/skills</span> <span class="n">249</span></li>
 <li><a href="smart-base-skills/">smart-base-skills</a> <span class="p">smart-base/skills</span> <span class="n">24</span></li>
+<li><a href="who-iris-skills/">who-iris-skills</a> <span class="p">who-iris/skills</span> <span class="n">5</span></li>
 </ul>
 
 <div class="fa-table-filter">
@@ -1717,6 +1718,10 @@
   <td>Session-start intent declaration + session-end results recording, against the goal-scoped master ledger and queue file.</td>
 </tr>
 <tr>
+  <td><a href="https://github.com/litlfred/cat-harness/blob/main/skills/sdlc/sdlc-core/signing.md"><code>signing</code></a><br><span class="p">cat-harness/skills/sdlc/sdlc-core/signing.md</span></td>
+  <td>What any signature in the harness must answer, whatever it covers: who signs, what bytes are signed, which signature suites are accepted and who decides that, where the key is kept, which route signs (API or person, by…</td>
+</tr>
+<tr>
   <td><a href="https://github.com/litlfred/cat-harness/blob/main/skills/sdlc/sdlc-core/specification-management.md"><code>specification-management</code></a><br><span class="p">cat-harness/skills/sdlc/sdlc-core/specification-management.md</span></td>
   <td>Governs the lifecycle, syntax, and traceability of specifications and requirements across the harness.</td>
 </tr>
@@ -2255,6 +2260,26 @@
 <tr>
   <td><a href="https://github.com/litlfred/smart-base/blob/main/smart-base/skills/content/authoring-who-smart-guidelines/transcription-verbatim.md"><code>transcription-verbatim</code></a><br><span class="p">smart-base/skills/content/authoring-who-smart-guidelines/transcription-verbatim.md</span></td>
   <td>Check L1 authored from pictures (a schedule poster, a slide deck: a source with no usable text layer) against the image narratives and transcriptions it names: every statement verbatim in one of them, every transcriptio…</td>
+</tr>
+<tr>
+  <td><a href="https://github.com/litlfred/who-iris/blob/main/skills/iris-cdn-exporter.md"><code>iris-cdn-exporter</code></a><br><span class="p">who-iris/skills/iris-cdn-exporter.md</span></td>
+  <td>The IRIS CDN Exporter agent — how WHO IRIS is exported onto Cloudflare — a git repository on Cloudflare Artifacts and R2 behind the CDN — with an initial load (metadata and PDFs), a nightly change ingest over the DSpace…</td>
+</tr>
+<tr>
+  <td><a href="https://github.com/litlfred/who-iris/blob/main/skills/iris-cdn-signing.md"><code>iris-cdn-signing</code></a><br><span class="p">who-iris/skills/iris-cdn-signing.md</span></td>
+  <td>How an IRIS CDN release is packaged, signed and verified using published standards only: a BagIt bag (RFC 8493), a detached JWS (RFC 7515 App.</td>
+</tr>
+<tr>
+  <td><a href="https://github.com/litlfred/who-iris/blob/main/skills/iris-dspace.md"><code>iris-dspace</code></a><br><span class="p">who-iris/skills/iris-dspace.md</span></td>
+  <td>How WHO IRIS uses DSpace and qualified Dublin Core — the three identifier systems, MeSH as a controlled vocabulary, bundles, and the containment path.</td>
+</tr>
+<tr>
+  <td><a href="https://github.com/litlfred/who-iris/blob/main/skills/iris-oxigraph.md"><code>iris-oxigraph</code></a><br><span class="p">who-iris/skills/iris-oxigraph.md</span></td>
+  <td>How to compile, validate, distribute, and query WHO IRIS catalogue and Qualified Dublin Core metadata using Oxigraph in-memory WebAssembly and CLI pipelines.</td>
+</tr>
+<tr>
+  <td><a href="https://github.com/litlfred/who-iris/blob/main/skills/iris-rest-feed.md"><code>iris-rest-feed</code></a><br><span class="p">who-iris/skills/iris-rest-feed.md</span></td>
+  <td>How to read changes from the WHO IRIS DSpace 7 REST API: the nightly &quot;changed since&quot; walk over Discovery sorted by lastModified, the weekly reconciliation that stands in for the deletions REST does not report, and the g…</td>
 </tr>
 </tbody>
 </table></div>
