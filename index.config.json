@@ -14,7 +14,7 @@
       "source": {
         "remote": {
           "repository": "litlfred/who-iris",
-          "ref": "4e0a4e5272e786ef7956d7ae65fcf85df9dfa602",
+          "ref": "f524a7e98bde3b8f390f0163a81829b158ad11b2",
           "overrides": {
             "who-iris": {
               "whole": true
@@ -39,7 +39,7 @@
             "consent": {
               "by": "litlfred",
               "on": "2026-11-02",
-              "ref": "4e0a4e5272e786ef7956d7ae65fcf85df9dfa602",
+              "ref": "f524a7e98bde3b8f390f0163a81829b158ad11b2",
               "evidence": "Owner litlfred, 2026-11-01 (20:41Z, MVP thread): 'i want to get all functional stuff done, the full repin on harnesses done and stablized as MVP goal.' and 21:41Z card Q-PIN-4 'B. All, including smart-ra' (re-pin every smart-* site)."
             }
           }
