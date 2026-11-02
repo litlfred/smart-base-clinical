@@ -14,7 +14,7 @@
       "source": {
         "remote": {
           "repository": "litlfred/who-iris",
-          "ref": "f524a7e98bde3b8f390f0163a81829b158ad11b2",
+          "ref": "a378a59bec81f26a159449795d7ba823ff3a5c71",
           "overrides": {
             "who-iris": {
               "whole": true
@@ -39,7 +39,7 @@
             "consent": {
               "by": "litlfred",
               "on": "2026-11-02",
-              "ref": "f524a7e98bde3b8f390f0163a81829b158ad11b2",
+              "ref": "a378a59bec81f26a159449795d7ba823ff3a5c71",
               "evidence": "Owner litlfred, 2026-11-01 (20:41Z, MVP thread): 'i want to get all functional stuff done, the full repin on harnesses done and stablized as MVP goal.' and 21:41Z card Q-PIN-4 'B. All, including smart-ra' (re-pin every smart-* site)."
             }
           }
@@ -99,7 +99,7 @@
       "source": {
         "remote": {
           "repository": "litlfred/fhir-harness",
-          "ref": "a6e641193a4c4bce450548473d18034eb36e76ca",
+          "ref": "f144aaa840428ee0ed8e22a012fe0139149c8092",
           "overrides": {
             "fhir-harness": {
               "whole": true
@@ -109,7 +109,7 @@
             "consent": {
               "by": "litlfred",
               "on": "2026-11-02",
-              "ref": "a6e641193a4c4bce450548473d18034eb36e76ca",
+              "ref": "f144aaa840428ee0ed8e22a012fe0139149c8092",
               "evidence": "Owner litlfred, 2026-11-01 (20:41Z, MVP thread): 'i want to get all functional stuff done, the full repin on harnesses done and stablized as MVP goal.' and 21:41Z card Q-PIN-4 'B. All, including smart-ra' (re-pin every smart-* site)."
             }
           }
@@ -121,7 +121,7 @@
       "source": {
         "remote": {
           "repository": "litlfred/folio-assistant-core",
-          "ref": "d19145a45f89b731d1d7c070875de747ed5459c1",
+          "ref": "971e66bb0991e0f98217056e0750818362db811b",
           "overrides": {
             "folio-assistant-core": {
               "whole": true
@@ -137,7 +137,7 @@
             "consent": {
               "by": "litlfred",
               "on": "2026-11-02",
-              "ref": "d19145a45f89b731d1d7c070875de747ed5459c1",
+              "ref": "971e66bb0991e0f98217056e0750818362db811b",
               "evidence": "Owner litlfred, 2026-11-01 (20:41Z, MVP thread): 'i want to get all functional stuff done, the full repin on harnesses done and stablized as MVP goal.' and 21:41Z card Q-PIN-4 'B. All, including smart-ra' (re-pin every smart-* site)."
             }
           }
@@ -149,7 +149,7 @@
       "source": {
         "remote": {
           "repository": "litlfred/cat-harness",
-          "ref": "520a3124b9e820af767e13a1655f3867066e4227",
+          "ref": "c7faba1ad8208661700e5389a36a3874be7b4563",
           "overrides": {
             "cat-harness": {
               "whole": true
@@ -165,7 +165,7 @@
             "consent": {
               "by": "litlfred",
               "on": "2026-11-02",
-              "ref": "520a3124b9e820af767e13a1655f3867066e4227",
+              "ref": "c7faba1ad8208661700e5389a36a3874be7b4563",
               "evidence": "Owner litlfred, 2026-11-01 (20:41Z, MVP thread): 'i want to get all functional stuff done, the full repin on harnesses done and stablized as MVP goal.' and 21:41Z card Q-PIN-4 'B. All, including smart-ra' (re-pin every smart-* site)."
             }
           }
@@ -177,7 +177,7 @@
       "source": {
         "remote": {
           "repository": "litlfred/cat-harness-tools",
-          "ref": "837434cd560e625ba334a6a845046136038b5dd0",
+          "ref": "27e4b1cb7711e1cc84e2be8bdb3d3515ba9b7094",
           "overrides": {
             "cat-harness-tools": {
               "whole": true
@@ -190,7 +190,7 @@
             "consent": {
               "by": "litlfred",
               "on": "2026-11-02",
-              "ref": "837434cd560e625ba334a6a845046136038b5dd0",
+              "ref": "27e4b1cb7711e1cc84e2be8bdb3d3515ba9b7094",
               "evidence": "Owner litlfred, 2026-11-01 (20:41Z, MVP thread): 'i want to get all functional stuff done, the full repin on harnesses done and stablized as MVP goal.' and 21:41Z card Q-PIN-4 'B. All, including smart-ra' (re-pin every smart-* site)."
             }
           }
@@ -202,7 +202,7 @@
       "source": {
         "remote": {
           "repository": "litlfred/bootstrap",
-          "ref": "0d655b74e9ffd1e246a0bd4df60967e158d665de",
+          "ref": "a83ae82db8a7d03c3febdf367a0a62b46c2eb0ed",
           "overrides": {
             "bootstrap": {
               "whole": true
@@ -212,7 +212,7 @@
             "consent": {
               "by": "litlfred",
               "on": "2026-11-02",
-              "ref": "0d655b74e9ffd1e246a0bd4df60967e158d665de",
+              "ref": "a83ae82db8a7d03c3febdf367a0a62b46c2eb0ed",
               "evidence": "Owner litlfred, 2026-11-01 (20:41Z, MVP thread): 'i want to get all functional stuff done, the full repin on harnesses done and stablized as MVP goal.' and 21:41Z card Q-PIN-4 'B. All, including smart-ra' (re-pin every smart-* site)."
             }
           }
@@ -224,7 +224,7 @@
       "source": {
         "remote": {
           "repository": "litlfred/bootstrap-tools",
-          "ref": "f57b9e72a5a4fd3777aa8c1cee33088ce5899188",
+          "ref": "ac81dc59d5c97705b8e06e7fe85e78baecbe93f0",
           "overrides": {
             "bootstrap-tools": {
               "whole": true
@@ -237,7 +237,7 @@
             "consent": {
               "by": "litlfred",
               "on": "2026-11-02",
-              "ref": "f57b9e72a5a4fd3777aa8c1cee33088ce5899188",
+              "ref": "ac81dc59d5c97705b8e06e7fe85e78baecbe93f0",
               "evidence": "Owner litlfred, 2026-11-01 (20:41Z, MVP thread): 'i want to get all functional stuff done, the full repin on harnesses done and stablized as MVP goal.' and 21:41Z card Q-PIN-4 'B. All, including smart-ra' (re-pin every smart-* site)."
             }
           }
