@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "cat": "bun cat-harness-tools/scripts/run-script.ts"
+    "cat": "bun .github/cat.ts"
   },
   "_cat_comment": "The one root script the harness assumes: commands spawn `bun run cat <name>` from the checkout root (smart-ra#65).",
   "_workspaces_comment": "The mounted code layers, as workspaces, as folio-assistant's root package.json lists them: they import each other by package name (@litlfred/cat-harness, ...), and nothing publishes those packages, so a bare `bun install` in a mount fails with a 404. Owner, 2026-10-14: \"Repo declares workspaces\". The mounts are laid down from index.lock.json and gitignored; smart-base and bootstrap declare no dependencies, so they are not listed; smart-base's scripts still import packages (zod, @litlfred/bootstrap-tools), which reach it through the ONE root node_modules that bunfig.toml's hoisted linker lays out, as in folio-assistant.",
