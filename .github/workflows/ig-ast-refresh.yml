@@ -47,3 +47,4 @@ jobs:
       # who.template.root is not in FHIR/ig-registry's templates.json, and
       # build.fhir.org serves no package for it (fhir-harness#196).
       template-repos: who.template.root=litlfred/smart-ig-template
+      pre-export: bash .github/test-template-fork.sh
