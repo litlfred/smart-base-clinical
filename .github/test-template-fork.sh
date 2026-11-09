@@ -13,7 +13,15 @@ seeder="$RUNNER_TEMP/igp/ast-export/scripts/seed-fhir-cache-from-npm.py"
 
 echo "::group::test: seed who.template.root#current from litlfred/smart-ig-template"
 rm -rf "$tpl"
-python3 -I "$seeder" --cache "$pk" --template-repo who.template.root=litlfred/smart-ig-template 'who.template.root#current'
+# The base, fhir2.base.template#current, is not in FHIR/ig-registry's templates.json
+# either, so it is seeded from HL7/ig-template-base2 at HEAD too.
+python3 -I "$seeder" --cache "$pk" \
+  --template-repo who.template.root=litlfred/smart-ig-template \
+  --template-repo fhir2.base.template=HL7/ig-template-base2 \
+  'who.template.root#current' 'fhir2.base.template#current' || true
+for t in 'who.template.root#current' 'fhir2.base.template#current'; do
+  [ -f "$pk/$t/package/package.json" ] || { echo "::error::test: $t was not seeded"; exit 1; }
+done
 git ls-remote https://github.com/litlfred/smart-ig-template HEAD
 grep -q find_language_dirs "$tpl/package/scripts/post-check/06_generate_dak_api_hub.py" \
   && echo "test: the seeded template carries the #68 fix" \
