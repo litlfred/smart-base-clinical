@@ -23,7 +23,9 @@ for t in 'who.template.root#current' 'fhir2.base.template#current'; do
   [ -f "$pk/$t/package/package.json" ] || { echo "::error::test: $t was not seeded"; exit 1; }
 done
 git ls-remote https://github.com/litlfred/smart-ig-template HEAD
-grep -q find_language_dirs "$tpl/package/scripts/post-check/06_generate_dak_api_hub.py" \
+hub=$(find "$tpl" -path "*/scripts/post-check/06_generate_dak_api_hub.py" | head -n 1)
+echo "test: hub script at ${hub:-nowhere}"
+[ -n "$hub" ] && grep -q find_language_dirs "$hub" \
   && echo "test: the seeded template carries the #68 fix" \
   || { echo "::error::test: the seeded template does not carry the #68 fix"; exit 1; }
 grep -o '"fhir2.base.template"[^,}]*' "$tpl/package/package.json" || true
@@ -32,7 +34,7 @@ echo "::endgroup::"
 # The step's shell (this command's parent) keeps its stdout for the whole step.
 echo "/proc/$PPID/fd/1" > "$RUNNER_TEMP/test-step-stdout"
 
-cat > "$tpl/package/scripts/post-check/99_test_report_dak_hub.py" <<'PY'
+cat > "$(dirname "$hub")/99_test_report_dak_hub.py" <<'PY'
 import json, os, re, sys
 
 def main():
