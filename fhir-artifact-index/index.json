@@ -4,6 +4,7 @@
   "title": "smart.who.int.base-clinical — artefact index (from the IG Publisher AST cache)",
   "packageId": "smart.who.int.base-clinical",
   "version": "1.0.1",
+  "status": "active",
   "canonicalBase": "http://smart.who.int/base-clinical",
   "source": {
     "kind": "output",

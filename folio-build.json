@@ -2,14 +2,14 @@
   "$schema": "folio-site-build/v1",
   "instance": "smart-base-clinical",
   "platform": {
-    "commit": "39ee6af57dc09d2f25d1caf89ee4484d3df24327"
+    "commit": "6d272fac1ea08f5d22d3fd68bf84baaf8f73b83a"
   },
   "source": {
     "repo": "litlfred/smart-base-clinical",
     "ref": "main",
-    "commit": "293683612c8c74cda10c0d1b9edf680ab86d0086"
+    "commit": "5e3d23103ed66dbdb89492e91135dce38539cbd0"
   },
-  "builtAt": "2026-11-15T17:03:41.494Z",
+  "builtAt": "2026-11-15T21:05:16.913Z",
   "ast": {
     "commit": "3c6fcc9b7a6bc5ecd777e7deb58f56df5da65c64",
     "verdict": "valid",

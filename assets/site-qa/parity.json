@@ -2,97 +2,8 @@
  "$schema": "site-parity-report/v1",
  "outcome": "carries-everything",
  "shortfall": [],
- "droppedByRuling": [
-  {
-   "what": "ar/",
-   "ruling": "owner, 2026-11-10: the base IG's pages should not be in an IG's site, only cross referenced — another layer's pages are linked on its own site, not copied into a scoped (IG) site"
-  },
-  {
-   "what": "ast-data/",
-   "ruling": "owner, 2026-11-08, site size: the IG's AST (ast-data/) is not published on the site; resources are served once as <Type>-<id>.json and the AST ships as ast-data.zip on a release (fhir-harness#314, Q-REL-1 \"A\")"
-  },
-  {
-   "what": "cat-harness-tools/",
-   "ruling": "owner, 2026-11-10: the base IG's pages should not be in an IG's site, only cross referenced — another layer's pages are linked on its own site, not copied into a scoped (IG) site"
-  },
-  {
-   "what": "catalogue/",
-   "ruling": "owner, 2026-11-10: the base IG's pages should not be in an IG's site, only cross referenced — another layer's pages are linked on its own site, not copied into a scoped (IG) site"
-  },
-  {
-   "what": "code/",
-   "ruling": "owner, 2026-11-10: the base IG's pages should not be in an IG's site, only cross referenced — another layer's pages are linked on its own site, not copied into a scoped (IG) site"
-  },
-  {
-   "what": "docs/",
-   "ruling": "owner, 2026-11-10: the base IG's pages should not be in an IG's site, only cross referenced — another layer's pages are linked on its own site, not copied into a scoped (IG) site"
-  },
-  {
-   "what": "es/",
-   "ruling": "owner, 2026-11-10: the base IG's pages should not be in an IG's site, only cross referenced — another layer's pages are linked on its own site, not copied into a scoped (IG) site"
-  },
-  {
-   "what": "folio-assistant-core/",
-   "ruling": "owner, 2026-11-10: the base IG's pages should not be in an IG's site, only cross referenced — another layer's pages are linked on its own site, not copied into a scoped (IG) site"
-  },
-  {
-   "what": "fr/",
-   "ruling": "owner, 2026-11-10: the base IG's pages should not be in an IG's site, only cross referenced — another layer's pages are linked on its own site, not copied into a scoped (IG) site"
-  },
-  {
-   "what": "ru/",
-   "ruling": "owner, 2026-11-10: the base IG's pages should not be in an IG's site, only cross referenced — another layer's pages are linked on its own site, not copied into a scoped (IG) site"
-  },
-  {
-   "what": "who-iris/",
-   "ruling": "owner, 2026-11-10: the base IG's pages should not be in an IG's site, only cross referenced — another layer's pages are linked on its own site, not copied into a scoped (IG) site"
-  },
-  {
-   "what": "zh/",
-   "ruling": "owner, 2026-11-10: the base IG's pages should not be in an IG's site, only cross referenced — another layer's pages are linked on its own site, not copied into a scoped (IG) site"
-  }
- ],
+ "droppedByRuling": [],
  "current": {
-  "pages": 1157,
-  "counts": {
-   "siteNav": 0,
-   "search": 694,
-   "navbarRow": 693,
-   "rail": 693,
-   "translationMeta": 695
-  },
-  "dirs": [
-   "ar",
-   "artifact",
-   "assets",
-   "ast-data",
-   "cat-harness",
-   "cat-harness-tools",
-   "catalogue",
-   "code",
-   "docs",
-   "en",
-   "es",
-   "fhir-artifact-index",
-   "folio-assistant-core",
-   "fr",
-   "id-lookup",
-   "ru",
-   "smart-base",
-   "who-iris",
-   "zh"
-  ],
-  "index": [
-   "search",
-   "navbarRow",
-   "rail",
-   "translationMeta"
-  ],
-  "stamp": {
-   "present": true
-  }
- },
- "candidate": {
   "pages": 8248,
   "counts": {
    "siteNav": 0,
@@ -120,15 +31,43 @@
    "present": true
   }
  },
+ "candidate": {
+  "pages": 1145,
+  "counts": {
+   "siteNav": 0,
+   "search": 1004,
+   "navbarRow": 74,
+   "rail": 1004,
+   "translationMeta": 1004
+  },
+  "dirs": [
+   "artifact",
+   "assets",
+   "cat-harness",
+   "en",
+   "fhir-artifact-index",
+   "id-lookup",
+   "smart-base"
+  ],
+  "index": [
+   "search",
+   "navbarRow",
+   "rail",
+   "translationMeta"
+  ],
+  "stamp": {
+   "present": true
+  }
+ },
  "baseline": {
   "features": {
-   "pages": 8248,
+   "pages": 1145,
    "counts": {
     "siteNav": 0,
-    "search": 8107,
+    "search": 1004,
     "navbarRow": 74,
-    "rail": 8107,
-    "translationMeta": 8107
+    "rail": 1004,
+    "translationMeta": 1004
    },
    "dirs": [
     "artifact",
@@ -149,6 +88,6 @@
     "present": true
    }
   },
-  "from": "293683612c8c"
+  "from": "5e3d23103ed6"
  }
 }

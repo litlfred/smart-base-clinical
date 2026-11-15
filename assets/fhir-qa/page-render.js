@@ -6,7 +6,7 @@
   fetch(box.getAttribute("data-src")).then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); }).then(function (q) {
     box.textContent = "";
     if (q.unavailable) { box.append(el("p", "Not scanned: " + q.unavailable + ".")); return; }
-    box.append(el("p", q.scanned + " page(s) scanned on " + q.generatedAt + ". Findings: " + (q.findings.length ? q.findings.length + " block(s) show markup as text." : "none.") + (q.unfinished.length ? " " + q.unfinished.length + " page(s) did not finish drawing." : "")));
+    box.append(el("p", q.scanned + " page(s) scanned on " + q.generatedAt + ". Findings: " + (q.findings.length ? q.findings.length + " block(s) show markup as text." : "none.") + (q.unfinished.length ? " " + q.unfinished.length + " page(s) did not finish drawing." : "") + (q.notReached ? " " + q.notReached + " page(s) not reached: the scan's time budget ran out." : "")));
     if (q.findings.length) {
       var t = el("table"), h = el("tr");
       ["page", "left as text", "text"].forEach(function (c) { h.append(el("th", c)); });
