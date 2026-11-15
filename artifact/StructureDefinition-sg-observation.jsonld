@@ -6,7 +6,7 @@
     "prov": "http://www.w3.org/ns/prov#"
   },
   "$schema": "folio-ig-artifact-jsonld/v1",
-  "@id": "StructureDefinition-sg-observation.jsonld",
+  "@id": "StructureDefinition-sg-observation",
   "@type": "fhir:StructureDefinition",
   "dcterms:identifier": "StructureDefinition/sg-observation",
   "schema:name": "SGObservation",
@@ -22,10 +22,18 @@
     {
       "@type": "schema:MediaObject",
       "schema:contentUrl": {
-        "@id": "../ast-data/resources/StructureDefinition/sg-observation--1434db81.json"
+        "@id": "../StructureDefinition-sg-observation.json"
       },
       "schema:encodingFormat": "application/fhir+json",
       "dcterms:source": "local"
+    },
+    {
+      "@type": "schema:MediaObject",
+      "schema:contentUrl": {
+        "@id": "https://raw.githubusercontent.com/litlfred/smart-base-clinical/502539ee92abe0f44db21978aefc67c26f10d6f7/resources/StructureDefinition/sg-observation--1434db81.json"
+      },
+      "schema:encodingFormat": "application/fhir+json",
+      "dcterms:source": "mirror"
     }
   ],
   "prov:wasGeneratedBy": {

@@ -1,0 +1,1 @@
+(self.FaRailData=self.FaRailData||{})["rail-14tjd4dd0qv"]="{\"instance\":\"smart-base-clinical\",\"links\":[],\"documentIndex\":{\"label\":\"review-log\",\"icon\":\"§\",\"items\":[{\"label\":\"review-log\",\"icon\":\"·\"}],\"collapsible\":true,\"open\":true}}";

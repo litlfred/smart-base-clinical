@@ -95,6 +95,48 @@
     return siteBaseurl() + href;
   }
 
+  /* THE QR ENCODER, LOADED ON FIRST USE — and the one loader for it (owner,
+   * 2026-11-14: "do lazy load content and libs"). The page head no longer
+   * loads vendor/qrcode.js and qrcode_UTF8.js; the row's QR button and the
+   * docs-ui.js QR tile both come here, so the two files are fetched once,
+   * the first time either shows a code. `cb` runs when `qrcode` exists;
+   * `onFail`, if given, when it cannot be loaded. */
+  var qrWaiting = null;
+  function ensureQrcode(cb, onFail) {
+    if (typeof qrcode === "function") {
+      cb();
+      return;
+    }
+    if (!qrWaiting) {
+      qrWaiting = { ok: [], fail: [] };
+      var settle = function (good) {
+        var list = good ? qrWaiting.ok : qrWaiting.fail;
+        qrWaiting = null;
+        list.forEach(function (f) { f(); });
+      };
+      var s1 = document.createElement("script");
+      s1.src = withBase("/assets/js/vendor/qrcode.js");
+      s1.onload = function () {
+        var s2 = document.createElement("script");
+        s2.src = withBase("/assets/js/vendor/qrcode_UTF8.js");
+        s2.onload = function () { settle(typeof qrcode === "function"); };
+        s2.onerror = function () {
+          console.warn("navbar-row: failed to load vendor/qrcode_UTF8.js");
+          settle(false);
+        };
+        document.head.appendChild(s2);
+      };
+      s1.onerror = function () {
+        console.warn("navbar-row: failed to load vendor/qrcode.js");
+        settle(false);
+      };
+      document.head.appendChild(s1);
+    }
+    qrWaiting.ok.push(cb);
+    if (onFail) qrWaiting.fail.push(onFail);
+  }
+  window.faEnsureQrcode = ensureQrcode;
+
   var ALLOWED_URL_SCHEMES = ["http:", "https:", "mailto:", "tel:"];
 
   /** The same href guard as `docs-ui.js` (`href-safety.test.ts` holds both). */
@@ -352,10 +394,30 @@
     var full = !!hooks.full;
     var bar = navbar();
     if (!bar) return null;
+    // A RAIL NOT DRAWN YET (`data-fa-rail="pending"`): `navbar.js` replaces
+    // its contents when it runs, which threw away a row mounted into it
+    // first -- so on who-iris the FULL row never survived, and the lite one
+    // the load fallback drew was all a reader saw (measured 2026-11-13). Wait
+    // for the drawing, then mount.
+    if (bar.hasAttribute("data-fa-rail") && typeof MutationObserver === "function") {
+      var waiting = new MutationObserver(function () {
+        if (bar.hasAttribute("data-fa-rail")) return;
+        waiting.disconnect();
+        mount(hooks);
+      });
+      waiting.observe(bar, { attributes: true, attributeFilter: ["data-fa-rail"] });
+      return null;
+    }
     var existing = bar.querySelector(".fa-nav-icons");
     if (existing) {
       // FULL REPLACES LITE; nothing replaces FULL.
       if (!full || existing.getAttribute("data-fa-row") === "full") return existing;
+      // The rail's own controls ride in the row; put them back first, or they
+      // would leave with the row they were moved into.
+      Array.prototype.forEach.call(existing.querySelectorAll("[data-fa-nav-control]"), function (c) {
+        var home = bar.querySelector(".fa-nav-controls");
+        if (home) home.appendChild(c);
+      });
       existing.parentNode.removeChild(existing);
       var oldQr = bar.querySelector(".fa-qr-panel:not(.fa-tile-content)");
       if (oldQr) oldQr.parentNode.removeChild(oldQr);
@@ -423,27 +485,7 @@
             caption.textContent = url;
           }
 
-          function ensure(cb) {
-            if (typeof qrcode === "function") {
-              cb();
-              return;
-            }
-            var s1 = document.createElement("script");
-            s1.src = withBase("/assets/js/vendor/qrcode.js");
-            s1.onload = function () {
-              var s2 = document.createElement("script");
-              s2.src = withBase("/assets/js/vendor/qrcode_UTF8.js");
-              s2.onload = function () { cb(); };
-              s2.onerror = function () {
-                console.warn("navbar-row: failed to load vendor/qrcode_UTF8.js");
-              };
-              document.head.appendChild(s2);
-            };
-            s1.onerror = function () {
-              console.warn("navbar-row: failed to load vendor/qrcode.js");
-            };
-            document.head.appendChild(s1);
-          }
+          var ensure = ensureQrcode;
 
           /* THE CODE NEEDS THE BAR OPEN (bean 5rmf, measured 2026-10-12). The
            * panel lives inside the bar, and the pointer that clicked the icon
@@ -558,21 +600,24 @@
       host.appendChild(linkSlot(id, label, hrefs[id], notes, whose));
     }
 
-    // Line 1 is the mark and the name, line 2 is this. On the rail, straight
-    // under its fixed top inside `.fa-nav-in`; on the theme's sidebar, under
-    // `.site-header`.
-    var railTop = bar.matches("nav.fa-nav") ? bar.querySelector(".fa-nav-in > .fa-nav-top") : null;
-    var header = bar.querySelector(".site-header");
-    if (railTop) railTop.parentNode.insertBefore(host, railTop.nextSibling);
-    else if (header && header.nextSibling) bar.insertBefore(host, header.nextSibling);
-    else bar.appendChild(host);
+    // AT THE FOOT OF THE NAVBAR — owner, 2026-11-13: *"put these controls at
+    // the bottom of the navbar."* It was line 2, under the mark and the name.
+    // On the rail, the last child of `.fa-nav-in`, under the fixed bottom; on
+    // the theme's sidebar, its last child. A panel a control opens (the QR
+    // code, the harnesses) sits ABOVE the row, so the row does not move.
+    var railIn = bar.matches("nav.fa-nav") ? bar.querySelector(".fa-nav-in") : null;
+    (railIn || bar).appendChild(host);
 
-    if (qrPanel) {
-      if (host.nextSibling) host.parentNode.insertBefore(qrPanel, host.nextSibling);
-      else host.parentNode.appendChild(qrPanel);
-    }
+    if (qrPanel) host.parentNode.insertBefore(qrPanel, host);
 
     if (typeof hooks.after === "function") hooks.after(host, bar);
+    else if (!full && liteSchemeWanted()) host.appendChild(liteSchemeButton());
+    // THE RAIL'S OWN CONTROLS JOIN THE ROW, last: the Harnesses icon, which
+    // the rail draws so a page without this script still has it (owner,
+    // 2026-11-13: *"add an icon to the controls to show the harnesses"*).
+    Array.prototype.forEach.call(bar.querySelectorAll("[data-fa-nav-control]"), function (c) {
+      if (c.parentNode !== host) host.appendChild(c);
+    });
     // ENGLISH ON EACH ICON, NOT ON THE ROW — bean `giiw`. Every name, count
     // phrase and `data-fa-tip` tooltip here is English on every locale, so
     // on an Arabic page each icon is marked English, which is what lays its
@@ -581,6 +626,8 @@
     // mirrored sidebar is layout, and it mirrors with it. After `hooks.after`,
     // so the light/dark switch it appends is marked too.
     Array.prototype.forEach.call(host.children, function (icon) {
+      // The rail's own controls are named in the page's language already.
+      if (icon.hasAttribute("data-fa-nav-control")) return;
       icon.setAttribute("lang", "en");
       icon.setAttribute("dir", "ltr");
     });
@@ -588,7 +635,139 @@
     return host;
   }
 
+  /* LIGHT / DARK ON A LITE ROW — owner, 2026-10-31, on a knowledge-graph
+   * entity page: *"where iis light/dark mode? looks bad"*. The switch lived
+   * only in `docs-ui.js`'s FULL row, so a page railed without that script had
+   * none, and its content followed the OS while the rail followed the site.
+   *
+   * Drawn only where the page's own sheet follows `data-fa-scheme`: a page
+   * that links `page-layout.css` (`data-fa-page-layout`, written with the
+   * site bar) or says so with `<meta name="fa-scheme-switch">`. Anywhere else
+   * the button would press and change nothing.
+   *
+   * The same state as the full switch — `fa-color-scheme` in localStorage
+   * and `data-fa-scheme` on `<html>`, the first-paint snippet's two inputs —
+   * and the same glyphs, copied from `docs-ui.js` (`BULB_ON`, `BULB_OFF`).
+   * Where the theme's sheet IS first (a just-the-docs page wearing the folio
+   * rail), `liteThemeSheet` swaps it too. When `docs-ui.js` mounts its FULL
+   * row, that row replaces this one, switch and all. */
+  var BULB_ON =
+    '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">' +
+    '<path d="M12 2a7 7 0 0 0-4 12.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26A7 7 0 0 0 12 2zm-2 12.1A5 5 0 1 1 14 14.1l-.5.33V16h-3v-1.57l-.5-.33z"/>' +
+    '<path d="M9 19h6v1.2a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1V19z"/>' +
+    "</svg>";
+  var BULB_OFF =
+    '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">' +
+    '<path d="M12 2a7 7 0 0 0-4 12.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26A7 7 0 0 0 12 2zm-2 12.1A5 5 0 1 1 14 14.1l-.5.33V16h-3v-1.57l-.5-.33z" opacity="0.45"/>' +
+    '<path d="M9 19h6v1.2a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1V19z" opacity="0.45"/>' +
+    '<path d="M4.2 3.3 20.7 19.8l-1.4 1.4L2.8 4.7z"/>' +
+    "</svg>";
+
+  function liteSchemeWanted() {
+    return !!document.querySelector('link[data-fa-page-layout], meta[name="fa-scheme-switch"]');
+  }
+
+  function liteScheme() {
+    var stored = null;
+    try { stored = window.localStorage.getItem("fa-color-scheme"); } catch (_e) { /* private mode */ }
+    if (stored === "light" || stored === "dark") return stored;
+    var painted = document.documentElement.getAttribute("data-fa-scheme");
+    if (painted === "light" || painted === "dark") return painted;
+    try {
+      return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    } catch (_e) {
+      return "light";
+    }
+  }
+
+  /* THE THEME'S SHEET MUST FOLLOW TOO — owner, 2026-11-08: *"dark mode not
+   * fully wokring"*, then *"it seems ok on reload"*. A just-the-docs page whose
+   * header the full row could not find (the folio rail replaces it) gets THIS
+   * button, and setting `data-fa-scheme` alone repainted only the rail: the
+   * body, tables and code blocks are painted by the theme's FIRST sheet, which
+   * the first-paint snippet swaps on load but nothing swapped on a click. So
+   * swap it here, the same way and with the same guard as `docs-ui.js`
+   * (`themeSheet`, `jtdShows`): only when that sheet is first on the page, and
+   * only when it does not already show the scheme — a swap of a sheet that
+   * already matches is the white flash of 2026-09-24. */
+  function liteThemeSheet(name) {
+    var j = window.jtd;
+    if (!j || typeof j.setTheme !== "function" || typeof j.getTheme !== "function") return;
+    var first = document.querySelector('[rel="stylesheet"]');
+    if (!first || !/just-the-docs-[a-z]+\.css/.test(first.getAttribute("href") || "")) return;
+    var shown = j.getTheme();
+    if (shown === "default") {
+      shown = "dark";
+      try {
+        var n = document.getElementById("fa-site-scheme");
+        if (n && JSON.parse(n.textContent).scheme === "light") shown = "light";
+      } catch (_e) { /* keep the first-paint snippet's default */ }
+    }
+    if (shown !== name) {
+      try { j.setTheme(name); } catch (_e) { /* the attribute still switches the rail */ }
+    }
+  }
+
+  function liteSchemeButton() {
+    var btn = el("button", { type: "button", class: "fa-nav-icon fa-nav-scheme" });
+    function paint(name) {
+      btn.innerHTML = name === "light" ? BULB_ON : BULB_OFF;
+      var said = name === "light" ? "Light mode is on — switch to dark" : "Dark mode is on — switch to light";
+      btn.setAttribute("aria-label", said);
+      btn.setAttribute("data-fa-tip", said);
+      btn.title = said;
+      btn.setAttribute("aria-pressed", name === "dark" ? "true" : "false");
+    }
+    var now = liteScheme();
+    document.documentElement.setAttribute("data-fa-scheme", now);
+    paint(now);
+    btn.addEventListener("click", function () {
+      var next = liteScheme() === "light" ? "dark" : "light";
+      liteThemeSheet(next);
+      document.documentElement.setAttribute("data-fa-scheme", next);
+      try { window.localStorage.setItem("fa-color-scheme", next); } catch (_e) { /* private mode */ }
+      paint(next);
+    });
+    return btn;
+  }
+
   window.FaNavbarRow = { mount: mount };
+
+  /* THE RAIL'S PANEL CONTROLS ON A PAGE WITH NO `navbar.js` — the Harnesses
+   * icon (owner, 2026-11-13). The rail's own script (`wireNavFolds`) wires
+   * them where it runs; a theme page draws the same footer without it. Whichever
+   * runs first owns them (`document.faNavPop`), so one click is one toggle. */
+  (function wirePanels() {
+    if (document.faNavPop) return;
+    document.faNavPop = true;
+    function setPop(b, open) {
+      var panel = document.getElementById(b.getAttribute("aria-controls") || "");
+      if (!panel) return;
+      b.setAttribute("aria-expanded", open ? "true" : "false");
+      if (open) panel.removeAttribute("hidden"); else panel.setAttribute("hidden", "");
+      var box = document.getElementById("fa-nav-open");
+      if (!box) return;
+      if (open && !box.checked) {
+        box.checked = true;
+        b.setAttribute("data-fa-pinned", "");
+        box.dispatchEvent(new Event("change"));
+      } else if (!open && b.hasAttribute("data-fa-pinned")) {
+        b.removeAttribute("data-fa-pinned");
+        if (box.checked) { box.checked = false; box.dispatchEvent(new Event("change")); }
+      }
+    }
+    document.addEventListener("click", function (e) {
+      var b = e.target && e.target.closest ? e.target.closest("button[data-fa-nav-pop]") : null;
+      if (b) setPop(b, b.getAttribute("aria-expanded") !== "true");
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key !== "Escape") return;
+      var b = document.querySelector('button[data-fa-nav-pop][aria-expanded="true"]');
+      if (!b) return;
+      setPop(b, false);
+      b.focus();
+    });
+  })();
 
   // `docs-ui.js` ran first and left its hooks (a `folio-mount.ts` page).
   if (window.faNavbarRowHooks) {

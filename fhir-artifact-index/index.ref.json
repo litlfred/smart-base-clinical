@@ -1,0 +1,4 @@
+{
+  "$schema": "fhir-artifact-index-ref/v1",
+  "index": "index.json"
+}

@@ -6,7 +6,7 @@
     "prov": "http://www.w3.org/ns/prov#"
   },
   "$schema": "folio-ig-artifact-jsonld/v1",
-  "@id": "ImplementationGuide-smart.who.int.base-clinical.jsonld",
+  "@id": "ImplementationGuide-smart.who.int.base-clinical",
   "@type": "fhir:ImplementationGuide",
   "dcterms:identifier": "ImplementationGuide/smart.who.int.base-clinical",
   "schema:name": "SMARTBaseClinical",
@@ -21,10 +21,18 @@
     {
       "@type": "schema:MediaObject",
       "schema:contentUrl": {
-        "@id": "../ast-data/resources/ImplementationGuide/smart.who.int.base-clinical--e99412b2.json"
+        "@id": "../ImplementationGuide-smart.who.int.base-clinical.json"
       },
       "schema:encodingFormat": "application/fhir+json",
       "dcterms:source": "local"
+    },
+    {
+      "@type": "schema:MediaObject",
+      "schema:contentUrl": {
+        "@id": "https://raw.githubusercontent.com/litlfred/smart-base-clinical/502539ee92abe0f44db21978aefc67c26f10d6f7/resources/ImplementationGuide/smart.who.int.base-clinical--e99412b2.json"
+      },
+      "schema:encodingFormat": "application/fhir+json",
+      "dcterms:source": "mirror"
     }
   ],
   "prov:wasGeneratedBy": {

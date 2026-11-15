@@ -1,0 +1,1 @@
+(self.FaRailData=self.FaRailData||{})["rail-23g6ve1stds"]="{\"instance\":\"smart-base-clinical\",\"links\":[],\"documentIndex\":{\"label\":\"dak-data-dictionary\",\"icon\":\"§\",\"items\":[{\"label\":\"dak-data-dictionary\",\"icon\":\"·\"}],\"collapsible\":true,\"open\":true}}";

@@ -8,7 +8,8 @@
  * set through textContent. The only innerHTML assignment takes the vendored
  * encoder's own <svg>, which is built from bits rather than from the string.
  *
- * Depends on vendor/qrcode.js and vendor/qrcode_UTF8.js being loaded first.
+ * The QR encoder (vendor/qrcode.js, qrcode_UTF8.js) is loaded on first use by
+ * navbar-row.js's `window.faEnsureQrcode`.
  * Cross-checked by scripts/tests/qr.test.ts, which decodes the encoder's
  * output with an independent reader.
  *
@@ -270,6 +271,30 @@
 
   /* ── Language switcher ────────────────────────────────────────────────── */
 
+  /* The bar picker's name, in the page's language (owner, 2026-11-10: the
+     reference site reads "Select language" beside a translate glyph). One
+     entry per UN language; any other locale falls back to English. */
+  var SELECT_LANGUAGE = {
+    "ar": "\u0627\u062E\u062A\u0631 \u0627\u0644\u0644\u063A\u0629",
+    "zh": "\u9009\u62E9\u8BED\u8A00",
+    "en": "Select language",
+    "fr": "Choisir la langue",
+    "ru": "\u0412\u044B\u0431\u0440\u0430\u0442\u044C \u044F\u0437\u044B\u043A",
+    "es": "Seleccionar idioma"
+  };
+
+  // A translate glyph (a CJK character beside a Latin A), the reference
+  // site's language mark. Material Icons "translate", Apache-2.0.
+  var TRANSLATE_GLYPH =
+    '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">' +
+    '<path fill="currentColor" d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/>' +
+    "</svg>";
+
+  var CHEVRON_GLYPH =
+    '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">' +
+    '<path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>' +
+    "</svg>";
+
   // Globe glyph for the toggle button
   var GLOBE_GLYPH =
     '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">' +
@@ -374,6 +399,7 @@
     var stored = null;
     try { stored = localStorage.getItem("fa-locale"); } catch (_e) { return false; }
     if (!stored) return false;
+    if (cameFromLocaleFallback()) return false;
     try {
       if (new URL(window.location.href).searchParams.get("lang")) return false;
     } catch (_e) { return false; }
@@ -381,7 +407,7 @@
     var available = localesAvailable(meta, meta.supportedLocales || UN_LOCALES);
     var target = rememberedLocale(currentLang, available);
     if (!target) return false;
-    var dest = localePath(deriveBasePath(window.location.pathname, currentLang), target);
+    var dest = translationHref(deriveBasePath(window.location.pathname, currentLang), target, window.location.pathname, currentLang);
     if (dest === window.location.pathname) return false;
     window.location.replace(dest + window.location.search + window.location.hash);
     return true;
@@ -397,6 +423,65 @@
   function deriveBasePath(path, currentLang) {
     if (currentLang === "en") return path;
     return path.replace(new RegExp("/" + currentLang + "/"), "/");
+  }
+
+  /**
+   * The page's own translations, as it declares them: every
+   * `<link rel="alternate" hreflang="xx" href="...">` in the document, keyed
+   * by locale, each resolved to a same-origin path. A page that says where
+   * its French version is has answered the question; the `/<locale>/`
+   * convention below is a guess about a layout it may not have.
+   *
+   * Owner, 2026-11-13: the who-iris home's tabs linked `/who-iris/fr/`, a
+   * 404, while the page's own alternates (and its own language links) named
+   * `who-iris/fr/index.html`, which is there. The tabs guessed; the page knew.
+   */
+  function declaredAlternates() {
+    var out = {};
+    var links = document.querySelectorAll('link[rel~="alternate"][hreflang]');
+    for (var i = 0; i < links.length; i++) {
+      var type = links[i].getAttribute("type");
+      if (type && type !== "text/html") continue;
+      var raw = links[i].getAttribute("href");
+      var lang = (links[i].getAttribute("hreflang") || "").toLowerCase();
+      if (!raw || !lang) continue;
+      try {
+        var u = new URL(raw, document.baseURI);
+        if (u.origin !== window.location.origin) continue;
+        var p = u.pathname + u.search;
+        if (!out[lang]) out[lang] = p;
+        var primary = lang.split("-")[0];
+        if (!out[primary]) out[primary] = p;
+      } catch (_e) { /* an href we cannot resolve declares nothing */ }
+    }
+    return out;
+  }
+
+  /**
+   * Where `locale`'s version of this page is: the page's declared alternate
+   * when it has one, else the `/<locale>/` sibling the translation pipeline
+   * writes. The publish link check (`build-instance-site.ts` `checkLinks`,
+   * via `scripts/lib/lang-tabs.ts` in cat-harness-tools) computes the same
+   * answer from the built HTML and refuses a publish where it is a 404.
+   */
+  function translationHref(basePath, locale, path, currentLang) {
+    var declared = declaredAlternates();
+    if (declared[locale]) return declared[locale];
+    // A translated page's sibling in another translation is its own path with
+    // the locale segment swapped, wherever that segment sits: `/r/fr/x/` (the
+    // whole site under a locale) as well as `/r/x/fr/a.html`. Rebuilding it from
+    // the English path put the segment before the file, a 404 for the first.
+    var seg = "/" + currentLang + "/";
+    if (currentLang !== "en" && locale !== "en" && path.indexOf(seg) !== -1) return path.replace(seg, "/" + locale + "/");
+    return localePath(basePath, locale);
+  }
+
+  /* The 404 page's English fallback (cat-harness-tools
+     `scripts/lib/locale-fallback-404.ts`) leaves the page it landed on here,
+     so a remembered language never sends the reader straight back to the
+     translation that was missing: that would be a loop. */
+  function cameFromLocaleFallback() {
+    try { return sessionStorage.getItem("fa-locale-fallback") === window.location.pathname; } catch (_e) { return false; }
   }
 
   /**
@@ -481,7 +566,9 @@
       // #ffffff on #3b82f6 at 3.67:1. The per-page bar was fixed first and
       // this one kept the literals, because the gate never opened this view.
       var tab = el(isAvailable ? "a" : "span", {
-        href: isAvailable ? safeHref(localePath(basePath, loc)) : undefined,
+        href: isAvailable ? safeHref(translationHref(basePath, loc, path, currentLang)) : undefined,
+        // Says "unavailable" to a screen reader too, not only by its strike-through (Q-TRP-2).
+        "aria-disabled": isAvailable ? undefined : "true",
         "data-locale": loc,
         title: isAvailable
           ? LOCALE_NAMES[loc] + (isRemembered ? " \u2014 your saved language" : "")
@@ -561,11 +648,28 @@
       "aria-label": "Language: " + (LOCALE_NAMES[currentLang] || currentLang.toUpperCase()),
       title: "Available translations for this page",
     });
-    toggle.appendChild(el("span", { class: "fa-page-lang-globe", "aria-hidden": "true" }, "\uD83C\uDF10"));
-    toggle.appendChild(el("span", { class: "fa-page-lang-current" }, currentLang.toUpperCase()));
-    toggle.appendChild(el("span", { class: "fa-page-lang-caret", "aria-hidden": "true" }, "\u25BE"));
+    /* IN A PAGE'S OWN BAR, THE REFERENCE SITE'S CONTROL -- owner,
+     * 2026-11-10: "have styling match who.int especially for language and
+     * search parts". The bar's picker is a translate glyph, the words
+     * "Select language" in the page's language, and a chevron; it opens a
+     * dropdown of the languages, each named in its own language. The band's
+     * globe-and-tabs picker, on a page with no bar, is unchanged. */
+    if (slot) {
+      var labelLang = SELECT_LANGUAGE[currentLang] ? currentLang : "en";
+      var icon = el("span", { class: "fa-page-lang-glyph", "aria-hidden": "true" });
+      icon.innerHTML = TRANSLATE_GLYPH;
+      toggle.appendChild(icon);
+      toggle.appendChild(el("span", { class: "fa-page-lang-label", lang: labelLang }, SELECT_LANGUAGE[labelLang]));
+      var chevron = el("span", { class: "fa-page-lang-chevron", "aria-hidden": "true" });
+      chevron.innerHTML = CHEVRON_GLYPH;
+      toggle.appendChild(chevron);
+    } else {
+      toggle.appendChild(el("span", { class: "fa-page-lang-globe", "aria-hidden": "true" }, "\uD83C\uDF10"));
+      toggle.appendChild(el("span", { class: "fa-page-lang-current" }, currentLang.toUpperCase()));
+      toggle.appendChild(el("span", { class: "fa-page-lang-caret", "aria-hidden": "true" }, "\u25BE"));
+    }
     container.appendChild(toggle);
-    var list = el("span", { class: "fa-page-lang-list", id: listId });
+    var list = el(slot ? "ul" : "span", { class: "fa-page-lang-list", id: listId });
 
     function paintLangOpen(open) {
       container.setAttribute("data-open", open ? "true" : "false");
@@ -596,14 +700,21 @@
       var isRemembered = loc === remembered;
 
       var tab = el(isAvailable ? "a" : "span", {
-        href: isAvailable ? safeHref(localePath(basePath, loc)) : undefined,
+        href: isAvailable ? safeHref(translationHref(basePath, loc, path, currentLang)) : undefined,
+        // Says "unavailable" to a screen reader too, not only by its strike-through (Q-TRP-2).
+        "aria-disabled": isAvailable ? undefined : "true",
         title: isAvailable
           ? LOCALE_NAMES[loc] + (isRemembered ? " \u2014 your saved language" : "")
           : LOCALE_NAMES[loc] + " \u2014 not yet translated",
         class: "fa-page-lang-tab" +
                (isCurrent ? " is-current" : isAvailable ? "" : " is-unavailable") +
-               (isRemembered ? " is-remembered" : "")
-      }, loc.toUpperCase());
+               (isRemembered ? " is-remembered" : ""),
+        // In the bar each language is named in its own language, so it is
+        // marked with it: a screen reader then says "中文" in Chinese.
+        lang: slot ? loc : undefined,
+        hreflang: slot && isAvailable ? loc : undefined,
+        "aria-current": slot && isCurrent ? "page" : undefined
+      }, slot ? (LOCALE_NAMES[loc] || loc.toUpperCase()) : loc.toUpperCase());
 
       // Hover is a CSS `:hover` rule now. It was a pair of listeners writing
       // `style.background`, which is an inline colour literal with extra steps
@@ -614,7 +725,13 @@
           link.addEventListener("click", function () { setGlobalLocale(locale); });
         })(loc, tab);
       }
-      list.appendChild(tab);
+      if (slot) {
+        var item = el("li");
+        item.appendChild(tab);
+        list.appendChild(item);
+      } else {
+        list.appendChild(tab);
+      }
     }
     container.appendChild(list);
 
@@ -632,6 +749,10 @@
     if (slot) {
       container.setAttribute("data-fa-slotted", "");
       slot.appendChild(container);
+      // A dropdown hangs over the page, so a press anywhere else closes it.
+      document.addEventListener("click", function (e) {
+        if (container.getAttribute("data-open") === "true" && !container.contains(e.target)) paintLangOpen(false);
+      });
     } else {
       glassBandSlot("start").appendChild(container);
     }
@@ -2371,7 +2492,22 @@
     var views = {};
     var openTile = null;   // the tile to return focus to when Back is pressed
 
+    // The encoder is loaded the first time the tile opens (owner, 2026-11-14:
+    // "do lazy load content and libs"), by navbar-row.js's shared loader.
     function renderQr() {
+      if (typeof qrcode === "function") { drawQr(); return; }
+      qrCaption.textContent = "Loading the QR code\u2026";
+      var ensure = window.faEnsureQrcode;
+      if (typeof ensure !== "function") {
+        qrCaption.textContent = "The QR code could not be drawn: its encoder is not available on this page.";
+        return;
+      }
+      ensure(drawQr, function () {
+        qrCaption.textContent = "The QR code could not be drawn: its encoder did not load.";
+      });
+    }
+
+    function drawQr() {
       var url = window.location.href;
       var q = qrcode(0, "M");
       q.addData(url);
@@ -2533,12 +2669,10 @@
 
       views.language = buildLanguageBar();
 
-      if (typeof qrcode === "function") {
-        var qr = el("div", { class: "fa-qr-panel fa-tile-content", "data-open": "true" });
-        qr.appendChild(qrArt);
-        qr.appendChild(qrCaption);
-        views.qr = qr;
-      }
+      var qr = el("div", { class: "fa-qr-panel fa-tile-content", "data-open": "true" });
+      qr.appendChild(qrArt);
+      qr.appendChild(qrCaption);
+      views.qr = qr;
     }
 
     /* ── Navigation between the grid and a view ────────────────────────── */
@@ -2651,16 +2785,13 @@
       showView("settings", SETTINGS_NAMES.page, pageSettingsTile);
     };
     grid.appendChild(tileButton(GLOBE_GLYPH, "Language", "language"));
-    // The encoder is a separate vendor script. Without it the OTHER tiles must
-    // still work -- the old code returned early from the whole mount when it
-    // was missing, so a failed vendor request took the theme switch, the
-    // reading preferences and the language switch down with the QR code.
-    if (typeof qrcode === "function") {
-      grid.appendChild(tileButton(GLYPH, "QR code", "qr"));
-    } else {
-      console.warn("docs-ui: QR encoder not loaded (vendor/qrcode.js must be included " +
-                   "first); the other action tiles were mounted without it.");
-    }
+    // The encoder is a separate vendor script, loaded when the tile first
+    // opens (renderQr), so the tile is always offered. If it cannot load, the
+    // QR view says so; the OTHER tiles never depend on it -- the old code
+    // returned early from the whole mount when it was missing, so a failed
+    // vendor request took the theme switch, the reading preferences and the
+    // language switch down with the QR code.
+    grid.appendChild(tileButton(GLYPH, "QR code", "qr"));
 
     // A tile that DOES something rather than opening a sidebar view. The board
     // lives in the main display, so `showView` is the wrong machinery for it.
@@ -2815,9 +2946,41 @@
     if (window.innerWidth < AUTO_MIN_VIEWPORT_PX) return false;
     var column = scope.clientWidth;
     if (!column) return false;
-    var natural = intrinsicWidth(scope);
+    // The width the drawing will be drawn at: its text-fitted width when it
+    // has one, else its own coordinate width.
+    var natural = parseFloat(scope.style.getPropertyValue("--fa-natural")) || intrinsicWidth(scope);
     if (!natural) return false;
     return natural / column >= AUTO_MIN_RATIO;
+  }
+
+  /* THE BAND A FULL-WIDTH FIGURE MAY USE: the viewport minus the nav rail.
+     Owner, 2026-10-31, with a screenshot of a BPMN pool whose lane labels
+     were under the rail: "full width images/diagrma/etc should not be cut off
+     by LHS nav". Full width used to run from x=0, but from 50rem up the rail
+     is `position: fixed` over that strip, so the figure's start edge was
+     hidden. Below 50rem the theme's sidebar is an in-flow bar on top, takes
+     no strip, and the band is the whole viewport, as before. The rail is
+     MEASURED rather than read from `--fa-nav-collapsed`, so an open, pinned
+     or RTL rail is right without knowing which state it is in. */
+  function navRail() {
+    return document.querySelector(".side-bar") || document.querySelector("nav.fa-nav");
+  }
+
+  function fullWidthBand() {
+    var vw = document.documentElement.clientWidth;
+    var band = { left: 0, right: vw };
+    var rail = navRail();
+    if (!rail) return band;
+    var pos = getComputedStyle(rail).position;
+    if (pos !== "fixed" && pos !== "sticky") return band;
+    var r = rail.getBoundingClientRect();
+    if (r.width <= 0 || r.height <= 0) return band;
+    // A rail at the start edge (left in LTR, right in RTL). A rail that spans
+    // most of the width is a top bar, not a side rail, and takes nothing.
+    if (r.width >= vw / 2) return band;
+    if (r.left <= 1) band.left = Math.max(0, r.right);
+    else if (r.right >= vw - 1) band.right = Math.min(vw, r.left);
+    return band;
   }
 
   function markFullWidthOnRoot() {
@@ -3123,7 +3286,7 @@
    *
    * Since bean `g196` (2026-10-23) a Jekyll page writes its same-site links
    * relative to itself, so a page that did not change is byte-identical in
-   * every STAGING preview and on the live site; `fa-baseurl` and
+   * every branches/ preview and on the live site; `fa-baseurl` and
    * `fa-todo-src` are relative too. Resolving here, once, keeps every
    * consumer's arithmetic as it was (`withBase`, `baseurlResolved`'s
    * prefix guard, `navKey`'s strip).
@@ -3146,9 +3309,9 @@
     }
   }
 
-  /* ── Is this a STAGING preview? ──────────────────────────────────────
+  /* ── Is this a branches/ preview? ──────────────────────────────────────
    *
-   * Non-empty `fa-staging` means a `STAGING/<slug>/` preview; empty means the
+   * Non-empty `fa-staging` means a `branches/<slug>/` preview; empty means the
    * canonical deploy, a local build, or a page whose `_data/build.yml` was
    * never written. All three of those are treated as canonical, which is the
    * SAFE direction: a build that cannot say it is a preview hides the tile
@@ -4015,7 +4178,7 @@
    * Every backdrop in the todo index was arriving as `/assets/img/...` —
    * site-ROOT-absolute with no baseurl — and this site is served from
    * `/folio-assistant/` on the canonical deploy and
-   * `/folio-assistant/STAGING/<branch>/` on a preview. So every one of them
+   * `/folio-assistant/branches/<branch>/` on a preview. So every one of them
    * 404'd, and the owner saw todo cards with a broken-image placeholder
    * beside landing stickies that had their art: *"i want the theme on the
    * lower ones too. why are they dispalyed differently."*
@@ -5435,9 +5598,93 @@
       // `avatars.css` already declares — so the glass can draw the kind avatar
       // when there is no picture, or when the reader chose kind avatars.
       kind: (meta && meta.kind) || (all[key] && all[key].kind) || "library",
+      // A PINNED BLOCK's graph kind (`glossary`, `bpmn`, `fhir-instance`, ...)
+      // and the page or document it came from (#982). Only a kind-shaped word
+      // is kept: it reaches a `data-` attribute and picks a kind avatar.
+      nodeKind: kindWord((meta && meta.nodeKind) || (all[key] && all[key].nodeKind)),
+      source: String((meta && meta.source) || (all[key] && all[key].source) || "").replace(/\s+/g, " ").trim(),
     };
     setFolioAssets(all);
     announceFolio(key, "glass");
+  }
+
+  /** A graph kind as a safe word, or "" (it reaches an attribute and a CSS selector). */
+  function kindWord(v) {
+    var w = String(v || "").trim().toLowerCase();
+    return /^[a-z0-9][a-z0-9:_-]{0,63}$/.test(w) ? w : "";
+  }
+
+  /**
+   * LIVE WINDOWS FOR PINNED BLOCKS, ONE LAZY VIEWER PER GRAPH KIND (#985).
+   *
+   * Owner, 2026-11-02 (bean `fbmk`): *"lazy load all visualizers ... can be a
+   * lot if lots of different item types"*.
+   *
+   * Each graph kind registers `{ load, render }` with
+   * `window.faFolio.viewer(kind, { load: () => import(url), render(node, el) })`.
+   * Registering NEVER calls `load()`. When the reader opens a pinned block's
+   * window on the glass (and only while that card is not zoomed to its avatar),
+   * `load()` runs at most once for that kind and its promise is shared across
+   * every open card of the same kind. Closed link cards and avatar-zoomed cards
+   * load nothing.
+   */
+  var folioViewers = {};
+  var folioViewerLoads = {};
+
+  function defaultFolioRender(node, host) {
+    var dl = el("dl", { class: "fa-glass-window-meta" });
+    function row(k, v) {
+      if (!v) return;
+      dl.appendChild(el("dt", null, k));
+      dl.appendChild(el("dd", null, v));
+    }
+    row("Title", node.title);
+    row("Kind", node.nodeKind || node.kind);
+    row("Source", node.source);
+    row("ID", node.id);
+    host.appendChild(dl);
+    if (node.href) {
+      host.appendChild(el("p", { class: "fa-glass-window-link" },
+        el("a", { href: safeHref(node.href) }, "Open on page \u2192")));
+    }
+  }
+  folioViewers["*"] = { load: null, render: defaultFolioRender };
+
+  function registerFolioViewer(kind, spec) {
+    var k = kind === "*" ? "*" : kindWord(kind);
+    if (!k || !spec || typeof spec.render !== "function") return;
+    folioViewers[k] = {
+      load: typeof spec.load === "function" ? spec.load : null,
+      render: spec.render,
+    };
+    delete folioViewerLoads[k];
+    if (glassLayer && glassLayer.isConnected) {
+      Array.prototype.forEach.call(
+        glassLayer.querySelectorAll('.fa-glass-asset[data-fa-window="open"]'),
+        function (card) {
+          var ck = card.getAttribute("data-fa-node-kind") || card.getAttribute("data-fa-asset-kind") || "";
+          if ((k === "*" || ck === k) && typeof card.__faOpenWindow === "function") {
+            card.__faOpenWindow();
+          }
+        }
+      );
+    }
+  }
+
+  function loadFolioViewer(kind) {
+    var k = kindWord(kind);
+    var cacheKey = k && folioViewers[k] ? k : "*";
+    var v = folioViewers[cacheKey];
+    if (!v) return Promise.resolve(null);
+    if (!folioViewerLoads[cacheKey]) {
+      folioViewerLoads[cacheKey] = Promise.resolve()
+        .then(function () { return v.load ? v.load() : null; })
+        .then(
+          function (mod) { return { viewer: v, mod: mod }; },
+          function (err) { delete folioViewerLoads[cacheKey]; throw err; }
+        );
+    }
+    return folioViewerLoads[cacheKey];
   }
 
   /**
@@ -5675,8 +5922,8 @@
     { id: "leaded", label: "Leaded grid", hint: "modern stained glass panes — suits Architecture, Engineer", opacity: 30 },
   ];
   var GLASS_AVATAR_STYLES = [
-    { id: "pictures", label: "Pictures", hint: "a book's cover when it has one, otherwise its kind avatar" },
-    { id: "kinds", label: "Kind avatars", hint: "the harness's avatar for each kind, never a picture" },
+    { id: "pictures", label: "Pictures", hint: "a book's cover, else its kind avatar" },
+    { id: "kinds", label: "Kind avatars", hint: "each kind's avatar, never a picture" },
     { id: "text", label: "Text only", hint: "no pictures at all" },
   ];
   var GLASS_DEFAULTS = { theme: "glass", avatars: "pictures", opacity: 20, blur: true };
@@ -5802,7 +6049,10 @@
       });
       box.appendChild(img);
     } else {
-      box.appendChild(fallbackAvatar(a.kind));
+      // A pinned block with no picture draws ITS GRAPH KIND's avatar.
+      // A bookmark with no cover draws the `docs` kind: it marks a place in a document.
+      box.appendChild(fallbackAvatar(a.kind === "pin" && kindWord(a.nodeKind) ? kindWord(a.nodeKind)
+        : a.kind === "bookmark" ? "docs" : a.kind));
     }
     return box;
   }
@@ -6180,7 +6430,9 @@
       // square sticky avatar"*. A todo is a sticky note everywhere else on
       // this site, and a sticky note is square; the wide 152px strip it used
       // to pop out as read as a list row, not as the note.
-      var h = zoomKindOf(a) === "library" && prefs.avatars !== "text"
+      // A BOOKMARK with its document's cover is portrait like the book it marks.
+      var portrait = zoomKindOf(a) === "library" || (a.kind === "bookmark" && a.avatar);
+      var h = portrait && prefs.avatars !== "text"
         ? Math.round(w * 4 / 3) : zoomKindOf(a) === "todo" ? w : GLASS_CARD_H;
       return { width: w, height: h };
     }
@@ -6865,6 +7117,12 @@
         return { kind: "library", name: libName, href: safeHref(lib.library), entry: safeHref(lib.entry),
                  heading: "Back to the library?", tip: "Back in " + libName };
       }
+      if (a && PIN_KINDS[a.kind]) {
+        var from = String(a.source || "").replace(/\s+/g, " ").trim();
+        var fromName = from ? "its page, " + from : "the page it came from";
+        return { kind: "sticky", name: fromName, href: safeHref(a.href) || safeHref(withBase("/")),
+                 heading: "Back on its page?", tip: "Back on " + fromName };
+      }
       if (a && a.kind === "sticky") {
         var page = String(a.label || "").replace(/\s+/g, " ").trim();
         var pageName = page ? "its page, " + page : "the page it came from";
@@ -6940,12 +7198,15 @@
       var href = place ? place.entry : safeHref(a.href);
       // WHERE A PRESS GOES: the entry page until the index names a visualizer,
       // or the external URL for a linked document (R28).
-      var opens = place ? place.entry : (isLibrary && href ? href : "");
+      var isPin = !!PIN_KINDS[a.kind];
+      var opens = place ? place.entry : (isLibrary || isPin ? href || "" : "");
       var card = el("article", {
         class: "fa-glass-asset",
         "data-fa-asset": key,
         "data-fa-asset-kind": a.kind || "library",
         "data-fa-zoom-kind": zoomKindOf(a),
+        "data-fa-node-kind": isPin ? kindWord(a.nodeKind) : "",
+        "data-fa-source": isPin ? String(a.source || "") : "",
         "aria-label": label,
         // A library card OPENS (issue #1900), so it is a stop in the tab
         // order: zoomed to its cover the title link is not drawn, and Enter on
@@ -6961,6 +7222,15 @@
         ? el("a", { class: "fa-glass-asset-name", href: href }, a.title)
         : el("span", { class: "fa-glass-asset-name" }, a.title));
       card.appendChild(face);
+      // A BOOKMARK wears a ribbon and a PINNED BLOCK a pin, on the CARD's top
+      // corner rather than inside the avatar: the avatar fills the card under
+      // the title strip, which would cover a badge drawn in it. Decorative:
+      // the card's name says what it is.
+      if (isPin) {
+        card.setAttribute("data-fa-badged", "");
+        card.appendChild(el("span", { class: "fa-glass-badge", "data-fa-badge": a.kind, "aria-hidden": "true" },
+          a.kind === "bookmark" ? "\uD83D\uDD16" : "\uD83D\uDCCC"));
+      }
       // What the card shows once it is its avatar (`gistOf`). Drawn only in
       // that state — the CSS hides it at full size, where the title and the
       // body already say it — and a <p>, so it is read as text when shown.
@@ -7082,10 +7352,86 @@
       close.addEventListener("click", function () {
         confirmShelve(key, a, label, close);
       });
+      var winBtn = null;
+      var winBox = null;
+      if (isPin) {
+        winBtn = el("button", {
+          type: "button",
+          class: "fa-glass-asset-tool",
+          "data-fa-control": "window",
+          "aria-expanded": "false",
+          "aria-label": "Open " + label + " in a window on the glass",
+          title: "Open live window",
+        }, "\u29c9");
+        winBox = el("div", {
+          class: "fa-glass-window",
+          "data-fa-window-body": "",
+          hidden: "",
+        });
+        function closeCardWindow() {
+          card.removeAttribute("data-fa-window");
+          winBtn.setAttribute("aria-expanded", "false");
+          winBtn.setAttribute("aria-label", "Open " + label + " in a window on the glass");
+          winBtn.title = "Open live window";
+          winBox.setAttribute("hidden", "");
+          live.textContent = "Closed live window of " + label + ".";
+        }
+        function openCardWindow() {
+          if (card.getAttribute("data-fa-zoom") === "avatar") return Promise.resolve(false);
+          card.setAttribute("data-fa-window", "open");
+          winBtn.setAttribute("aria-expanded", "true");
+          winBtn.setAttribute("aria-label", "Close live window of " + label);
+          winBtn.title = "Close live window";
+          winBox.removeAttribute("hidden");
+          var g = geometryOf(card);
+          if (g.height <= GLASS_CARD_H) {
+            g.width = Math.max(g.width, 340);
+            g.height = Math.max(g.height, 240);
+            applyGeometry(card, g);
+            fitShelf();
+          }
+          var nk = kindWord(a.nodeKind) || a.kind || "*";
+          var rawId = key.replace(/^(bookmark|pin):/, "");
+          var node = {
+            "@id": rawId,
+            id: rawId,
+            key: key,
+            title: a.title || rawId,
+            href: href || "",
+            kind: nk,
+            nodeKind: kindWord(a.nodeKind) || "",
+            source: a.source || "",
+          };
+          return loadFolioViewer(nk).then(function (loaded) {
+            if (!loaded || card.getAttribute("data-fa-window") !== "open" || card.getAttribute("data-fa-zoom") === "avatar") {
+              return false;
+            }
+            while (winBox.firstChild) winBox.removeChild(winBox.firstChild);
+            loaded.viewer.render(node, winBox, loaded.mod);
+            live.textContent = "Opened live window of " + label + ".";
+            return true;
+          }).catch(function (err) {
+            while (winBox.firstChild) winBox.removeChild(winBox.firstChild);
+            winBox.appendChild(el("p", { class: "fa-glass-window-error" },
+              "Viewer failed to load: " + (err && err.message ? err.message : String(err))));
+            return false;
+          });
+        }
+        card.__faOpenWindow = openCardWindow;
+        card.__faCloseWindow = closeCardWindow;
+        winBtn.addEventListener("click", function (ev) {
+          ev.preventDefault();
+          ev.stopPropagation();
+          if (card.getAttribute("data-fa-window") === "open") closeCardWindow();
+          else openCardWindow();
+        });
+        tools.appendChild(winBtn);
+      }
       tools.appendChild(moveBtn);
       tools.appendChild(smaller);
       tools.appendChild(larger);
       tools.appendChild(close);
+      if (winBox) card.appendChild(winBox);
       card.appendChild(tools);
       card.appendChild(live);
       wireCardMeta(card);
@@ -7099,8 +7445,9 @@
       card.addEventListener("pointerdown", function (e) { pressAt = { x: e.clientX, y: e.clientY }; });
       card.addEventListener("click", function (e) {
         if (!opens) return;
+        if (card.getAttribute("data-fa-window") === "open") return;
         if (e.button !== 0 || e.defaultPrevented) return;
-        if (e.target.closest && e.target.closest("button, a, [data-fa-control], input, select, textarea")) return;
+        if (e.target.closest && e.target.closest("button, a, [data-fa-control], [data-fa-window-body], input, select, textarea")) return;
         if (card.getAttribute("data-fa-moving") === "true") return;
         var p = pressAt;
         pressAt = null;
@@ -7720,15 +8067,22 @@
 
       // THE HARNESSES PANEL (issue #1146): each harness's properties and the
       // skill that edits each. A Settings view, as candidate H drew it.
-      var hc = el("button", { type: "button", class: "fa-glass-reset fa-glass-harnesses" },
-        "Harnesses — properties, and the skill that edits each");
+      // SHORT VISIBLE LABELS, FULL WORDING AS THE TITLE. At 1280×800 in a
+      // wide system face (DejaVu Sans, on the Linux CI runner) the long labels
+      // wrapped this row onto a second line and pushed "Back to the default
+      // glass" under the panel's frame. Each label is the start of its title,
+      // so the accessible name is the visible text (WCAG 2.5.3, label in
+      // name). The title becomes the button's accessible description, so a
+      // screen reader still hears the full wording. No aria-label is set.
+      var hc = el("button", { type: "button", class: "fa-glass-reset fa-glass-harnesses",
+        title: "Harnesses — properties, and the skill that edits each" }, "Harnesses");
       hc.addEventListener("click", function () { openHarnesses(null); });
       actions.appendChild(hc);
 
       // THE WAY BACK FROM A MESSY GLASS. Every card returns to the grid;
       // nothing leaves the folio and nothing leaves the glass.
-      var tidy = el("button", { type: "button", class: "fa-glass-reset fa-glass-tidy" },
-        "Tidy the glass (put every card back in the grid)");
+      var tidy = el("button", { type: "button", class: "fa-glass-reset fa-glass-tidy",
+        title: "Tidy the glass (put every card back in the grid)" }, "Tidy the glass");
       tidy.addEventListener("click", tidyGlass);
       actions.appendChild(tidy);
 
@@ -7901,7 +8255,10 @@
         var rawUrl = urlInput.value.trim();
         var rawTitle = titleInput.value.trim();
         var slug = resolvedSlug();
-        var safe = /^https?:\/\/\S+$/i.test(rawUrl) ? safeHref(rawUrl) : undefined;
+        // Bound straight from safeHref, so the `href: safe` below is checked by
+        // construction (scripts/tests/href-safety.test.ts); safeHref(undefined)
+        // is undefined, so a non-http(s) URL is still refused.
+        var safe = safeHref(/^https?:\/\/\S+$/i.test(rawUrl) ? rawUrl : undefined);
         if (!safe) {
           err.textContent = "Enter an http:// or https:// URL to link a document.";
           err.removeAttribute("hidden");
@@ -8061,19 +8418,21 @@
         // read here with the rest — there is no second, floating list.
         var todo = kind === "todos";
         var sticky = kind === "sticky";
+        var pinned = kind === "bookmark" || kind === "pin";
         out.push({
           el: c,
           key: key,
           title: c.getAttribute("aria-label") || key,
-          kind: todo ? "todo" : sticky ? "sticky" : "book",
+          kind: todo ? "todo" : sticky ? "sticky" : pinned ? kind : "book",
           from: todo ? "Todo board" : sticky ? (c.getAttribute("data-fa-home-label") || "Home page")
+            : pinned ? (c.getAttribute("data-fa-source") || c.getAttribute("data-fa-node-kind") || "Pinned")
             : key.split("/")[0] + " library",
         });
       });
       return out;
     }
 
-    var KIND_LABELS = { book: "Books", todo: "Todos", sticky: "Stickies" };
+    var KIND_LABELS = { book: "Books", todo: "Todos", sticky: "Stickies", bookmark: "Bookmarks", pin: "Pinned blocks" };
 
     /** Show or hide each item; say so when a filter hides everything. */
     function applyGlassFilter() {
@@ -8912,7 +9271,7 @@
         return;
       }
       setOpen(false);
-      handle.focus();
+      focusFolioControl(handle);
     });
 
     /* HOW MANY ARE WAITING, on the handle — bean `c132`. On a phone a closed
@@ -8967,6 +9326,7 @@
     }
 
     layer.__faSetGlassOpen = setOpen;
+    bindFolioIcon();
     return layer;
   }
 
@@ -10308,6 +10668,11 @@
         return r.text();
       });
     }
+    return Promise.resolve(inlineSvgText(art));
+  }
+
+  /** An inline <svg> serialised as a standalone file, at its own size. */
+  function inlineSvgText(art) {
     var clone = art.cloneNode(true);
     clone.setAttribute("xmlns", "http://www.w3.org/2000/svg");
     clone.setAttribute("xmlns:xlink", "http://www.w3.org/1999/xlink");
@@ -10316,7 +10681,7 @@
     var size = svgSize(art);
     clone.setAttribute("width", String(size.w));
     clone.setAttribute("height", String(size.h));
-    return Promise.resolve('<?xml version="1.0" encoding="UTF-8"?>\n' + new window.XMLSerializer().serializeToString(clone));
+    return '<?xml version="1.0" encoding="UTF-8"?>\n' + new window.XMLSerializer().serializeToString(clone);
   }
 
   /** The drawing's own size: its viewBox, else its width/height, else its box. */
@@ -10372,6 +10737,49 @@
     });
   }
 
+  /**
+   * The address of a figure's source .svg file, absolute, or "" when the
+   * drawing has no file of its own (#915). The file is the committed
+   * artefact, so its address can be bookmarked and shared.
+   */
+  function figureFileUrl(scope) {
+    var art = figureArt(scope);
+    if (!art) return "";
+    var isImg = String(art.nodeName).toLowerCase() === "img";
+    var src = art.getAttribute("data-fa-src") || (isImg ? art.getAttribute("src") : "") || "";
+    if (!src) return "";
+    try { return new URL(src, document.baseURI).href; } catch (_e) { return ""; }
+  }
+
+  /**
+   * Set up a figure's "Open" link (#915). With a source file it is a plain
+   * link to it, so a click, a middle-click and "Open link in new tab" all
+   * work. A drawing with no file has nothing to link to, so the link acts as
+   * a button instead and opens the serialised drawing as a blob: in a new tab.
+   */
+  function figureOpenTarget(scope, link) {
+    var url = figureFileUrl(scope);
+    if (url && safeHref(url)) {
+      link.href = safeHref(url);
+      link.removeAttribute("role");
+      link.removeAttribute("tabindex");
+      return;
+    }
+    link.removeAttribute("href");
+    link.setAttribute("role", "button");
+    link.setAttribute("tabindex", "0");
+  }
+
+  /** Open a figure with no file of its own as a blob: in a new tab. */
+  function openFigureBlob(scope) {
+    var art = figureArt(scope);
+    if (!art || String(art.nodeName).toLowerCase() !== "svg") return false;
+    var url = URL.createObjectURL(new Blob([inlineSvgText(art)], { type: "image/svg+xml" }));
+    window.open(url, "_blank", "noopener");
+    setTimeout(function () { URL.revokeObjectURL(url); }, 60000);
+    return true;
+  }
+
   /** Save a blob under a filename, through a transient link. */
   function saveBlob(blob, name) {
     var url = URL.createObjectURL(blob);
@@ -10405,6 +10813,74 @@
     return attempt.catch(function (e) { return "Could not copy: " + e.message; });
   }
 
+  /* A BPMN FIGURE'S LABELS READ AT THE SIZE OF THE TEXT AROUND IT (owner,
+     2026-11-02: "bpmn diagrams should be scaled so the text size matches
+     narrative text size"). The drawing used to fill the column with a 1200px
+     floor, so a small process came out with labels bigger than the prose and
+     a wide one with labels a third of its size. Now 100% means: the label
+     size the drawing's task names use, scaled to 80% of the body text's size. A
+     drawing wider than its card scrolls (and pans) inside it, and zoom still
+     multiplies from there. The label size is read from the inlined SVG, so a
+     figure that stayed an <img> keeps the old sizing. */
+  // The size the task names use. bpmn-js draws a task name a step larger
+  // than the "yes"/"no" and event labels beside it, and those labels can
+  // carry more characters between them, so the most common size would be the
+  // wrong one. So: the LARGEST size that carries at least a quarter of the
+  // drawing's characters, which skips a lone title and keeps the task names.
+  function labelFontPx(svg) {
+    var chars = {}, total = 0;
+    [].forEach.call(svg.querySelectorAll("text"), function (t) {
+      var n = (t.textContent || "").replace(/\s+/g, "").length;
+      if (!n) return;
+      var px = Math.round(parseFloat(getComputedStyle(t).fontSize) * 10) / 10;
+      if (!(px > 0)) return;
+      chars[px] = (chars[px] || 0) + n;
+      total += n;
+    });
+    var best = 0;
+    Object.keys(chars).forEach(function (k) {
+      var px = parseFloat(k);
+      if (chars[k] >= total / 4 && px > best) best = px;
+    });
+    return best;
+  }
+
+  function bodyFontPx(scope) {
+    var main = (scope.closest && scope.closest(".main-content")) || document.body;
+    var p = main.querySelector("p");
+    return parseFloat(getComputedStyle(p || main).fontSize) || 16;
+  }
+
+  // Owner, 2026-11-02 (follow-up): "make it 80% same size" -- the task names
+  // are drawn at 80% of the body text size, a little quieter than the prose.
+  var FIGURE_TEXT_RATIO = 0.8;
+
+  function isBpmnSvg(scope) {
+    var svg = scope.querySelector("svg");
+    return !!(svg && svg.querySelector("[data-element-id]"));
+  }
+
+  // A plain figure that turns out to be a BPMN drawing is text-fitted. Also
+  // called when the inlined <svg> lands in a figure mounted while it was
+  // still an <object> (the Mermaid observer can mount mid-inlining).
+  function fitBpmn(scope) {
+    if (!isBpmnSvg(scope)) return false;
+    fitTextToBody(scope);
+    if (!scope.classList.contains("fa-textfit")) return false;
+    scope.classList.remove("fa-plain");
+    return true;
+  }
+
+  function fitTextToBody(scope) {
+    var svg = scope.querySelector("svg");
+    var width = intrinsicWidth(scope);
+    if (!svg || !width) return;
+    var label = labelFontPx(svg);
+    if (!label) return;
+    scope.classList.add("fa-textfit");
+    scope.style.setProperty("--fa-natural", (width * FIGURE_TEXT_RATIO * bodyFontPx(scope) / label).toFixed(1) + "px");
+  }
+
   function mountFigure(scope, isPlain) {
     if (scope.dataset.faTools === "1") return;
     scope.dataset.faTools = "1";
@@ -10415,12 +10891,22 @@
     // drawn at, so a 555px PlantUML diagram arrived at more than twice its
     // size, text and all. The stylesheet reads this as `min(100%, natural)`;
     // with no natural size known it falls back to the column, as before.
+    // EVERY BPMN drawing is text-fitted, not only one in a `.bpmn-figure`
+    // (owner, 2026-11-12: "bpmn font size is 80% of main narrative size ...
+    // applies all bpmn"). An IG page embeds its BPMN as a bare
+    // `<object data="x.svg">`, which arrives here as a plain figure and was
+    // stretched to the column, so its labels came out anywhere from 66% to
+    // 95% of the body text. bpmn-js output is recognised by its
+    // `data-element-id` shapes, an attribute `scopeSvg` leaves alone.
+    if (isPlain && fitBpmn(scope)) isPlain = false;
     if (isPlain) {
       var art0 = scope.querySelector("svg, img, object");
       var natural = intrinsicWidth(scope) ||
         (art0 && art0.tagName.toLowerCase() === "img" ? art0.naturalWidth : 0) ||
         (art0 ? parseFloat(art0.getAttribute("width") || "") || 0 : 0);
       if (natural > 0) scope.style.setProperty("--fa-natural", natural + "px");
+    } else {
+      fitTextToBody(scope);
     }
 
     var step = DEFAULT_STEP;
@@ -10444,8 +10930,28 @@
       });
     }
 
+    // Owner, 2026-11-01, after the drag grew the figure ("dragging now
+    // rescales", "i want it to pan"): a drag never changes the size. On an
+    // axis with scroll room it scrolls the figure; on an axis where the
+    // drawing fits its card, it moves the drawing inside the card, by
+    // `translate`, up to PAN_KEEP of the card from where it was drawn so it
+    // cannot be lost. Zoom and Reset put the drawing back.
+    var PAN_KEEP = 0.75;
+    var shift = { x: 0, y: 0 };
+    function art() { return scope.querySelector("svg, img, object"); }
+    function setShift(x, y) {
+      shift.x = x; shift.y = y;
+      var a = art();
+      if (a) a.style.translate = (x || y) ? x + "px " + y + "px" : "";
+      // A moved drawing must not grow the card's scroll room, or the next
+      // drag would scroll where it should move.
+      scope.classList.toggle("is-shifted", !!(x || y));
+    }
+    function clampShift(v, room) { return Math.max(-room * PAN_KEEP, Math.min(room * PAN_KEEP, v)); }
+
     function apply() {
       var z = ZOOM_STEPS[step];
+      setShift(0, 0);
       scope.style.setProperty("--fa-zoom", String(z));
       level.textContent = Math.round(z * 100) + "%";
       out.disabled = step === 0;
@@ -10499,16 +11005,21 @@
     // theme's geometry, and clientWidth excludes the scrollbar, which 100vw
     // does not.
     function applyFullWidth() {
-      if (!scope.classList.contains("is-fullwidth")) {
-        scope.style.marginLeft = "";
-        scope.style.width = "";
-        return;
-      }
       scope.style.marginLeft = "";
+      scope.style.marginRight = "";
       scope.style.width = "";
-      var left = scope.getBoundingClientRect().left;
-      scope.style.marginLeft = -left + "px";
-      scope.style.width = document.documentElement.clientWidth + "px";
+      if (!scope.classList.contains("is-fullwidth")) return;
+      var box = scope.getBoundingClientRect();
+      var band = fullWidthBand();
+      // A block with a set width anchors to its START edge and ignores the
+      // other margin, so RTL moves the right margin. Moving the left one in
+      // RTL did nothing and the figure ran off the left of the window.
+      if (getComputedStyle(scope).direction === "rtl") {
+        scope.style.marginRight = (box.right - band.right) + "px";
+      } else {
+        scope.style.marginLeft = (band.left - box.left) + "px";
+      }
+      scope.style.width = (band.right - band.left) + "px";
       markPannable();
     }
     wide.addEventListener("click", function () {
@@ -10522,6 +11033,17 @@
     });
     // The measured offset is only right for the width it was measured at.
     window.addEventListener("resize", applyFullWidth);
+    // Opening the rail pushes the content column over, so the band moves
+    // without the window resizing, and both slide on a CSS transition. Watch
+    // the rail and the column: each fires on every frame of the slide, and
+    // the last one lands after it, so the figure settles where they do.
+    if (typeof ResizeObserver === "function") {
+      var ro = new ResizeObserver(applyFullWidth);
+      var rail = navRail();
+      var column = document.querySelector(".main");
+      if (rail) ro.observe(rail);
+      if (column) ro.observe(column);
+    }
 
     // Scroll pass-through in full width.
     //
@@ -10580,13 +11102,42 @@
     // events rather than mouse events, so a touch drag works the same way.
     var drag = null;
     var panned = false;
-
     scope.addEventListener("pointerdown", function (e) {
       if (e.button !== 0) return;
       // A control or a link owns its own press.
       if (e.target.closest && e.target.closest("a, button, input, select, textarea")) return;
-      drag = { x: e.clientX, y: e.clientY, sl: scope.scrollLeft, st: scope.scrollTop, moved: false };
+      // Which axes scroll and which move the drawing is fixed for the drag,
+      // measured without the drawing's own move, which adds scroll room.
+      var a = art(), was = a ? a.style.translate : "";
+      if (a) a.style.translate = "";
+      var canX = scope.scrollWidth > scope.clientWidth + 1;
+      var canY = scope.scrollHeight > scope.clientHeight + 1;
+      if (a) a.style.translate = was;
+      drag = {
+        x: e.clientX, y: e.clientY, sl: scope.scrollLeft, st: scope.scrollTop, py: e.clientY, moved: false,
+        canX: canX, canY: canY, tx: shift.x, ty: shift.y, touch: e.pointerType === "touch",
+      };
       try { scope.setPointerCapture(e.pointerId); } catch (_e) { /* not captureable */ }
+      // Owner, 2026-10-31, with a screenshot: *"i cant drag Figure"*. A mouse
+      // press on an inline SVG's text started a text selection before the 4px
+      // threshold put `is-panning` (and its `user-select: none`) on the scope,
+      // so the drag selected labels instead. Cancelling the press stops the
+      // selection from starting; it also cancels the focus the press would
+      // give, so focus is taken here, without scrolling, to keep the arrow
+      // keys working after a click.
+      if (e.pointerType === "mouse") {
+        e.preventDefault();
+        try { scope.focus({ preventScroll: true }); } catch (_e) { /* not focusable */ }
+      }
+    });
+
+    // Safari and Firefox fire `selectstart` from the compatibility mousedown
+    // even when the pointerdown was cancelled. A selection never starts
+    // inside a figure, except in a form control.
+    scope.addEventListener("selectstart", function (e) {
+      var t = e.target && e.target.nodeType === 3 ? e.target.parentNode : e.target;
+      if (t && t.closest && t.closest("input, textarea")) return;
+      e.preventDefault();
     });
 
     scope.addEventListener("pointermove", function (e) {
@@ -10596,8 +11147,19 @@
       if (!drag.moved && Math.abs(dx) + Math.abs(dy) < 4) return;
       drag.moved = true;
       scope.classList.add("is-panning");
-      scope.scrollLeft = drag.sl - dx;
-      scope.scrollTop = drag.st - dy;
+      if (drag.canX) scope.scrollLeft = drag.sl - dx;
+      if (drag.canY) scope.scrollTop = drag.st - dy;
+      if (!drag.canX || (!drag.canY && !drag.touch)) {
+        setShift(drag.canX ? 0 : clampShift(drag.tx + dx, scope.clientWidth),
+          drag.canY || drag.touch ? 0 : clampShift(drag.ty + dy, scope.clientHeight));
+      }
+      // A finger on a figure that cannot scroll down still scrolls the page,
+      // so a phone reader is never stuck on a figure.
+      if (drag.touch && !drag.canY) {
+        var dyStep = e.clientY - drag.py;
+        drag.py = e.clientY;
+        if (dyStep !== 0) window.scrollBy(0, -dyStep);
+      }
       e.preventDefault();
     });
 
@@ -10644,8 +11206,82 @@
     });
     copyBtn.addEventListener("click", function () { copyFigure(scope).then(say); });
 
-    [out, level, into, reset, wide, svgBtn, pngBtn, copyBtn, said].forEach(function (n) { tools.appendChild(n); });
-    scope.parentNode.insertBefore(tools, scope);
+    // Open in a new tab (#915, owner: "with SVGs and such there is no 'view in
+    // new tab' option"). Inlining an <img> as <svg> takes away the browser's
+    // own "Open image in new tab", so this puts it back. It is a LINK, not a
+    // button, so a click, a middle-click and the right-click "Open link in new
+    // tab" all work.
+    var openLink = el("a", { class: "fa-figure-open", target: "_blank", rel: "noopener", "aria-label": "Open this diagram in a new tab" }, "Open ↗");
+    figureOpenTarget(scope, openLink);
+    function openNoFile(e) {
+      if (openLink.hasAttribute("href")) return;
+      e.preventDefault();
+      if (!openFigureBlob(scope)) say("Could not open this diagram");
+    }
+    openLink.addEventListener("click", openNoFile);
+    openLink.addEventListener("keydown", function (e) {
+      if (!openLink.hasAttribute("href") && (e.key === "Enter" || e.key === " ")) openNoFile(e);
+    });
+
+    [out, level, into, reset, wide, svgBtn, pngBtn, copyBtn, openLink, said].forEach(function (n) { tools.appendChild(n); });
+    // One host holds the controls and the figure, so on a laptop the
+    // controls can float over the figure and show only on hover (owner,
+    // 2026-11-01: "controls should only appear ... on mouse hover", "tighten
+    // up ... vertical space"). A touch screen keeps them in a row above.
+    var host = el("div", { class: "fa-figure-host" });
+    scope.parentNode.insertBefore(host, scope);
+    host.appendChild(tools);
+    host.appendChild(scope);
+
+    // Drag the bottom edge down to make the figure longer (owner,
+    // 2026-11-01: "you should also be able to drag bottom of figure down to
+    // make longer"). The card is as tall as its drawing, so a longer card is
+    // a bigger drawing: the handle sets the zoom so the drawing's height
+    // follows the pointer, and up makes it shorter again. A full-width bar,
+    // not the browser's corner grip, so it is easy to hit; focusable, so the
+    // arrow keys do the same in zoom steps.
+    var grip = el("div", {
+      class: "fa-figure-grip", role: "separator", tabindex: "0",
+      "aria-orientation": "horizontal", "aria-label": "Drag down to make the figure longer, up to make it shorter",
+      title: "Drag down to make the figure longer",
+    });
+    host.appendChild(grip);
+    var sizing = null;
+    function setZoom(z) {
+      z = Math.max(ZOOM_STEPS[0], Math.min(ZOOM_STEPS[ZOOM_STEPS.length - 1], z));
+      scope.style.setProperty("--fa-zoom", String(z));
+      level.textContent = Math.round(z * 100) + "%";
+      step = 0;
+      while (step < ZOOM_STEPS.length - 1 && ZOOM_STEPS[step + 1] <= z + 1e-9) step++;
+      out.disabled = z <= ZOOM_STEPS[0];
+      into.disabled = z >= ZOOM_STEPS[ZOOM_STEPS.length - 1];
+      markPannable();
+    }
+    grip.addEventListener("pointerdown", function (e) {
+      if (e.button !== 0) return;
+      var art = scope.querySelector("svg, img, object");
+      var h = art ? art.getBoundingClientRect().height : scope.clientHeight;
+      if (!(h > 0)) return;
+      var cur = parseFloat(scope.style.getPropertyValue("--fa-zoom")) || ZOOM_STEPS[step];
+      sizing = { y: e.clientY, h: h, z: cur };
+      try { grip.setPointerCapture(e.pointerId); } catch (_e) { /* not captureable */ }
+      grip.classList.add("is-sizing");
+      e.preventDefault();
+    });
+    grip.addEventListener("pointermove", function (e) {
+      if (!sizing) return;
+      setZoom(sizing.z * Math.max(0.1, sizing.h + (e.clientY - sizing.y)) / sizing.h);
+      e.preventDefault();
+    });
+    function endSizing() { sizing = null; grip.classList.remove("is-sizing"); }
+    grip.addEventListener("pointerup", endSizing);
+    grip.addEventListener("pointercancel", endSizing);
+    grip.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowDown" && step < ZOOM_STEPS.length - 1) { step++; apply(); }
+      else if (e.key === "ArrowUp" && step > 0) { step--; apply(); }
+      else return;
+      e.preventDefault();
+    });
     apply();
 
     // After insertion, so `clientWidth` is the real column width rather than 0.
@@ -10658,7 +11294,10 @@
   }
 
   function mountFigures() {
-    document.querySelectorAll(".bpmn-figure").forEach(function (f) { mountFigure(f, false); });
+    document.querySelectorAll(".bpmn-figure").forEach(function (f) {
+      if (f.querySelector("[data-fa-inline-pending]")) return;
+      mountFigure(f, false);
+    });
 
     // Any other SVG in the body gets the same controls -- but only if it is a
     // FIGURE. The first version of this matched `.main-content svg`, which in
@@ -10685,10 +11324,19 @@
     // image the column has SHRUNK qualifies: one shown at its own size is
     // already readable and gains nothing but chrome.
     var rasterOk = !!document.querySelector("[data-fa-figure-images]");
-    var sel = ".main-content img[src$='.svg'], .main-content svg, .main-content object[data$='.svg']" +
+    // A rendered DOCUMENT (`.fa-doc`, a handbook or guideline page) says the
+    // same thing by being one: its images are the publication's figures, never
+    // card faces, so every large one gets the controls, shrunk or not. A
+    // reader still wants to zoom, pan and copy a figure shown at its own size.
+    var docFigures = ".fa-doc img";
+    var sel = ".main-content img[src$='.svg'], .main-content svg, .main-content object[data$='.svg'], " + docFigures +
       (rasterOk ? ", .main-content img" : "");
 
     document.querySelectorAll(sel).forEach(function (node) {
+      // A drawing still waiting to be inlined is mounted once it is, by
+      // `inlineDiagrams` calling back here: wrapped now, the scan would see
+      // an <img> and size its controls for that.
+      if (node.hasAttribute("data-fa-inline-pending")) return;
       if (node.closest(".bpmn-figure") || node.closest(".fa-qr-host")) return;
       if (node.closest(".fa-figure-scope")) return;
       // An <svg> nested in another is part of that drawing, never its own figure.
@@ -10707,7 +11355,8 @@
         }
         var shown = node.getBoundingClientRect().width;
         var column = node.parentElement ? node.parentElement.clientWidth : 0;
-        if (shown < MIN_FIGURE_PX || node.naturalWidth <= shown + 1 || shown < 0.9 * column) return;
+        if (shown < MIN_FIGURE_PX) return;
+        if (!node.closest(".fa-doc") && (node.naturalWidth <= shown + 1 || shown < 0.9 * column)) return;
       }
       var box = node.getBoundingClientRect();
       if (box.width < MIN_FIGURE_PX && box.height < MIN_FIGURE_PX) return;
@@ -10827,6 +11476,22 @@
     return svg;
   }
 
+  // LAZY, AS THEY NEAR THE VIEWPORT (owner, 2026-11-14: "do lazy load content
+  // and libs"). Every drawing used to be fetched and parsed at load, wherever
+  // it sat, and the figure controls of the whole page waited for the slowest.
+  // Now `done` (mountFigures) runs at once for everything already drawable,
+  // each drawing is inlined when it comes within INLINE_MARGIN of the
+  // viewport, and its own controls are mounted when it is. A drawing still an
+  // <img> carries `data-fa-inline-pending`, which mountFigures skips.
+  //
+  // PRINT (owner, 2026-11-14: "Make sure printing loads all of the content
+  // before it renders the PDF"): an un-inlined drawing is still its own
+  // <img>, which prints; `beforeprint` turns any `loading="lazy"` image in
+  // the content eager and starts inlining every pending drawing, and
+  // `faInlineAllDiagrams()` returns a promise for a caller that can wait
+  // (a Print button would await it, then call window.print()).
+  var INLINE_MARGIN = "1000px 0px";
+  var inlineQueue = [];
   function inlineDiagrams(done) {
     var imgs = [].slice.call(
       document.querySelectorAll(
@@ -10838,13 +11503,55 @@
       done();
       return;
     }
-    var pending = imgs.length;
-    function settle() { if (--pending === 0) done(); }
+    imgs.forEach(function (img) { img.setAttribute("data-fa-inline-pending", ""); });
+    inlineQueue = imgs;
+    done();
+    if (typeof window.IntersectionObserver !== "function") {
+      // No observer: the old behaviour, every drawing now.
+      inlineAll();
+      return;
+    }
+    var io = new window.IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        io.unobserve(e.target);
+        inlineOne(e.target);
+      });
+    }, { rootMargin: INLINE_MARGIN });
+    imgs.forEach(function (img) { io.observe(img); });
+  }
 
-    imgs.forEach(function (img) {
+  /** Inline every drawing not yet inlined; resolves when all have settled. */
+  function inlineAll() {
+    return Promise.all(inlineQueue.map(inlineOne));
+  }
+  window.faInlineAllDiagrams = inlineAll;
+
+  window.addEventListener("beforeprint", function () {
+    [].forEach.call(document.querySelectorAll('.main-content img[loading="lazy"], .bpmn-figure img[loading="lazy"]'), function (img) {
+      img.loading = "eager";
+    });
+    inlineAll();
+  });
+
+  var remountPending = null;
+  function remountSoon() {
+    if (remountPending !== null) return;
+    remountPending = window.setTimeout(function () { remountPending = null; mountFigures(); }, 30);
+  }
+
+  /** Inline one drawing, once; the same promise however often it is asked. */
+  function inlineOne(img) {
+    if (img.faInlined) return img.faInlined;
+    if (!img.hasAttribute("data-fa-inline-pending")) return Promise.resolve();
+    function settle() {
+      img.removeAttribute("data-fa-inline-pending");
+      remountSoon();
+    }
+    img.faInlined = (function () {
       var isObject = img.tagName.toLowerCase() === "object";
       var src = img.getAttribute(isObject ? "data" : "src");
-      window
+      return window
         .fetch(src)
         .then(function (r) {
           if (!r.ok) throw new Error("HTTP " + r.status);
@@ -10878,13 +11585,17 @@
             if (checked === undefined) a.removeAttribute("href");
             else a.setAttribute("href", new URL(checked, fileUrl).href);
           });
-          img.parentNode.replaceChild(scopeSvg(document.importNode(svg, true)), img);
+          var host = img.parentNode;
+          host.replaceChild(scopeSvg(document.importNode(svg, true)), img);
+          var mounted = host.closest && host.closest(".fa-figure-scope.fa-plain");
+          if (mounted) fitBpmn(mounted);
         })
         .catch(function (e) {
           console.warn("docs-ui: could not inline " + src + " (" + e.message + "); it stays a static image, so its links will not work.");
         })
         .then(settle, settle);
-    });
+    })();
+    return img.faInlined;
   }
 
   /* ── The navbar filters by the selected locale ───────────────────────── */
@@ -11131,6 +11842,28 @@
    */
   var TR_STATUS = {};
   var TR_SEQ = 0;
+
+  /* The unreviewed-translation notice, in the six UN languages. The same
+     words as fhir-harness `UNREVIEWED_NOTICE` (scripts/ig-page-translations.ts).
+     These sentences are themselves not reviewed by native speakers, which is
+     why English is always shown beside them. */
+  var UNREVIEWED_NOTICE = {
+    en: { title: "Machine translation \u2014 not reviewed by a person",
+          body: "This page was translated automatically. No person has reviewed or adjudicated this translation, and it may contain errors. The source-language page is the authoritative text.",
+          link: "Read the original (English)" },
+    fr: { title: "Traduction automatique \u2014 non relue par une personne",
+          body: "Cette page a \u00E9t\u00E9 traduite automatiquement. Aucune personne n\u2019a relu ni valid\u00E9 cette traduction, qui peut contenir des erreurs. Seule la page dans la langue source fait foi.",
+          link: "Lire l\u2019original (anglais)" },
+    es: { title: "Traducci\u00F3n autom\u00E1tica \u2014 no revisada por una persona",
+          body: "Esta p\u00E1gina se tradujo autom\u00E1ticamente. Ninguna persona ha revisado ni validado esta traducci\u00F3n, que puede contener errores. Solo la p\u00E1gina en el idioma original es la de referencia.",
+          link: "Leer el original (ingl\u00E9s)" },
+    ru: { title: "\u041C\u0430\u0448\u0438\u043D\u043D\u044B\u0439 \u043F\u0435\u0440\u0435\u0432\u043E\u0434 \u2014 \u043D\u0435 \u043F\u0440\u043E\u0432\u0435\u0440\u0435\u043D \u0447\u0435\u043B\u043E\u0432\u0435\u043A\u043E\u043C",
+          body: "\u042D\u0442\u0430 \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0430 \u043F\u0435\u0440\u0435\u0432\u0435\u0434\u0435\u043D\u0430 \u0430\u0432\u0442\u043E\u043C\u0430\u0442\u0438\u0447\u0435\u0441\u043A\u0438. \u041D\u0438 \u043E\u0434\u0438\u043D \u0447\u0435\u043B\u043E\u0432\u0435\u043A \u043D\u0435 \u043F\u0440\u043E\u0432\u0435\u0440\u044F\u043B \u0438 \u043D\u0435 \u0443\u0442\u0432\u0435\u0440\u0436\u0434\u0430\u043B \u044D\u0442\u043E\u0442 \u043F\u0435\u0440\u0435\u0432\u043E\u0434, \u043F\u043E\u044D\u0442\u043E\u043C\u0443 \u043E\u043D \u043C\u043E\u0436\u0435\u0442 \u0441\u043E\u0434\u0435\u0440\u0436\u0430\u0442\u044C \u043E\u0448\u0438\u0431\u043A\u0438. \u0410\u0432\u0442\u043E\u0440\u0438\u0442\u0435\u0442\u043D\u043E\u0439 \u044F\u0432\u043B\u044F\u0435\u0442\u0441\u044F \u0442\u043E\u043B\u044C\u043A\u043E \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0430 \u043D\u0430 \u044F\u0437\u044B\u043A\u0435 \u043E\u0440\u0438\u0433\u0438\u043D\u0430\u043B\u0430.",
+          link: "\u0427\u0438\u0442\u0430\u0442\u044C \u043E\u0440\u0438\u0433\u0438\u043D\u0430\u043B (\u0430\u043D\u0433\u043B\u0438\u0439\u0441\u043A\u0438\u0439)" },
+    zh: { title: "\u673A\u5668\u7FFB\u8BD1\u2014\u2014\u672A\u7ECF\u4EBA\u5DE5\u5BA1\u6821", body: "\u672C\u9875\u9762\u4E3A\u81EA\u52A8\u7FFB\u8BD1\u3002\u5C1A\u65E0\u4EFB\u4F55\u4EBA\u5BA1\u6821\u6216\u88C1\u5B9A\u6B64\u8BD1\u6587\uFF0C\u53EF\u80FD\u5B58\u5728\u9519\u8BEF\u3002\u4EE5\u6E90\u8BED\u8A00\u9875\u9762\u4E3A\u51C6\u3002", link: "\u9605\u8BFB\u539F\u6587\uFF08\u82F1\u6587\uFF09" },
+    ar: { title: "\u062A\u0631\u062C\u0645\u0629 \u0622\u0644\u064A\u0629 \u2014 \u0644\u0645 \u064A\u0631\u0627\u062C\u0639\u0647\u0627 \u0623\u064A \u0634\u062E\u0635", body: "\u062A\u064F\u0631\u062C\u0645\u062A \u0647\u0630\u0647 \u0627\u0644\u0635\u0641\u062D\u0629 \u0622\u0644\u064A\u064B\u0627. \u0644\u0645 \u064A\u0631\u0627\u062C\u0639 \u0623\u064A \u0634\u062E\u0635 \u0647\u0630\u0647 \u0627\u0644\u062A\u0631\u062C\u0645\u0629 \u0623\u0648 \u064A\u0639\u062A\u0645\u062F\u0647\u0627\u060C \u0648\u0642\u062F \u062A\u062D\u062A\u0648\u064A \u0639\u0644\u0649 \u0623\u062E\u0637\u0627\u0621. \u0627\u0644\u0635\u0641\u062D\u0629 \u0628\u0644\u063A\u0629 \u0627\u0644\u0645\u0635\u062F\u0631 \u0647\u064A \u0627\u0644\u0646\u0635 \u0627\u0644\u0645\u0631\u062C\u0639\u064A.", link: "\u0627\u0642\u0631\u0623 \u0627\u0644\u0646\u0635 \u0627\u0644\u0623\u0635\u0644\u064A (\u0628\u0627\u0644\u0625\u0646\u062C\u0644\u064A\u0632\u064A\u0629)" }
+  };
+  var RTL_LOCALES = ["ar", "he", "fa", "ur"];
 
   var TR_PAGE_STATE = {
     unverified: "translated automatically; not reviewed by a subject-matter expert",
@@ -11573,34 +12306,54 @@
      * badge — a page with no projection — the control is not drawn at all
      * rather than drawn dead (`pb04`).
      */
-    if (meta.translationStatus === "unverified" && !document.querySelector(".fa-translation-warning")) {
-      // The WHOLE notice is English, so the `<details>` carries `lang`/`dir`
-      // and the summary, the drawer and the report button all inherit it
-      // (bean `giiw`). Built from nodes rather than innerHTML: the drawer
-      // used to interpolate `meta.translationSource` into markup.
-      var warning = chromeText(el("details", { class: "fa-translation-warning" }));
-      var warnSummary = el("summary", { class: "fa-translation-warning__line" });
-      // ONE flex item holding the whole sentence. As loose text and <strong>s
-      // each piece was its own flex item at min-content width, so the line
-      // overflowed instead of truncating \u2014 and under an inherited `rtl` it
-      // overflowed off the LEFT edge, taking the sentence's start with it.
-      // One item can carry `text-overflow: ellipsis`, which with `dir="ltr"`
-      // falls at the logical end.
-      var warnText = el("span", { class: "fa-translation-warning__text" });
-      var warnLine = [
-        "\u26A0\uFE0F ", ["strong", "Unverified translation"], " \u2014 ",
-        "This page has been translated automatically and has ",
-        ["strong", "not been reviewed"], " by a subject-matter expert."
-      ];
-      warnLine.forEach(function (part) {
-        warnText.appendChild(typeof part === "string"
-          ? document.createTextNode(part)
-          : el(part[0], null, part[1]));
+    /* PROMINENT, and FAIL CLOSED (owner, 2026-11-13: "need VERY prominent
+     * disclaimer when any translated text on page has not been human
+     * translated/adjudicated"). This supersedes the 2026-09-21 one-line
+     * notice: the line was easy to miss, and it appeared only for the one
+     * status "unverified", so a translated page with no status, or a stale
+     * one, said nothing.
+     *
+     * A page counts as a translation when it names its source or carries a
+     * status; it counts as reviewed ONLY when its status is "verified". No
+     * status, "unverified" and "stale" all get the notice. "missing" (no
+     * translated words on the page) does not.
+     *
+     * The notice is in the page's language when there are words for it, then
+     * in English, and links to the source-language page. The detail that the
+     * one-line notice opened to is kept, behind a "Translation details"
+     * disclosure under it. The IG layouts in fhir-harness render the same
+     * notice server-side with the same words; a page that already carries one
+     * (`.fa-translation-warning`) is left alone. */
+    var trState = meta.translationStatus || "";
+    var trIsTranslation = !!meta.translationSource || trState === "unverified" || trState === "stale";
+    if (trIsTranslation && trState !== "verified" && trState !== "missing" && !document.querySelector(".fa-translation-warning")) {
+      var trPageLang = meta.lang || "en";
+      var warning = el("div", {
+        class: "fa-translation-warning fa-translation-warning--prominent",
+        role: "note",
+        "aria-label": UNREVIEWED_NOTICE.en.title
       });
-      // The full sentence on hover, for the width at which the ellipsis bites.
-      warnSummary.setAttribute("title", warnText.textContent);
-      warnSummary.appendChild(warnText);
-      warning.appendChild(warnSummary);
+      var srcHref = safeHref(deriveBasePath(window.location.pathname, trPageLang));
+      var noticeBlock = function (loc) {
+        var n = UNREVIEWED_NOTICE[loc];
+        var block = el("div", { class: "fa-translation-warning__lang" });
+        block.setAttribute("lang", loc);
+        block.setAttribute("dir", RTL_LOCALES.indexOf(loc) !== -1 ? "rtl" : "ltr");
+        var title = el("p", { class: "fa-translation-warning__title" });
+        title.appendChild(document.createTextNode("\u26A0\uFE0F "));
+        title.appendChild(el("strong", null, n.title));
+        block.appendChild(title);
+        var body = el("p", { class: "fa-translation-warning__text" });
+        body.appendChild(document.createTextNode(n.body + " "));
+        if (srcHref) body.appendChild(el("a", { class: "fa-translation-warning__source", href: srcHref }, n.link));
+        block.appendChild(body);
+        return block;
+      };
+      if (trPageLang !== "en" && UNREVIEWED_NOTICE[trPageLang]) warning.appendChild(noticeBlock(trPageLang));
+      warning.appendChild(noticeBlock("en"));
+      var warnMore = chromeText(el("details", { class: "fa-translation-warning__more" }));
+      warnMore.appendChild(el("summary", { class: "fa-translation-warning__line" }, "Translation details"));
+      warning.appendChild(warnMore);
 
       var warnBody = el("div", { class: "fa-translation-warning__body" });
       if (meta.translationSource) {
@@ -11629,7 +12382,7 @@
         else if (t) { var d = document.getElementById(t.getAttribute("aria-controls")); if (d) d.focus(); }
       });
       warnBody.appendChild(openDrawer);
-      warning.appendChild(warnBody);
+      warnMore.appendChild(warnBody);
 
       if (meta.translationQa && meta.translationQa.src) {
         // Hidden until a badge with a projection behind it exists: since bean
@@ -11655,10 +12408,11 @@
         warnBody.appendChild(openReport);
       }
 
+      // First in the content. An empty content column still gets it: a notice
+      // that needs the column to have a first child is one that can vanish.
       var mainContent = document.querySelector(".main-content, #main-content");
-      if (mainContent && mainContent.firstChild) {
-        mainContent.insertBefore(warning, mainContent.firstChild);
-      }
+      if (mainContent) mainContent.insertBefore(warning, mainContent.firstChild);
+      else document.body.insertBefore(warning, document.body.firstChild);
     }
 
     // A HAND-AUTHORED page has no generator to write its badge into the
@@ -11848,6 +12602,61 @@
     return row;
   }
 
+  /**
+   * The tree-to-commit index, fetched once per page and only when a witness
+   * card with a tree is built (bean 69lr; owner card Q5, 2026-11-05). `null`
+   * when it is absent or unreadable: the tree then stays plain text.
+   */
+  var treeCommitsPromise = null;
+  function treeCommits() {
+    if (!treeCommitsPromise) {
+      treeCommitsPromise = fetch(siteBaseurl() + "/assets/qa/tree-commits.json")
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (j) {
+          return j && j.$schema === "folio-qa-tree-commits/v1" && j.commits ? j : null;
+        })
+        .catch(function () { return null; });
+    }
+    return treeCommitsPromise;
+  }
+
+  /** Turn a "repo tree at review" value into a link to main's commit with that tree, when the index has one. */
+  function linkTreeToCommit(row, tree) {
+    treeCommits().then(function (idx) {
+      var commit = idx && idx.commits[tree];
+      if (!commit || !/^[0-9a-f]{40}$/.test(commit) || typeof idx.repo !== "string") return;
+      var href = safeHref(idx.repo + "/commit/" + commit);
+      var v = row.querySelector(".fa-qa-field-value");
+      if (!href || !v || !/^https:\/\/github\.com\//.test(href)) return;
+      var a = el("a", { href: href, class: "fa-qa-mono", title: "The commit on main where tree " + tree +
+        " first landed: " + commit }, shortSha(tree) + " (commit " + shortSha(commit) + ")");
+      v.textContent = "";
+      v.appendChild(a);
+    });
+  }
+
+  /**
+   * Date a "when" row from the reviewed tree (owner rulings 2026-11-06: card
+   * "QA dates", option 1, and card "Date source", option 1, derive the date ON
+   * READ). Writers no longer stamp a clock in a verdict, so the same verdict
+   * over the same tree is the same bytes on a PR and on main; its date is the
+   * commit date of the commit on main carrying that tree, from the index's
+   * `dates`. A tree the index does not date leaves the row as it was: the
+   * witness's own legacy date, or "not recorded" -- never now.
+   */
+  function dateRowFromTree(row, tree) {
+    treeCommits().then(function (idx) {
+      var iso = idx && idx.dates && idx.dates[tree];
+      var when = typeof iso === "string" ? qaWhen(iso) : null;
+      var v = row.querySelector(".fa-qa-field-value");
+      if (!when || !v) return;
+      v.textContent = when.text;
+      v.className = v.className.replace(/\s*fa-qa-absent\b/, "");
+      v.setAttribute("title", "The commit date of the commit on main carrying the reviewed tree " +
+        tree + ": " + when.title);
+    });
+  }
+
   function qaWitnessCard(w) {
     var card = el("div", { class: "fa-qa-witness fa-qa-kind-" + (w.kind || "script") });
 
@@ -11892,9 +12701,31 @@
 
     var when = qaWhen(w.at);
     var grid = el("div", { class: "fa-qa-field-grid" });
-    grid.appendChild(qaField("when", when && when.text, { title: when && when.title }));
-    grid.appendChild(qaField("repo SHA at review", shortSha(w.sha),
-      { mono: true, title: w.sha || undefined }));
+    var whenRow = qaField("when", when && when.text, { title: when && when.title });
+    grid.appendChild(whenRow);
+    if (w.tree) dateRowFromTree(whenRow, w.tree);
+    // A verdict records the TREE it reviewed, not HEAD's commit (folio-assistant
+    // bean 69lr; owner card Q4, 2026-11-05: "the tree is the identity"). On a
+    // pull_request run HEAD is the synthetic refs/pull/<n>/merge commit, which
+    // can vanish; the commit that lands on main has the same tree. Sidecars
+    // written before that still carry only `sha`, so it is shown when there is
+    // no tree. GitHub has no tree-to-commit lookup, so the link comes from
+    // `assets/qa/tree-commits.json`, which the deploy writes from main's
+    // first-parent history beside the evidence (owner card Q5, 2026-11-05,
+    // option 1: a separate index, so the cached pages stay a function of the
+    // tree). A tree the index does not hold, an index that is absent, or a
+    // non-GitHub origin (`repo: null`) leaves the tree as plain text: absent,
+    // never a dead link.
+    if (w.tree) {
+      var treeRow = qaField("repo tree at review", shortSha(w.tree),
+        { mono: true, title: "Git tree id of the reviewed checkout: " + w.tree +
+          ". Every commit with this tree has exactly these inputs." });
+      grid.appendChild(treeRow);
+      linkTreeToCommit(treeRow, w.tree);
+    } else {
+      grid.appendChild(qaField("repo SHA at review", shortSha(w.sha),
+        { mono: true, title: w.sha || undefined }));
+    }
     if (w.kind === "script" || w.scriptHash) {
       grid.appendChild(qaField("checker source hash", shortSha(w.scriptHash),
         { mono: true, title: w.scriptHash || undefined }));
@@ -12479,6 +13310,56 @@
     }
   }
 
+  /* THE FOLIO IN THE ROW — owner, 2026-11-13: *"remove the folio purple tab
+   * at top instead add an icon to the controls for the folio."* The icon
+   * drives the EXISTING handle (one control over one state, `l4zi`): a click
+   * clicks it, and its name and pressed state follow the handle's, count and
+   * all. While the row carries it, `docs-ui.css` hides the handle; a page
+   * with no row keeps the tab, so the glass is never out of reach. */
+  var FOLIO_GLYPH =
+    '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">' +
+    '<rect x="4" y="6.5" width="12" height="14.5" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.6"/>' +
+    '<path d="M8 6.5V4.5A1.5 1.5 0 0 1 9.5 3H18.5A1.5 1.5 0 0 1 20 4.5V16.5A1.5 1.5 0 0 1 18.5 18H16" ' +
+    'fill="none" stroke="currentColor" stroke-width="1.6"/>' +
+    '<path d="M7 11h6M7 14h6M7 17h4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>' +
+    "</svg>";
+  function folioIcon() {
+    var b = el("button", {
+      type: "button", class: "fa-nav-icon fa-nav-folio", "aria-expanded": "false",
+      "aria-label": "Pull down your folio", title: "Pull down your folio", "data-fa-tip": "Pull down your folio"
+    });
+    b.innerHTML = FOLIO_GLYPH;
+    b.addEventListener("click", function () {
+      var h = document.querySelector(".fa-glass-handle");
+      if (h) h.click();
+      bindFolioIcon();
+    });
+    return b;
+  }
+  /** Mirror the handle's name and state onto the row's folio icon. Idempotent; called from both sides, whichever mounts last. */
+  function bindFolioIcon() {
+    var b = document.querySelector(".fa-nav-folio");
+    var h = document.querySelector(".fa-glass-handle");
+    if (!b || !h) return;
+    function sync() {
+      var name = h.getAttribute("aria-label") || "Pull down your folio";
+      b.setAttribute("aria-label", name);
+      b.setAttribute("data-fa-tip", name);
+      b.title = name;
+      b.setAttribute("aria-expanded", h.getAttribute("aria-expanded") === "true" ? "true" : "false");
+    }
+    sync();
+    if (b.__faFolioBound === h || typeof MutationObserver !== "function") return;
+    b.__faFolioBound = h;
+    new MutationObserver(sync).observe(h, { attributes: true, attributeFilter: ["aria-label", "aria-expanded"] });
+  }
+  /** Where focus goes back to when the glass closes: the handle, or the row's folio icon while the handle is hidden. */
+  function focusFolioControl(handle) {
+    var b = document.querySelector(".fa-nav-folio");
+    if (b && handle.getClientRects().length === 0) b.focus();
+    else handle.focus();
+  }
+
   function mountNavIconRow() {
     // THE ROW IS DRAWN BY `navbar-row.js` — beans `lhvt`, `9rq1`. That file is
     // the one drawing for every navbar: it also runs on the 2,709 railed pages
@@ -12520,6 +13401,7 @@
         });
         scheme.addEventListener("click", toggleScheme);
         host.appendChild(scheme);
+        host.appendChild(folioIcon());
         // A row mounted LATE (the path below) has a fish nobody wired yet.
         // Idempotent per button, so the synchronous path is unaffected.
         mountFshGutsNav();
@@ -12665,6 +13547,17 @@
         applyNavPref(null);
         label();
       });
+      /* A PIN LIFTS WHEN THE MOUSE LEAVES -- owner, 2026-11-02 (Q-FMR-11 A).
+       * Since an open bar's avatar goes home, nothing on the bar closes a
+       * pin, so a bar pinned open stayed open until the reader left the page.
+       * Now the mouse leaving the bar unpins it, and the bar goes back to the
+       * hover peek. Only a MOUSE: a finger's pointerleave fires as it lifts,
+       * which would undo the tap that pinned the bar. Nothing is stored. */
+      bar.addEventListener("pointerleave", function (e) {
+        if (e.pointerType !== "mouse" || !box.checked) return;
+        box.checked = false;
+        label();
+      });
     }
   }
 
@@ -12734,6 +13627,239 @@
     anchor.parentNode.insertBefore(box, anchor);
   }
 
+  /* ── The footer's build stamp, filled from build.json ─────────────────
+   *
+   * `footer_custom.html` renders the stamp CONSTANTLY ("deployed dev") on
+   * every build, the live site included, so a page that did not change is
+   * byte-identical on every deploy and in every preview. A stamp baked in at
+   * build time changed every page on every main deploy, which is what kept a
+   * preview from sharing main's unchanged files and the cone deploy from
+   * skipping anything (owner, 2026-10-31: "if asset not changed in staging
+   * then link to main asset").
+   *
+   * The live site's facts are in `<base>/build.json`, which `docs-site.yml`
+   * writes for client-side readers. A preview's are in `staging.json`, and
+   * the staging banner's own script fills the stamp from it, so this leaves a
+   * preview alone. A failed fetch leaves "dev" and says the details are
+   * unavailable: it never shows a stamp it could not read.
+   */
+  function fillBuildStamp() {
+    if (isStagingPreview()) return;
+    var p = document.querySelector(".fa-build-stamp");
+    if (!p || typeof fetch !== "function") return;
+    fetch(withBase("/build.json"), { cache: "no-store" })
+      .then(function (r) { if (!r.ok) throw new Error(String(r.status)); return r.json(); })
+      .then(function (b) {
+        var sha = typeof b.sha === "string" ? b.sha : "";
+        if (!/^[0-9a-f]{7,40}$/.test(sha)) return;
+        while (p.firstChild) p.removeChild(p.firstChild);
+        p.appendChild(document.createTextNode("deployed "));
+        var a = document.createElement("a");
+        a.href = (/^https:\/\//.test(b.runUrl || "") && safeHref(b.runUrl)) || "https://github.com/litlfred/folio-assistant/actions";
+        var code = document.createElement("code");
+        code.textContent = sha.slice(0, 7);
+        a.appendChild(code);
+        p.appendChild(a);
+        if (typeof b.built === "string" && b.built) p.appendChild(document.createTextNode(" \u00b7 " + b.built));
+      })
+      .catch(function () { p.setAttribute("title", "build details unavailable"); });
+  }
+
+  /*
+   * PIN ANY BLOCK, OF ANY GRAPH KIND, TO THE FOLIO — issue #982. Owner,
+   * 2026-11-02: a bookmark icon in the block gutter puts *"a bookmark kind
+   * [item] to the folio which is a link to the document at that point"*, and
+   * *"user should also be able to add content blocks in general to folio so
+   * they can return to them (e.g. glossary of a harness or ingested library,
+   * a BPMN diagram, a FHIR resource instance, etc.)"* — *"any graph kind
+   * really"*, *"core infra of the viewer/graph kind"*.
+   *
+   * So there is ONE contract, the same shape a library row uses, and no
+   * per-kind code. Any rendered block declares itself:
+   *
+   *     <div data-fa-pin="<node IRI or page URL#anchor>"
+   *          data-fa-pin-title="Health worker"
+   *          data-fa-pin-href="<where opening it goes>"
+   *          data-fa-pin-kind="bookmark | pin"          (default pin)
+   *          data-fa-pin-node-kind="glossary"           (its graph kind)
+   *          data-fa-pin-avatar="<the document's cover>"
+   *          data-fa-pin-source="DTH-HRH">
+   *       ... <button data-fa-pin-control>🔖</button> ...
+   *
+   * and a press on any `[data-fa-pin-control]` inside it toggles it on the
+   * glass. A viewer that builds its controls in script (the block panel)
+   * calls `window.faFolio.pin(key, meta)` instead of growing a second store.
+   *
+   * ON THE GLASS IT IS A LINK CARD (Q-BMK-1 = C): the avatar, the title and
+   * where it came from, opening to `href`. Nothing of the block's own viewer
+   * is loaded for it, so a glass holding many items of many kinds costs one
+   * small card each (owner, 2026-11-02: *"lazy load all visualizers ... can
+   * be a lot if lots of different item types"*).
+   */
+  var PIN_KINDS = { bookmark: 1, pin: 1 };
+
+  function pinMetaOf(host) {
+    var kind = host.getAttribute("data-fa-pin-kind");
+    var key = host.getAttribute("data-fa-pin") || "";
+    return {
+      key: key,
+      title: host.getAttribute("data-fa-pin-title") || key,
+      href: safeHref(host.getAttribute("data-fa-pin-href") || undefined) || "",
+      avatar: safeHref(host.getAttribute("data-fa-pin-avatar") || undefined) || "",
+      kind: PIN_KINDS[kind] ? kind : "pin",
+      nodeKind: host.getAttribute("data-fa-pin-node-kind") || "",
+      source: host.getAttribute("data-fa-pin-source") || "",
+    };
+  }
+
+  /** The store key of a pinned item: kind-prefixed, so it can never be read as a library `<instance>/<id>`. */
+  function pinKeyOf(kind, key) {
+    var k = String(key || "");
+    return /^(bookmark|pin):/.test(k) ? k : (PIN_KINDS[kind] ? kind : "pin") + ":" + k;
+  }
+
+  /** Put it on the glass, or take it off when it is already there. Returns the new state. */
+  function togglePin(key, meta) {
+    var m = meta || {};
+    if (!key) return "library";
+    var k = pinKeyOf(m.kind, key);
+    if (folioStateOf(k) === "glass") { shelveFromGlass(k); return "folio"; }
+    displayInFolio(k, {
+      title: m.title || key,
+      href: safeHref(m.href || undefined) || "",
+      avatar: safeHref(m.avatar || undefined) || "",
+      kind: PIN_KINDS[m.kind] ? m.kind : "pin",
+      nodeKind: m.nodeKind,
+      source: m.source,
+    });
+    return "glass";
+  }
+
+  /** Every pin control shows its block's state, read from the store. */
+  function paintBlockPins(root) {
+    var r = root && root.querySelectorAll ? root : document;
+    Array.prototype.forEach.call(r.querySelectorAll("[data-fa-pin-control]"), function (btn) {
+      var host = btn.closest("[data-fa-pin]");
+      var m = host ? pinMetaOf(host) : null;
+      if (!m || !m.key) return;
+      var on = folioStateOf(pinKeyOf(m.kind, m.key)) === "glass";
+      var what = m.kind === "bookmark" ? "bookmark" : "pin";
+      btn.setAttribute("aria-pressed", on ? "true" : "false");
+      btn.setAttribute("aria-label", (on ? "Remove the " + what + " of " : (what === "bookmark" ? "Bookmark " : "Pin ")) +
+        m.title + (on ? " from your folio glass" : " to your folio glass"));
+      btn.title = on ? "On your folio glass (press to take it off)" : (what === "bookmark" ? "Bookmark on your folio" : "Pin to your folio");
+    });
+  }
+
+  function mountBlockPins() {
+    if (document.__faPinsMounted) return;
+    document.__faPinsMounted = true;
+    // ONE delegated listener, for the same reason as the pull-outs (`ebvl`):
+    // lazy pages and viewers fill their blocks after this runs.
+    document.addEventListener("click", function (ev) {
+      var btn = ev.target && ev.target.closest && ev.target.closest("[data-fa-pin-control]");
+      if (!btn) return;
+      var host = btn.closest("[data-fa-pin]");
+      if (!host) return;
+      ev.preventDefault();
+      ev.stopPropagation();
+      var m = pinMetaOf(host);
+      togglePin(m.key, m);
+    });
+    document.addEventListener("fa:folio-changed", function () { paintBlockPins(); });
+    paintBlockPins();
+    function findPinCard(kindOrKey, maybeKey) {
+      if (!glassLayer || !glassLayer.isConnected) return null;
+      var k = maybeKey !== undefined ? pinKeyOf(kindOrKey, maybeKey) : String(kindOrKey || "");
+      var cards = glassLayer.querySelectorAll(".fa-glass-asset");
+      for (var i = 0; i < cards.length; i++) {
+        var ak = cards[i].getAttribute("data-fa-asset") || "";
+        if (ak === k || ak === "pin:" + k || ak === "bookmark:" + k) return cards[i];
+      }
+      return null;
+    }
+    window.faFolio = {
+      pin: togglePin,
+      stateOf: function (kind, key) { return folioStateOf(pinKeyOf(kind, key)); },
+      paint: paintBlockPins,
+      viewer: registerFolioViewer,
+      openWindow: function (kindOrKey, maybeKey) {
+        var c = findPinCard(kindOrKey, maybeKey);
+        return c && typeof c.__faOpenWindow === "function" ? c.__faOpenWindow() : Promise.resolve(false);
+      },
+      closeWindow: function (kindOrKey, maybeKey) {
+        var c = findPinCard(kindOrKey, maybeKey);
+        if (c && typeof c.__faCloseWindow === "function") c.__faCloseWindow();
+      },
+    };
+  }
+
+  /**
+   * THE BAR'S SEARCH IS A MAGNIFIER -- owner, 2026-11-10: "have styling
+   * match who.int especially for language and search parts". On the
+   * reference site the header shows a large magnifier, and the field opens
+   * only when it is pressed. So a search box that sits in a page's own top
+   * bar (`.fa-page-bar`: an IG's `.ig-search`, the site bar's theme
+   * `.search`) is wrapped with a magnifier button that opens it as a panel
+   * under the bar and closes it again (`l4zi`: the inverse is the same
+   * control in the same place).
+   *
+   * MOVED, NEVER REBUILT, NEVER DETACHED: the box keeps its input, its
+   * results and every handler bound to them, and stays in the document, so
+   * a script that looks its input up by id still finds it. Closed is
+   * `data-open="false"` on the wrapper and `display: none` in docs-ui.css.
+   *
+   * Idempotent: a box already wrapped is left alone.
+   */
+  function mountBarSearch() {
+    var boxes = document.querySelectorAll(".fa-page-bar .ig-search, .fa-page-bar .search");
+    Array.prototype.forEach.call(boxes, function (box, i) {
+      if (box.parentNode && box.parentNode.classList && box.parentNode.classList.contains("fa-bar-search")) return;
+      var input = box.querySelector("input");
+      if (!input) return;
+      if (!box.id) box.id = "fa-bar-search-box" + (i ? "-" + i : "");
+      var wrap = el("span", { class: "fa-bar-search", "data-open": "false" });
+      var toggle = chromeText(el("button", {
+        type: "button",
+        class: "fa-bar-search-toggle",
+        "aria-label": "Search",
+        "aria-expanded": "false",
+        "aria-controls": box.id,
+        title: "Search this site"
+      }));
+      toggle.innerHTML = BAR_SEARCH_GLYPH;
+      box.parentNode.insertBefore(wrap, box);
+      wrap.appendChild(toggle);
+      wrap.appendChild(box);
+
+      function paint(open, refocus) {
+        wrap.setAttribute("data-open", open ? "true" : "false");
+        toggle.setAttribute("aria-expanded", open ? "true" : "false");
+        if (open) input.focus();
+        else if (refocus) toggle.focus();
+      }
+      toggle.addEventListener("click", function () {
+        paint(wrap.getAttribute("data-open") !== "true", false);
+      });
+      wrap.addEventListener("keydown", function (e) {
+        if (e.key !== "Escape" || wrap.getAttribute("data-open") !== "true") return;
+        e.preventDefault();
+        e.stopPropagation();
+        paint(false, true);
+      });
+      document.addEventListener("click", function (e) {
+        if (wrap.getAttribute("data-open") === "true" && !wrap.contains(e.target)) paint(false, false);
+      });
+    });
+  }
+
+  // The bar's magnifier: bolder than the band's, as the reference site's is.
+  var BAR_SEARCH_GLYPH =
+    '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">' +
+    '<circle cx="10" cy="10" r="6.5" fill="none" stroke="currentColor" stroke-width="3"/>' +
+    '<path d="M15 15l5.5 5.5" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/>' +
+    "</svg>";
+
   function init() {
     // RTL detection — Arabic pages get dir="rtl" on <html> which
     // triggers the CSS rules in docs-ui.css for smooth sidebar slide.
@@ -12749,6 +13875,7 @@
     // BEFORE the tiles and the rows: it adds the class the stylesheet keys the
     // close control on, and a control offered before its handler exists is a
     // control that does the wrong thing if pressed in that window.
+    fillBuildStamp();
     mountNavPreference();
     // BEFORE the tiles: Page settings drops its own Discarded control when the
     // navbar already carries fsh-guts (#1925), and asks by looking for it.
@@ -12786,12 +13913,19 @@
     mountGlass();
     mountLandingHomes();
     mountLibraryPullouts();
+    mountBlockPins();
     mountTodoStickies();
+    // Before the picker: the magnifier comes first in the bar, then language.
+    mountBarSearch();
     mountPageLanguageBar();
     mountTableFilters();
     // Figures are mounted only after the inlining settles, so the scan sees the
     // real <svg> rather than the <img> it replaces and does not wrap both.
     inlineDiagrams(mountFigures);
+    // A diagram drawn LATER -- a Mermaid block rendered as it nears the
+    // viewport (`_includes/components/mermaid.html`) -- says so, and gets its
+    // controls then; the observer below stops watching after ten seconds.
+    document.addEventListener("fa:figures-changed", remountSoon);
 
     // Mermaid renders AFTER this runs, and nothing tells us when.
     //

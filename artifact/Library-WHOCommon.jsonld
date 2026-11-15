@@ -6,7 +6,7 @@
     "prov": "http://www.w3.org/ns/prov#"
   },
   "$schema": "folio-ig-artifact-jsonld/v1",
-  "@id": "Library-WHOCommon.jsonld",
+  "@id": "Library-WHOCommon",
   "@type": "fhir:Library",
   "dcterms:identifier": "Library/WHOCommon",
   "schema:name": "WHOCommon",
@@ -22,10 +22,18 @@
     {
       "@type": "schema:MediaObject",
       "schema:contentUrl": {
-        "@id": "../ast-data/resources/Library/WHOCommon--3946c982.json"
+        "@id": "../Library-WHOCommon.json"
       },
       "schema:encodingFormat": "application/fhir+json",
       "dcterms:source": "local"
+    },
+    {
+      "@type": "schema:MediaObject",
+      "schema:contentUrl": {
+        "@id": "https://raw.githubusercontent.com/litlfred/smart-base-clinical/502539ee92abe0f44db21978aefc67c26f10d6f7/resources/Library/WHOCommon--3946c982.json"
+      },
+      "schema:encodingFormat": "application/fhir+json",
+      "dcterms:source": "mirror"
     }
   ],
   "prov:wasGeneratedBy": {

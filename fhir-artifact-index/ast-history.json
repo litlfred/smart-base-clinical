@@ -1,0 +1,11 @@
+{
+  "$schema": "ig-ast-history/v1",
+  "repository": "litlfred/smart-base-clinical",
+  "versions": [
+    {
+      "commit": "502539ee92abe0f44db21978aefc67c26f10d6f7",
+      "date": "2026-10-30T13:47:01Z",
+      "src": "3c6fcc9"
+    }
+  ]
+}
