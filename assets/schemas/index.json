@@ -12,6 +12,9 @@
     "fhir-harness/schemas",
     "folio-assistant-core/schemas",
     "smart-base/L1/schemas",
+    "smart-base/L2/schemas",
+    "smart-base/L3/schemas",
+    "smart-base/L4/schemas",
     "smart-base/schemas",
     "who-iris/sources"
   ],
@@ -4400,6 +4403,60 @@
       "isTest": false
     },
     {
+      "module": "smart-base/L2/schemas/extract-dak.ts",
+      "instance": "smart-base",
+      "name": "extract-dak",
+      "graphNode": "undeclared",
+      "summary": "Extracts the DAK component layer (L2) from a smart-base-shaped IG — a port",
+      "isTest": false
+    },
+    {
+      "module": "smart-base/L2/schemas/index.ts",
+      "instance": "smart-base",
+      "name": "index",
+      "graphNode": "undeclared",
+      "isTest": false
+    },
+    {
+      "module": "smart-base/L2/schemas/kgid-l2.ts",
+      "instance": "smart-base",
+      "name": "kgid-l2",
+      "graphNode": "undeclared",
+      "summary": "DAK-namespace identity — the half of WHO smart-kg `tools/kgid.mjs` (main",
+      "isTest": false
+    },
+    {
+      "module": "smart-base/L2/schemas/l2.ts",
+      "instance": "smart-base",
+      "name": "l2",
+      "graphNode": "undeclared",
+      "summary": "Knowledge-graph layer L2, version 3.0, as typed data.",
+      "isTest": false
+    },
+    {
+      "module": "smart-base/L3/schemas/extract-l3.ts",
+      "instance": "smart-base",
+      "name": "extract-l3",
+      "graphNode": "undeclared",
+      "summary": "Extracts the L3 index from a SMART Guidelines Implementation Guide's source",
+      "isTest": false
+    },
+    {
+      "module": "smart-base/L3/schemas/index.ts",
+      "instance": "smart-base",
+      "name": "index",
+      "graphNode": "undeclared",
+      "isTest": false
+    },
+    {
+      "module": "smart-base/L3/schemas/l3.ts",
+      "instance": "smart-base",
+      "name": "l3",
+      "graphNode": "undeclared",
+      "summary": "Knowledge-graph layer L3, version 3.0, as typed data.",
+      "isTest": false
+    },
+    {
       "module": "smart-base/schemas/content-types-stack.test.ts",
       "instance": "smart-base",
       "name": "content-types-stack.test",
@@ -4524,6 +4581,14 @@
       "graphNode": "schema",
       "summary": "The WHO SMART Guidelines portfolio: the umbrella knowledge graph that links",
       "isTest": false
+    },
+    {
+      "module": "smart-base/schemas/site-roots.test.ts",
+      "instance": "smart-base",
+      "name": "site-roots.test",
+      "graphNode": "undeclared",
+      "summary": "The publishing roots come from the shared profile, and the owner is derived",
+      "isTest": true
     },
     {
       "module": "smart-base/schemas/site-roots.ts",
@@ -152573,6 +152638,546 @@
       "refs": [
         "smart-base/L1/schemas/vocab.ts#Code"
       ],
+      "unresolved": [],
+      "external": [],
+      "source": "typescript",
+      "exported": true
+    },
+    {
+      "id": "smart-base/L2/schemas/extract-dak.ts#DakJson",
+      "name": "DakJson",
+      "module": "smart-base/L2/schemas/extract-dak.ts",
+      "kind": "interface",
+      "doc": "dak.json, as far as this reads it.",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "optional": true,
+          "array": false,
+          "card": "0..1",
+          "links": {
+            "string": "https://zod.dev/api#strings"
+          }
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "optional": true,
+          "array": false,
+          "card": "0..1",
+          "links": {
+            "string": "https://zod.dev/api#strings"
+          }
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "optional": true,
+          "array": false,
+          "card": "0..1",
+          "links": {
+            "string": "https://zod.dev/api#strings"
+          }
+        },
+        {
+          "name": "description",
+          "type": "unknown",
+          "optional": true,
+          "array": false,
+          "card": "0..1",
+          "links": {
+            "unknown": "https://zod.dev/api#unknown"
+          }
+        },
+        {
+          "name": "version",
+          "type": "string",
+          "optional": true,
+          "array": false,
+          "card": "0..1",
+          "links": {
+            "string": "https://zod.dev/api#strings"
+          }
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "optional": true,
+          "array": false,
+          "card": "0..1",
+          "links": {
+            "string": "https://zod.dev/api#strings"
+          }
+        },
+        {
+          "name": "publicationUrl",
+          "type": "string",
+          "optional": true,
+          "array": false,
+          "card": "0..1",
+          "links": {
+            "string": "https://zod.dev/api#strings"
+          }
+        },
+        {
+          "name": "previewUrl",
+          "type": "string",
+          "optional": true,
+          "array": false,
+          "card": "0..1",
+          "links": {
+            "string": "https://zod.dev/api#strings"
+          }
+        },
+        {
+          "name": "canonicalUrl",
+          "type": "string",
+          "optional": true,
+          "array": false,
+          "card": "0..1",
+          "links": {
+            "string": "https://zod.dev/api#strings"
+          }
+        },
+        {
+          "name": "license",
+          "type": "string",
+          "optional": true,
+          "array": false,
+          "card": "0..1",
+          "links": {
+            "string": "https://zod.dev/api#strings"
+          }
+        },
+        {
+          "name": "copyrightYear",
+          "type": "string | number",
+          "optional": true,
+          "array": false,
+          "card": "0..1",
+          "links": {
+            "string": "https://zod.dev/api#strings",
+            "number": "https://zod.dev/api#numbers"
+          }
+        },
+        {
+          "name": "publisher",
+          "type": "{ name?: string; url?: string }",
+          "optional": true,
+          "array": false,
+          "card": "0..1"
+        }
+      ],
+      "extendsNames": [],
+      "values": [],
+      "refs": [],
+      "unresolved": [],
+      "external": [],
+      "source": "typescript",
+      "exported": false
+    },
+    {
+      "id": "smart-base/L2/schemas/extract-dak.ts#DakOptions",
+      "name": "DakOptions",
+      "module": "smart-base/L2/schemas/extract-dak.ts",
+      "kind": "interface",
+      "fields": [
+        {
+          "name": "dakPath",
+          "type": "string",
+          "optional": false,
+          "array": false,
+          "card": "1..1",
+          "links": {
+            "string": "https://zod.dev/api#strings"
+          }
+        },
+        {
+          "name": "fshDir",
+          "type": "string",
+          "optional": false,
+          "array": false,
+          "card": "1..1",
+          "links": {
+            "string": "https://zod.dev/api#strings"
+          }
+        },
+        {
+          "name": "bpmnDir",
+          "type": "string | null",
+          "optional": true,
+          "array": false,
+          "card": "0..1",
+          "links": {
+            "string": "https://zod.dev/api#strings"
+          }
+        },
+        {
+          "name": "dmnDir",
+          "type": "string | null",
+          "optional": true,
+          "array": false,
+          "card": "0..1",
+          "links": {
+            "string": "https://zod.dev/api#strings"
+          }
+        }
+      ],
+      "extendsNames": [],
+      "values": [],
+      "refs": [],
+      "unresolved": [],
+      "external": [],
+      "source": "typescript",
+      "exported": true
+    },
+    {
+      "id": "smart-base/L2/schemas/extract-dak.ts#DakStats",
+      "name": "DakStats",
+      "module": "smart-base/L2/schemas/extract-dak.ts",
+      "kind": "interface",
+      "fields": [
+        {
+          "name": "found",
+          "type": "Record<string, number>",
+          "optional": false,
+          "array": false,
+          "card": "1..1"
+        },
+        {
+          "name": "statementCount",
+          "type": "number",
+          "optional": false,
+          "array": false,
+          "card": "1..1",
+          "links": {
+            "number": "https://zod.dev/api#numbers"
+          }
+        },
+        {
+          "name": "conformance",
+          "type": "Record<string, number>",
+          "optional": false,
+          "array": false,
+          "card": "1..1"
+        },
+        {
+          "name": "orphans",
+          "type": "{ component: string; file: string }[]",
+          "optional": false,
+          "array": true,
+          "card": "0..*"
+        },
+        {
+          "name": "warnings",
+          "type": "string[]",
+          "optional": false,
+          "array": true,
+          "card": "0..*",
+          "links": {
+            "string": "https://zod.dev/api#strings"
+          }
+        },
+        {
+          "name": "ns",
+          "type": "string",
+          "optional": false,
+          "array": false,
+          "card": "1..1",
+          "links": {
+            "string": "https://zod.dev/api#strings"
+          }
+        }
+      ],
+      "extendsNames": [],
+      "values": [],
+      "refs": [],
+      "unresolved": [],
+      "external": [],
+      "source": "typescript",
+      "exported": true
+    },
+    {
+      "id": "smart-base/L2/schemas/extract-dak.ts#Instance",
+      "name": "Instance",
+      "module": "smart-base/L2/schemas/extract-dak.ts",
+      "kind": "interface",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "optional": false,
+          "array": false,
+          "card": "1..1",
+          "links": {
+            "string": "https://zod.dev/api#strings"
+          }
+        },
+        {
+          "name": "instanceOf",
+          "type": "string",
+          "optional": false,
+          "array": false,
+          "card": "1..1",
+          "links": {
+            "string": "https://zod.dev/api#strings"
+          }
+        },
+        {
+          "name": "body",
+          "type": "string",
+          "optional": false,
+          "array": false,
+          "card": "1..1",
+          "links": {
+            "string": "https://zod.dev/api#strings"
+          }
+        }
+      ],
+      "extendsNames": [],
+      "values": [],
+      "refs": [],
+      "unresolved": [],
+      "external": [],
+      "source": "typescript",
+      "exported": false
+    },
+    {
+      "id": "smart-base/L2/schemas/extract-dak.ts#Persona",
+      "name": "Persona",
+      "module": "smart-base/L2/schemas/extract-dak.ts",
+      "kind": "interface",
+      "fields": [
+        {
+          "name": "iri",
+          "type": "string",
+          "optional": false,
+          "array": false,
+          "card": "1..1",
+          "links": {
+            "string": "https://zod.dev/api#strings"
+          }
+        },
+        {
+          "name": "instance",
+          "type": "string",
+          "optional": false,
+          "array": false,
+          "card": "1..1",
+          "links": {
+            "string": "https://zod.dev/api#strings"
+          }
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "optional": false,
+          "array": false,
+          "card": "1..1",
+          "links": {
+            "string": "https://zod.dev/api#strings"
+          }
+        },
+        {
+          "name": "name",
+          "type": "string | null",
+          "optional": false,
+          "array": false,
+          "card": "1..1",
+          "links": {
+            "string": "https://zod.dev/api#strings"
+          }
+        },
+        {
+          "name": "personaType",
+          "type": "string | null",
+          "optional": false,
+          "array": false,
+          "card": "1..1",
+          "links": {
+            "string": "https://zod.dev/api#strings"
+          }
+        },
+        {
+          "name": "iscoCode",
+          "type": "string[]",
+          "optional": false,
+          "array": true,
+          "card": "0..*",
+          "links": {
+            "string": "https://zod.dev/api#strings"
+          }
+        },
+        {
+          "name": "source",
+          "type": "string",
+          "optional": false,
+          "array": false,
+          "card": "1..1",
+          "links": {
+            "string": "https://zod.dev/api#strings"
+          }
+        }
+      ],
+      "extendsNames": [],
+      "values": [],
+      "refs": [],
+      "unresolved": [],
+      "external": [],
+      "source": "typescript",
+      "exported": false
+    },
+    {
+      "id": "smart-base/L3/schemas/extract-l3.ts#FhirJson",
+      "name": "FhirJson",
+      "module": "smart-base/L3/schemas/extract-l3.ts",
+      "kind": "interface",
+      "doc": "A FHIR JSON resource, as far as this reads one.",
+      "fields": [
+        {
+          "name": "resourceType",
+          "type": "string",
+          "optional": true,
+          "array": false,
+          "card": "0..1",
+          "links": {
+            "string": "https://zod.dev/api#strings"
+          }
+        },
+        {
+          "name": "id",
+          "type": "string",
+          "optional": true,
+          "array": false,
+          "card": "0..1",
+          "links": {
+            "string": "https://zod.dev/api#strings"
+          }
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "optional": true,
+          "array": false,
+          "card": "0..1",
+          "links": {
+            "string": "https://zod.dev/api#strings"
+          }
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "optional": true,
+          "array": false,
+          "card": "0..1",
+          "links": {
+            "string": "https://zod.dev/api#strings"
+          }
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "optional": true,
+          "array": false,
+          "card": "0..1",
+          "links": {
+            "string": "https://zod.dev/api#strings"
+          }
+        },
+        {
+          "name": "version",
+          "type": "string",
+          "optional": true,
+          "array": false,
+          "card": "0..1",
+          "links": {
+            "string": "https://zod.dev/api#strings"
+          }
+        },
+        {
+          "name": "publisher",
+          "type": "string",
+          "optional": true,
+          "array": false,
+          "card": "0..1",
+          "links": {
+            "string": "https://zod.dev/api#strings"
+          }
+        },
+        {
+          "name": "experimental",
+          "type": "boolean",
+          "optional": true,
+          "array": false,
+          "card": "0..1",
+          "links": {
+            "boolean": "https://zod.dev/api#booleans"
+          }
+        },
+        {
+          "name": "meta",
+          "type": "{ profile?: string[] }",
+          "optional": true,
+          "array": false,
+          "card": "0..1"
+        }
+      ],
+      "extendsNames": [],
+      "values": [],
+      "refs": [],
+      "unresolved": [],
+      "external": [],
+      "source": "typescript",
+      "exported": false
+    },
+    {
+      "id": "smart-base/L3/schemas/extract-l3.ts#L3Stats",
+      "name": "L3Stats",
+      "module": "smart-base/L3/schemas/extract-l3.ts",
+      "kind": "interface",
+      "fields": [
+        {
+          "name": "counts",
+          "type": "Record<string, number>",
+          "optional": false,
+          "array": false,
+          "card": "1..1"
+        },
+        {
+          "name": "warnings",
+          "type": "string[]",
+          "optional": false,
+          "array": true,
+          "card": "0..*",
+          "links": {
+            "string": "https://zod.dev/api#strings"
+          }
+        },
+        {
+          "name": "ns",
+          "type": "string",
+          "optional": false,
+          "array": false,
+          "card": "1..1",
+          "links": {
+            "string": "https://zod.dev/api#strings"
+          }
+        },
+        {
+          "name": "unmapped",
+          "type": "string[]",
+          "optional": false,
+          "array": true,
+          "card": "0..*",
+          "links": {
+            "string": "https://zod.dev/api#strings"
+          }
+        }
+      ],
+      "extendsNames": [],
+      "values": [],
+      "refs": [],
       "unresolved": [],
       "external": [],
       "source": "typescript",

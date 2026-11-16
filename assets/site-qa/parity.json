@@ -4,13 +4,13 @@
  "shortfall": [],
  "droppedByRuling": [],
  "current": {
-  "pages": 8248,
+  "pages": 1145,
   "counts": {
    "siteNav": 0,
-   "search": 8107,
+   "search": 1004,
    "navbarRow": 74,
-   "rail": 8107,
-   "translationMeta": 8107
+   "rail": 1004,
+   "translationMeta": 1004
   },
   "dirs": [
    "artifact",
@@ -88,6 +88,6 @@
     "present": true
    }
   },
-  "from": "5e3d23103ed6"
+  "from": "1edc92955871"
  }
 }
