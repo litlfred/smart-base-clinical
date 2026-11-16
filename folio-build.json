@@ -7,9 +7,9 @@
   "source": {
     "repo": "litlfred/smart-base-clinical",
     "ref": "main",
-    "commit": "ede390bb6ff3e965fdd01ebeb3929334faaeb1ec"
+    "commit": "77c2fc34452d9c499159d093d480f626ce847f72"
   },
-  "builtAt": "2026-11-16T00:53:43.960Z",
+  "builtAt": "2026-11-16T04:26:09.626Z",
   "ast": {
     "commit": "3c6fcc9b7a6bc5ecd777e7deb58f56df5da65c64",
     "verdict": "valid",
