@@ -1,0 +1,30 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/"
+  },
+  "@id": "https://litlfred.github.io/smart-base-clinical/en/cat-harness/harness/smart-base-clinical/",
+  "url": "https://litlfred.github.io/smart-base-clinical/en/cat-harness/harness/smart-base-clinical/",
+  "@type": "WebPage",
+  "name": "WHO SMART Guidelines — Base Clinical on SMART Base Clinical",
+  "about": {
+    "@type": "SoftwareSourceCode",
+    "identifier": "smart-base-clinical",
+    "name": "WHO SMART Guidelines — Base Clinical",
+    "description": "Clinical conformance resources shared by the clinically focused WHO SMART Guidelines IGs (CPG-derived profiles, WHOCommon CQL), as a harnessed instance of smart-base. It holds no process or encounter catalogue yet (bean 2ipj). Declared with no directories yet: what it holds is seeded later (n3h9, 53rv), and a declared-but-absent directory is the dh4f defect.",
+    "codeRepository": "https://github.com/litlfred/smart-base-clinical",
+    "isBasedOn": [
+      {
+        "@id": "https://litlfred.github.io/smart-base/"
+      }
+    ]
+  },
+  "isPartOf": {
+    "@id": "https://litlfred.github.io/smart-base-clinical/",
+    "name": "SMART Base Clinical"
+  },
+  "significantLink": [
+    "https://github.com/litlfred/smart-base-clinical/tree/a22e8b4c07e257e30dda7eb803fcec126574c0b6",
+    "https://github.com/litlfred/smart-base-clinical/blob/a22e8b4c07e257e30dda7eb803fcec126574c0b6/README.md",
+    "https://github.com/litlfred/smart-base-clinical/blob/a22e8b4c07e257e30dda7eb803fcec126574c0b6/AGENTS.md"
+  ]
+}
