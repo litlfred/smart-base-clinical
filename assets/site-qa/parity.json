@@ -4,13 +4,13 @@
  "shortfall": [],
  "droppedByRuling": [],
  "current": {
-  "pages": 1155,
+  "pages": 1183,
   "counts": {
    "siteNav": 0,
-   "search": 1014,
-   "navbarRow": 84,
-   "rail": 1014,
-   "translationMeta": 1014
+   "search": 1042,
+   "navbarRow": 107,
+   "rail": 1042,
+   "translationMeta": 1042
   },
   "dirs": [
    "artifact",
@@ -19,7 +19,10 @@
    "en",
    "fhir-artifact-index",
    "id-lookup",
-   "smart-base"
+   "payload",
+   "slices",
+   "smart-base",
+   "v0"
   ],
   "index": [
    "search",
@@ -94,6 +97,6 @@
     "present": true
    }
   },
-  "from": "ee7430f9e369"
+  "from": "ff73125875ee"
  }
 }
