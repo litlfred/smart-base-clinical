@@ -4,34 +4,6 @@
  "shortfall": [],
  "droppedByRuling": [],
  "current": {
-  "pages": 1145,
-  "counts": {
-   "siteNav": 0,
-   "search": 1004,
-   "navbarRow": 74,
-   "rail": 1004,
-   "translationMeta": 1004
-  },
-  "dirs": [
-   "artifact",
-   "assets",
-   "cat-harness",
-   "en",
-   "fhir-artifact-index",
-   "id-lookup",
-   "smart-base"
-  ],
-  "index": [
-   "search",
-   "navbarRow",
-   "rail",
-   "translationMeta"
-  ],
-  "stamp": {
-   "present": true
-  }
- },
- "candidate": {
   "pages": 1155,
   "counts": {
    "siteNav": 0,
@@ -59,15 +31,46 @@
    "present": true
   }
  },
+ "candidate": {
+  "pages": 1183,
+  "counts": {
+   "siteNav": 0,
+   "search": 1042,
+   "navbarRow": 107,
+   "rail": 1042,
+   "translationMeta": 1042
+  },
+  "dirs": [
+   "artifact",
+   "assets",
+   "cat-harness",
+   "en",
+   "fhir-artifact-index",
+   "id-lookup",
+   "payload",
+   "slices",
+   "smart-base",
+   "v0"
+  ],
+  "index": [
+   "search",
+   "navbarRow",
+   "rail",
+   "translationMeta"
+  ],
+  "stamp": {
+   "present": true
+  }
+ },
  "baseline": {
   "features": {
-   "pages": 1155,
+   "pages": 1183,
    "counts": {
     "siteNav": 0,
-    "search": 1014,
-    "navbarRow": 84,
-    "rail": 1014,
-    "translationMeta": 1014
+    "search": 1042,
+    "navbarRow": 107,
+    "rail": 1042,
+    "translationMeta": 1042
    },
    "dirs": [
     "artifact",
@@ -76,7 +79,10 @@
     "en",
     "fhir-artifact-index",
     "id-lookup",
-    "smart-base"
+    "payload",
+    "slices",
+    "smart-base",
+    "v0"
    ],
    "index": [
     "search",
@@ -88,6 +94,6 @@
     "present": true
    }
   },
-  "from": "a22e8b4c07e2"
+  "from": "ee7430f9e369"
  }
 }

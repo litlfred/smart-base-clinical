@@ -24,7 +24,7 @@
     "additionalProperty": {
       "@type": "PropertyValue",
       "name": "pinnedCommit",
-      "value": "8dbf8023d8563ea023be0d8c153f7a0d39e888c0"
+      "value": "8691b09acc175c43e569a51e36dac14412d8b8cf"
     }
   },
   "isPartOf": {
@@ -32,9 +32,9 @@
     "name": "SMART Base Clinical"
   },
   "significantLink": [
-    "https://litlfred.github.io/folio-assistant/#harness-cat-harness-tools",
-    "https://github.com/litlfred/cat-harness-tools/tree/8dbf8023d8563ea023be0d8c153f7a0d39e888c0",
-    "https://github.com/litlfred/cat-harness-tools/blob/8dbf8023d8563ea023be0d8c153f7a0d39e888c0/README.md",
-    "https://github.com/litlfred/cat-harness-tools/blob/8dbf8023d8563ea023be0d8c153f7a0d39e888c0/AGENTS.md"
+    "https://litlfred.github.io/folio-assistant/cat-harness-tools/",
+    "https://github.com/litlfred/cat-harness-tools/tree/8691b09acc175c43e569a51e36dac14412d8b8cf",
+    "https://github.com/litlfred/cat-harness-tools/blob/8691b09acc175c43e569a51e36dac14412d8b8cf/README.md",
+    "https://github.com/litlfred/cat-harness-tools/blob/8691b09acc175c43e569a51e36dac14412d8b8cf/AGENTS.md"
   ]
 }
